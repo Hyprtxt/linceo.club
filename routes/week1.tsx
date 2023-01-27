@@ -15,7 +15,6 @@ export default function Page() {
           <p class="text-blue">Linceo Eats</p>
           <p class="text-blue">A bit about a food that Linceo eats</p>
 
-          
           <p class="text-blue">Week one: Hi-Chew</p>
           <p class="text-blue">Linceo Really likes Hi-Chew and will behave his best to get some of this sweet chewy candy.</p>
           <p class="text-blue">Flavors he has tried</p>
@@ -36,6 +35,7 @@ export default function Page() {
           {/* <p class="text-blue">Linceo loves Maxine</p>
           <p class="text-blue">video of Linceo calling Maxine and feeding treats?</p> */}
         </div>
+
         {/* <p class="my-6 text-red">
           Welcome to my site, This is a neat place to build
         </p>
