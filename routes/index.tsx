@@ -1,10 +1,10 @@
-import { Head } from "$fresh/runtime.ts";
-import { tw } from "twind";
-import { CSS, render } from "gfm";
-import { API_URL } from "@/utils/config.js";
+import { Head } from "$fresh/runtime.ts"
+import { tw } from "twind"
+import { CSS, render } from "gfm"
+import { API_URL } from "@/utils/config.js"
 // import Counter from "../islands/Counter.tsx";
 
-export const PAGE_SIZE = 5;
+export const PAGE_SIZE = 5
 
 export const handler = {
   GET: async (_req, ctx) => {
@@ -12,10 +12,10 @@ export const handler = {
       `${API_URL}/posts?sort=date:desc&pagination[page]=1&pagination[pageSize]=${PAGE_SIZE}`,
     )
       .then(async (res) => await res.json())
-      .then((data) => data);
-    return ctx.render({ ...ctx.state, posts });
+      .then((data) => data)
+    return ctx.render({ ...ctx.state, posts })
   },
-};
+}
 
 export const PageWrapper = ({ children, data }) => {
   return (
@@ -29,8 +29,8 @@ export const PageWrapper = ({ children, data }) => {
         {/* <pre class="text-white">{JSON.stringify(props, null, 2)}</pre> */}
       </div>
     </Layout>
-  );
-};
+  )
+}
 
 export const Layout = ({ children }) => {
   return (
@@ -47,8 +47,8 @@ export const Layout = ({ children }) => {
         {children}
       </body>
     </>
-  );
-};
+  )
+}
 
 export const RainbowLogo = ({ style }) => (
   <a href="/">
@@ -66,7 +66,7 @@ export const RainbowLogo = ({ style }) => (
       <span class="text-green">b</span>
     </h1>
   </a>
-);
+)
 
 export default function Home(props) {
   return (
@@ -94,7 +94,7 @@ export default function Home(props) {
 
       <Bird posts={props.data.posts} />
     </PageWrapper>
-  );
+  )
 }
 
 export const BirdWrap = ({ children }) => (
@@ -106,7 +106,7 @@ export const BirdWrap = ({ children }) => (
     </h2>
     {children}
   </div>
-);
+)
 
 export const Bird = ({ posts }) => (
   <BirdWrap>
@@ -135,10 +135,10 @@ export const Bird = ({ posts }) => (
       : <></>}
     <div style="clear:both" />
   </BirdWrap>
-);
+)
 
 export const BirdPost = ({ post }) => {
-  const content = render(post.attributes.content);
+  const content = render(post.attributes.content)
   return (
     <div class="border-solid border-4 border-red p-2 mt-2">
       {/* <span class="text-yellow">{new Date(post.attributes.publishedAt).toString()}</span> */}
@@ -151,5 +151,5 @@ export const BirdPost = ({ post }) => {
       >
       </span>
     </div>
-  );
-};
+  )
+}

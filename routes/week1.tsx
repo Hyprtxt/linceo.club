@@ -1,6 +1,6 @@
-import { Head } from "$fresh/runtime.ts";
-import { tw } from "twind";
-import { Layout, RainbowLogo } from "@/routes/index.tsx";
+import { Head } from "$fresh/runtime.ts"
+import { tw } from "twind"
+import { Layout, RainbowLogo } from "@/routes/index.tsx"
 
 export default function Page() {
   return (
@@ -68,5 +68,5 @@ export default function Page() {
         {/* <Counter start={3} /> */}
       </div>
     </Layout>
-  );
+  )
 }

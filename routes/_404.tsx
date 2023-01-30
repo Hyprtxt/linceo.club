@@ -1,8 +1,8 @@
-import { PageWrapper } from "@/routes/index.tsx";
+import { PageWrapper } from "@/routes/index.tsx"
 
 export const handler = async (_req, ctx) => {
-  return ctx.render({ ...ctx.state });
-};
+  return ctx.render({ ...ctx.state })
+}
 
 export default function Home(props) {
   return (
@@ -14,5 +14,5 @@ export default function Home(props) {
         <p class="text-yellow">That's an error, Whoops!</p>
       </div>
     </PageWrapper>
-  );
+  )
 }

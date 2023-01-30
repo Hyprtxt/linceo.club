@@ -3,4 +3,4 @@ module.exports = {
     name: "linceo.club",
     script: "deno task run",
   }],
-};
+}
