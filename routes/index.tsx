@@ -6,12 +6,27 @@ import { CSS, render } from "gfm";
 export const handler = {
   GET: async (_req, ctx) => {
     const posts = await fetch(
-      `https://api.hyprtxt.dev/api/posts?sort=date:desc&pagination[page]=1&pagination[pageSize]=30`,
+      `https://api.hyprtxt.dev/api/posts?sort=date:desc&pagination[page]=1&pagination[pageSize]=3`,
     )
       .then(async (res) => await res.json())
       .then((data) => data);
     return ctx.render({ ...ctx.state, posts });
   },
+};
+
+export const PageWrapper = ({ children, data }) => {
+  return (
+    <Layout>
+      <Head>
+        <style>{CSS}</style>
+      </Head>
+      <div class="p-4 mx-auto max-w-screen-md">
+        <RainbowLogo style="text-8xl font-cherry-swash text-center" />
+        {children}
+        {/* <pre class="text-white">{JSON.stringify(props, null, 2)}</pre> */}
+      </div>
+    </Layout>
+  );
 };
 
 export const Layout = ({ children }) => {
@@ -52,51 +67,81 @@ export const RainbowLogo = ({ style }) => (
 
 export default function Home(props) {
   return (
-    <Layout>
-      <Head>
-        <style>{CSS}</style>
-      </Head>
-      <div class="p-4 mx-auto max-w-screen-md">
-        <RainbowLogo style="text-8xl font-cherry-swash text-center" />
-        <div class="border-solid border-4 border-blue p-2">
-          <p class="text-yellow">Welcome to Linceo's Website!</p>
-          <p class="text-orange">
-            Linceo is too young to have a Twitter or Mastodon account. Well,
-            that's my excuse for the Twitter yak shaving excercise; Also I get
-            to do it in Deno. I call it{" "}
-            <span class="text-blue">The Linceo Bird</span> for now.
-          </p>
-          <p class="text-green">
-            The site might expand to include some other stuff. Like a Guestbook
-            with Facebook login.
-          </p>
-          {/* <p class="text-orange">Join with Facebook to leave comments on pages!</p> */}
-          {
-            /* <h2 class="text-red text-xl">2023</h2>
+    <PageWrapper data={props.data}>
+      <div class="border-solid border-4 border-blue p-2">
+        <p class="text-yellow">Welcome to Linceo's Website!</p>
+        <p class="text-orange">
+          Linceo is too young to have a Twitter or Mastodon account. Well,
+          that's my excuse for the Twitter yak shaving excercise; Also I get to
+          do it in Deno. I call it{" "}
+          <a href="/bird" class="text-blue">The Linceo Bird</a> for now.
+        </p>
+        <p class="text-green">
+          The site might expand to include some other stuff. Like a Guestbook
+          with Facebook login.
+        </p>
+        {/* <p class="text-orange">Join with Facebook to leave comments on pages!</p> */}
+        {
+          /* <h2 class="text-red text-xl">2023</h2>
           <ul class="text-blue">
             <li><a class="text-underline hover:text-yellow" href="/week1">Week 1</a></li>
           </ul> */
-          }
-        </div>
-        <div class="border-solid border-4 border-blue p-2 mt-2">
-          <h2 class="text-blue text-3xl text-center">The Linceo Bird</h2>
-          {props.data.posts.data.map((post) => {
-            const content = render(post.attributes.content);
-            return (
-              <div class="border-solid border-4 border-red p-2 mt-2">
-                {/* <span class="text-yellow">{new Date(post.attributes.publishedAt).toString()}</span> */}
-                <span class="text-yellow">{post.attributes.date}</span>
-                <span
-                  class="text-green"
-                  dangerouslySetInnerHTML={{ __html: content }}
-                >
-                </span>
-              </div>
-            );
-          })}
-        </div>
-        <pre class="text-white">{JSON.stringify(props, null, 2)}</pre>
+        }
       </div>
-    </Layout>
+
+      <Bird posts={props.data.posts} />
+    </PageWrapper>
   );
 }
+
+export const BirdWrap = ({ children }) => (
+  <div class="border-solid border-4 border-blue p-2 mt-2">
+    <h2>
+      <a href="/bird" class="text-blue text-3xl text-center">The Linceo Bird</a>
+    </h2>
+    {children}
+  </div>
+);
+
+export const Bird = ({ posts }) => (
+  <BirdWrap>
+    {posts.data.map((post) => <BirdPost post={post} />)}
+    {/* <pre class="text-white">{JSON.stringify(posts.meta.pagination, null, 2)}</pre> */}
+    {posts.meta.pagination.page > 1
+      ? (
+        <a href={`/bird?p=${posts.meta.pagination.page - 1}`} class="text-blue">
+          &laquo; Previous Page
+        </a>
+      )
+      : <></>}
+    {posts.meta.pagination.page <
+        posts.meta.pagination.pageCount
+      ? (
+        <a
+          href={`/bird?p=${posts.meta.pagination.page + 1}`}
+          class="text-blue float-right"
+        >
+          Next Page &raquo;
+        </a>
+      )
+      : <></>}
+    <div style="clear:both" />
+  </BirdWrap>
+);
+
+export const BirdPost = ({ post }) => {
+  const content = render(post.attributes.content);
+  return (
+    <div class="border-solid border-4 border-red p-2 mt-2">
+      {/* <span class="text-yellow">{new Date(post.attributes.publishedAt).toString()}</span> */}
+      <a href={`/bird/${post.id}`} class="text-yellow">
+        {post.attributes.date}
+      </a>
+      <span
+        class="text-green"
+        dangerouslySetInnerHTML={{ __html: content }}
+      >
+      </span>
+    </div>
+  );
+};
