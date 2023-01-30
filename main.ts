@@ -5,9 +5,14 @@
 /// <reference lib="deno.ns" />
 
 import { start } from "$fresh/server.ts";
-import manifest from "./fresh.gen.ts";
+import manifest from "@/fresh.gen.ts";
 
 import twindPlugin from "$fresh/plugins/twind.ts";
-import twindConfig from "./twind.config.ts";
+import twindConfig from "@/twind.config.ts";
 
-await start(manifest, { plugins: [twindPlugin(twindConfig)] });
+import { PORT } from "@/utils/config.js";
+
+await start(manifest, {
+  port: PORT,
+  plugins: [twindPlugin(twindConfig)],
+});
