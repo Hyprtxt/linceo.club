@@ -44,9 +44,6 @@ export const Layout = ({ children }) => {
         </link>
       </Head>
       <body class={tw`bg-dark`}>
-        <div class="text-red m-10 text-8xl font-cherry-swash text-center">
-          L
-        </div>
         {children}
       </body>
     </>
