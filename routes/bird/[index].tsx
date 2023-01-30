@@ -24,7 +24,7 @@ export default function TweetPage(props) {
       <BirdWrap>
         <BirdPost post={props.data.posts.data} />
       </BirdWrap>
-      <pre class="text-white">{JSON.stringify(props, null, 2)}</pre>
+      {/* <pre class="text-white">{JSON.stringify(props, null, 2)}</pre> */}
     </PageWrapper>
   );
 }

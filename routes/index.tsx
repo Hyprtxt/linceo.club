@@ -3,10 +3,12 @@ import { tw } from "twind";
 import { CSS, render } from "gfm";
 // import Counter from "../islands/Counter.tsx";
 
+export const PAGE_SIZE = 5;
+
 export const handler = {
   GET: async (_req, ctx) => {
     const posts = await fetch(
-      `https://api.hyprtxt.dev/api/posts?sort=date:desc&pagination[page]=1&pagination[pageSize]=3`,
+      `https://api.hyprtxt.dev/api/posts?sort=date:desc&pagination[page]=1&pagination[pageSize]=${PAGE_SIZE}`,
     )
       .then(async (res) => await res.json())
       .then((data) => data);
