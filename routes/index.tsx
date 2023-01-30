@@ -77,7 +77,7 @@ export default function Home(props) {
           Linceo is too young to have a Twitter or Mastodon account. Well,
           that's my excuse for the Twitter yak shaving excercise; Also I get to
           do it in Deno. I call it{" "}
-          <a href="/bird" class="text-blue">The Linceo Bird</a> for now.
+          <a href="/bird" class="text-violet">The Linceo Bird</a> for now.
         </p>
         <p class="text-green">
           The site might expand to include some other stuff. Like a Guestbook
@@ -100,7 +100,9 @@ export default function Home(props) {
 export const BirdWrap = ({ children }) => (
   <div class="border-solid border-4 border-blue p-2 mt-2">
     <h2>
-      <a href="/bird" class="text-blue text-3xl text-center">The Linceo Bird</a>
+      <a href="/bird" class="text-violet text-3xl text-center">
+        The Linceo Bird
+      </a>
     </h2>
     {children}
   </div>
@@ -112,7 +114,10 @@ export const Bird = ({ posts }) => (
     {/* <pre class="text-white">{JSON.stringify(posts.meta.pagination, null, 2)}</pre> */}
     {posts.meta.pagination.page > 1
       ? (
-        <a href={`/bird?p=${posts.meta.pagination.page - 1}`} class="text-blue">
+        <a
+          href={`/bird?p=${posts.meta.pagination.page - 1}`}
+          class="text-violet text-underline"
+        >
           &laquo; Previous Page
         </a>
       )
@@ -122,7 +127,7 @@ export const Bird = ({ posts }) => (
       ? (
         <a
           href={`/bird?p=${posts.meta.pagination.page + 1}`}
-          class="text-blue float-right"
+          class="text-violet text-underline float-right"
         >
           Next Page &raquo;
         </a>

@@ -26,6 +26,7 @@ export default function Page() {
             <li>Banana</li>
             <li>Watermelon</li>
             <li>Cola/Ramune</li>
+            <li>Fantasy Mix</li>
             <li>Tropical Mix</li>
           </ul>
 
