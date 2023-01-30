@@ -5,7 +5,7 @@ export default {
   selfURL: import.meta.url,
   theme: {
     fontFamily: {
-      'cherry-swash': ['"Cherry Swash"', 'cursive'],
+      "cherry-swash": ['"Cherry Swash"', "cursive"],
     },
     screens: {
       sm: "480px",
