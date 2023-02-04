@@ -24,7 +24,7 @@ export const PageWrapper = ({ children, data }) => {
         <style>{CSS}</style>
       </Head>
       <div class="p-4 mx-auto max-w-screen-md">
-        <RainbowLogo style="text-8xl font-cherry-swash text-center" />
+        <RainbowLogo style="text-4xl sm:text-6xl md:text-8xl font-cherry-swash text-center" />
         {children}
         {/* <pre class="text-white">{JSON.stringify(props, null, 2)}</pre> */}
       </div>
