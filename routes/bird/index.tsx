@@ -1,5 +1,6 @@
 // import { HandlerContext } from "$fresh/server.ts";
 import { Bird, PAGE_SIZE, PageWrapper } from "@/routes/index.tsx"
+import { API_URL, TOKEN } from "@/utils/config.js"
 
 export const handler = {
   GET: async (req, ctx) => {
@@ -15,7 +16,12 @@ export const handler = {
     const page = getPage()
     // console.log(page);
     const posts = await fetch(
-      `https://api.hyprtxt.dev/api/posts?sort=date:desc&pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}`,
+      `${API_URL}/posts?sort=date:desc&pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}`,
+      {
+        headers: new Headers({
+          Authorization: `Bearer ${TOKEN}`,
+        }),
+      },
     )
       .then(async (res) => await res.json())
       .then((data) => data)
