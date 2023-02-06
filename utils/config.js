@@ -7,6 +7,7 @@ const ENV = cleanEnv(await load(), {
   BASE_URL: url(),
   DENO_ENV: str({ choices: ["development", "testing", "production"] }),
   PORT: port(),
+  TOKEN: str(),
 })
 
 export const {
@@ -14,6 +15,7 @@ export const {
   BASE_URL,
   DENO_ENV,
   PORT,
+  TOKEN,
 } = ENV
 
 export default ENV
