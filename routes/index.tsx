@@ -17,7 +17,6 @@ export const handler = {
       },
     )
       .then(async (res) => await res.json())
-      .then((data) => data)
     return ctx.render({ ...ctx.state, posts })
   },
 }
