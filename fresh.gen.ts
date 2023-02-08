@@ -9,8 +9,10 @@ import * as $2 from "./routes/bird/[index].tsx"
 import * as $3 from "./routes/bird/index.tsx"
 import * as $4 from "./routes/feed.ts"
 import * as $5 from "./routes/index.tsx"
-import * as $6 from "./routes/uploads/[file].js"
-import * as $7 from "./routes/week1.tsx"
+import * as $6 from "./routes/privacy.tsx"
+import * as $7 from "./routes/terms.tsx"
+import * as $8 from "./routes/uploads/[file].js"
+import * as $9 from "./routes/week1.tsx"
 import * as $$0 from "./islands/Counter.tsx"
 
 const manifest = {
@@ -21,8 +23,10 @@ const manifest = {
     "./routes/bird/index.tsx": $3,
     "./routes/feed.ts": $4,
     "./routes/index.tsx": $5,
-    "./routes/uploads/[file].js": $6,
-    "./routes/week1.tsx": $7,
+    "./routes/privacy.tsx": $6,
+    "./routes/terms.tsx": $7,
+    "./routes/uploads/[file].js": $8,
+    "./routes/week1.tsx": $9,
   },
   islands: {
     "./islands/Counter.tsx": $$0,
