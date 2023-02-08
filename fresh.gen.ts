@@ -4,29 +4,33 @@
 
 import config from "./deno.json" assert { type: "json" }
 import * as $0 from "./routes/_404.tsx"
-import * as $1 from "./routes/api/joke.ts"
-import * as $2 from "./routes/bird/[index].tsx"
-import * as $3 from "./routes/bird/index.tsx"
-import * as $4 from "./routes/feed.ts"
-import * as $5 from "./routes/index.tsx"
-import * as $6 from "./routes/privacy.tsx"
-import * as $7 from "./routes/terms.tsx"
-import * as $8 from "./routes/uploads/[file].js"
-import * as $9 from "./routes/week1.tsx"
+import * as $1 from "./routes/_middleware.js"
+import * as $2 from "./routes/api/[provider]/auth.js"
+import * as $3 from "./routes/api/joke.ts"
+import * as $4 from "./routes/bird/[index].tsx"
+import * as $5 from "./routes/bird/index.tsx"
+import * as $6 from "./routes/feed.ts"
+import * as $7 from "./routes/index.tsx"
+import * as $8 from "./routes/privacy.tsx"
+import * as $9 from "./routes/terms.tsx"
+import * as $10 from "./routes/uploads/[file].js"
+import * as $11 from "./routes/week1.tsx"
 import * as $$0 from "./islands/Counter.tsx"
 
 const manifest = {
   routes: {
     "./routes/_404.tsx": $0,
-    "./routes/api/joke.ts": $1,
-    "./routes/bird/[index].tsx": $2,
-    "./routes/bird/index.tsx": $3,
-    "./routes/feed.ts": $4,
-    "./routes/index.tsx": $5,
-    "./routes/privacy.tsx": $6,
-    "./routes/terms.tsx": $7,
-    "./routes/uploads/[file].js": $8,
-    "./routes/week1.tsx": $9,
+    "./routes/_middleware.js": $1,
+    "./routes/api/[provider]/auth.js": $2,
+    "./routes/api/joke.ts": $3,
+    "./routes/bird/[index].tsx": $4,
+    "./routes/bird/index.tsx": $5,
+    "./routes/feed.ts": $6,
+    "./routes/index.tsx": $7,
+    "./routes/privacy.tsx": $8,
+    "./routes/terms.tsx": $9,
+    "./routes/uploads/[file].js": $10,
+    "./routes/week1.tsx": $11,
   },
   islands: {
     "./islands/Counter.tsx": $$0,

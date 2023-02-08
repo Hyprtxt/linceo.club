@@ -11,6 +11,7 @@
     "twind": "https://esm.sh/twind@0.16.17",
     "twind/": "https://esm.sh/twind@0.16.17/",
     "envalid": "https://deno.land/x/envalid@0.1.2/mod.ts",
+    "redis": "https://deno.land/x/redis@v0.29.1/mod.ts",
     "gfm": "https://deno.land/x/gfm@0.1.30/mod.ts",
     "puppeteer": "https://deno.land/x/puppeteer@16.2.0/mod.ts",
     "feed": "https://esm.sh/feed@4.2.2"
