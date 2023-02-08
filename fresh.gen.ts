@@ -11,10 +11,12 @@ import * as $4 from "./routes/bird/[index].tsx"
 import * as $5 from "./routes/bird/index.tsx"
 import * as $6 from "./routes/feed.ts"
 import * as $7 from "./routes/index.tsx"
-import * as $8 from "./routes/privacy.tsx"
-import * as $9 from "./routes/terms.tsx"
-import * as $10 from "./routes/uploads/[file].js"
-import * as $11 from "./routes/week1.tsx"
+import * as $8 from "./routes/login/[provider].js"
+import * as $9 from "./routes/logout.jsx"
+import * as $10 from "./routes/privacy.tsx"
+import * as $11 from "./routes/terms.tsx"
+import * as $12 from "./routes/uploads/[file].js"
+import * as $13 from "./routes/week1.tsx"
 import * as $$0 from "./islands/Counter.tsx"
 
 const manifest = {
@@ -27,10 +29,12 @@ const manifest = {
     "./routes/bird/index.tsx": $5,
     "./routes/feed.ts": $6,
     "./routes/index.tsx": $7,
-    "./routes/privacy.tsx": $8,
-    "./routes/terms.tsx": $9,
-    "./routes/uploads/[file].js": $10,
-    "./routes/week1.tsx": $11,
+    "./routes/login/[provider].js": $8,
+    "./routes/logout.jsx": $9,
+    "./routes/privacy.tsx": $10,
+    "./routes/terms.tsx": $11,
+    "./routes/uploads/[file].js": $12,
+    "./routes/week1.tsx": $13,
   },
   islands: {
     "./islands/Counter.tsx": $$0,
