@@ -49,10 +49,10 @@ export const Layout = ({ children, data }) => {
       </Head>
       <body class={tw`bg-dark`}>
         {children}
+        {DENO_ENV === "development"
+          ? <pre class="text-white">{JSON.stringify(data, null, 2)}</pre>
+          : ""}
       </body>
-      {DENO_ENV === "development"
-        ? <pre class="text-white">{JSON.stringify(data, null, 2)}</pre>
-        : ""}
     </>
   )
 }
