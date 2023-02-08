@@ -9,7 +9,7 @@ import * as $2 from "./routes/api/[provider]/auth.js"
 import * as $3 from "./routes/api/joke.ts"
 import * as $4 from "./routes/bird/[index].tsx"
 import * as $5 from "./routes/bird/index.tsx"
-import * as $6 from "./routes/feed.ts"
+import * as $6 from "./routes/guestbook/index.tsx"
 import * as $7 from "./routes/index.tsx"
 import * as $8 from "./routes/login/[provider].js"
 import * as $9 from "./routes/logout.jsx"
@@ -27,7 +27,7 @@ const manifest = {
     "./routes/api/joke.ts": $3,
     "./routes/bird/[index].tsx": $4,
     "./routes/bird/index.tsx": $5,
-    "./routes/feed.ts": $6,
+    "./routes/guestbook/index.tsx": $6,
     "./routes/index.tsx": $7,
     "./routes/login/[provider].js": $8,
     "./routes/logout.jsx": $9,

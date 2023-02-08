@@ -1,5 +1,3 @@
-// import PageLogin from "@/routes/login/index.jsx";
-
 export const handler = {
   async GET(_req, ctx) {
     if (ctx.state.user) {
@@ -24,5 +22,3 @@ export const handler = {
     })
   },
 }
-
-// export default PageLogin;

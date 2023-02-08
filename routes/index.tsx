@@ -50,7 +50,7 @@ export const Layout = ({ children, data }) => {
       <body class={tw`bg-dark`}>
         {children}
         {DENO_ENV === "development"
-          ? <pre class="text-white">{JSON.stringify(data, null, 2)}</pre>
+          ? <pre>{JSON.stringify(data, null, 2)}</pre>
           : ""}
       </body>
     </>
@@ -58,7 +58,7 @@ export const Layout = ({ children, data }) => {
 }
 
 export const RainbowLogo = ({ style }) => (
-  <a href="/">
+  <a href="/" class="no-underline">
     <h1 class={style}>
       <span class="text-red">L</span>
       <span class="text-orange">i</span>
@@ -83,16 +83,16 @@ export default function Home(props) {
         <p class="text-orange">
           Linceo is too young to have a Twitter or Mastodon account. Well,
           that's my excuse for the Twitter yak shaving excercise; Also I get to
-          do it in Deno. I call it{" "}
-          <a href="/bird" class="text-violet">The Linceo Bird</a> for now.
+          do it in Deno. I call it <a href="/bird">The Linceo Bird</a> for now.
         </p>
         {props.data.user
           ? (
             <p class="text-blue">
               Hello{" "}
-              {props.data.user.username.split(" ")[0]}! It's nice to see you
-              here again.{" "}
-              <a class="text-yellow" href="/logout">
+              <span class="text-green">
+                {props.data.user.username.split(" ")[0]}
+              </span>! It's nice to see you here again.{" "}
+              <a href="/logout">
                 You may log out by clicking here.
               </a>
             </p>
@@ -116,7 +116,7 @@ export default function Home(props) {
 export const BirdWrap = ({ children }) => (
   <div class="border-solid border-4 border-blue p-2 mt-2">
     <h2>
-      <a href="/bird" class="text-violet text-3xl text-center">
+      <a href="/bird" class="text-3xl text-center">
         The Linceo Bird
       </a>
     </h2>
@@ -132,7 +132,7 @@ export const Bird = ({ posts }) => (
       ? (
         <a
           href={`/bird?p=${posts.meta.pagination.page - 1}`}
-          class="text-violet text-underline"
+          class="text-underline"
         >
           &laquo; Previous Page
         </a>
@@ -143,7 +143,7 @@ export const Bird = ({ posts }) => (
       ? (
         <a
           href={`/bird?p=${posts.meta.pagination.page + 1}`}
-          class="text-violet text-underline float-right"
+          class="text-underline float-right"
         >
           Next Page &raquo;
         </a>

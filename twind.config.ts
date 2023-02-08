@@ -1,8 +1,14 @@
+import { apply } from "twind"
 import { Options } from "$fresh/plugins/twind.ts"
 import * as colors from "twind/colors"
 
 export default {
   selfURL: import.meta.url,
+  preflight: {
+    body: apply`bg-gray-900 text-white`,
+    // h1: apply`text(gray-800 uppercase)`, // Grouping syntax
+    a: apply`text-indigo text-underline visited:text-violet hover:text-blue`,
+  },
   theme: {
     fontFamily: {
       "cherry-swash": ['"Cherry Swash"', "cursive"],
