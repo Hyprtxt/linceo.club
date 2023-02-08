@@ -33,6 +33,16 @@ Deno.test(
       assertEquals(response.status(), 200)
     })
 
+    await t.step(
+      "The single Bird post page should work (Testing ID #14)",
+      async () => {
+        const response = await page.goto(`${BASE_URL}/bird/14`, {
+          waitUntil: "domcontentloaded",
+        })
+        assertEquals(response.status(), 200)
+      },
+    )
+
     await t.step("The error page should 404", async () => {
       const response = await page.goto(`${BASE_URL}/404`, {
         waitUntil: "networkidle2",
