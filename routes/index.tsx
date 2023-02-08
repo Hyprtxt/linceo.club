@@ -1,7 +1,7 @@
 import { Head } from "$fresh/runtime.ts"
 import { tw } from "twind"
 import { CSS, render } from "gfm"
-import { API_URL, TOKEN } from "@/utils/config.js"
+import { API_URL, DENO_ENV, TOKEN } from "@/utils/config.js"
 // import Counter from "../islands/Counter.tsx";
 
 export const PAGE_SIZE = 5
@@ -23,7 +23,7 @@ export const handler = {
 
 export const PageWrapper = ({ children, data }) => {
   return (
-    <Layout>
+    <Layout data={data}>
       <Head>
         <style>{CSS}</style>
       </Head>
@@ -36,7 +36,7 @@ export const PageWrapper = ({ children, data }) => {
   )
 }
 
-export const Layout = ({ children }) => {
+export const Layout = ({ children, data }) => {
   return (
     <>
       <Head>
@@ -50,6 +50,9 @@ export const Layout = ({ children }) => {
       <body class={tw`bg-dark`}>
         {children}
       </body>
+      {DENO_ENV === "development"
+        ? <pre class="text-white">{JSON.stringify(data, null, 2)}</pre>
+        : ""}
     </>
   )
 }
