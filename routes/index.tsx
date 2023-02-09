@@ -1,7 +1,7 @@
 import { Head } from "$fresh/runtime.ts"
 import { tw } from "twind"
 import { CSS, render } from "gfm"
-import { API_URL, DENO_ENV, TOKEN } from "@/utils/config.js"
+import { API_URL, DENO_ENV, GTM_ID, TOKEN } from "@/utils/config.js"
 // import Counter from "../islands/Counter.tsx";
 
 export const PAGE_SIZE = 5
@@ -70,6 +70,15 @@ export const Layout = ({ children, data }) => {
           rel="stylesheet"
         >
         </link>
+        {DENO_ENV === "production"
+          ? (
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${GTM_ID}`}
+            >
+            </script>
+          )
+          : <></>}
       </Head>
       <body class={tw`bg-dark`}>
         {children}

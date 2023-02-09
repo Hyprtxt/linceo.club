@@ -7,7 +7,9 @@ export default function css() {
   display: flex;
 }
 .cool-shadow {
-  box-shadow: 4px 2px 0 white;
+  border-color: rgb(160,235,177);
+  border-color: rgb(249,108,98);
+  box-shadow: 4px 2px 0 rgb(254,245,121);
   margin-bottom: 15px;
   display: block;
 }

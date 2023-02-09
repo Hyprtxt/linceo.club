@@ -11,6 +11,7 @@ const ENV = cleanEnv(await load(), {
   REDIS_PASS: str(),
   REDIS_HOST: host(),
   REDIS_PORT: port(),
+  GTM_ID: str(),
 })
 
 export const {
@@ -22,6 +23,7 @@ export const {
   REDIS_HOST,
   REDIS_PASS,
   REDIS_PORT,
+  GTM_ID,
 } = ENV
 
 export default ENV
