@@ -43,6 +43,16 @@ Deno.test(
       },
     )
 
+    await t.step(
+      "The Guestbook page should work",
+      async () => {
+        const response = await page.goto(`${BASE_URL}/guestbook`, {
+          waitUntil: "domcontentloaded",
+        })
+        assertEquals(response.status(), 200)
+      },
+    )
+
     await t.step("The error page should 404", async () => {
       const response = await page.goto(`${BASE_URL}/404`, {
         waitUntil: "networkidle2",
