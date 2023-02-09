@@ -22,9 +22,7 @@ const REDIS_KEY = (COOKIE_VALUE) => `sesh-${COOKIE_VALUE}`
 
 // Session Tracker
 const createSession = async () => {
-  const session = {
-    cart: [],
-  }
+  const session = {}
   session[COOKIE_NAME] = crypto.randomUUID()
   await store.set(REDIS_KEY(session[COOKIE_NAME]), JSON.stringify(session))
   await store.expire(REDIS_KEY(session[COOKIE_NAME]), 7 * 24 * 60 * 60)
@@ -73,16 +71,17 @@ export async function handler(req, ctx) {
   const { pathname } = new URL(req.url)
   const withSession = [
     "/",
-    "/login",
-    "/signup",
+    // "/login",
+    // "/signup",
     "/logout",
-    "/account",
+    "/guestbook",
   ]
   let resp
   if (
     withSession.includes(pathname) ||
     pathname.startsWith("/login/") ||
     pathname.startsWith("/api/") ||
+    pathname.startsWith("/guestbook/") ||
     pathname.startsWith("/bird/")
   ) {
     ctx.API_URL = API_URL
