@@ -567,6 +567,7 @@
     "https://esm.sh/twind@0.16.17/colors": "0c934c5470586fad59174924817a2ecd89930a5dbbf3924b5329631b99859b80",
     "https://esm.sh/twind@0.16.17/sheets": "8d1b9acdbab6fe7df66b1957ff28505c79f7635cf2acbe24d95b283d1bdc86eb",
     "https://esm.sh/v106/@types/he@1.1.2/index.d.ts": "61a047439420bbbd844fc7d8413d44b5b14502d06593f560cfa2196aead46933",
+    "https://esm.sh/v106/@types/he@1.2.0/index.d.ts": "baaae0918f67a340020b36c4499d5e4abfc153e0f93e3263054ebc1c1a1fe3bc",
     "https://esm.sh/v106/@types/marked@4.0.8/index.d.ts": "0b2fcecb260110d36514d4a845e10d98d19ae62f19ff18a5fc0181c31e1be8ef",
     "https://esm.sh/v106/@types/prismjs@1.26.0/index.d.ts": "6484309596f594ae824513336bd2a2e04a1902b06bb149fa904f5cae5fbe5c50",
     "https://esm.sh/v106/@types/sanitize-html@2.8.0/index.d.ts": "7da2855e307d77af654c0b7ff2e120f535375d1178a7a9557fb725414c967853",

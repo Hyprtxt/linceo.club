@@ -71,8 +71,7 @@ export async function handler(req, ctx) {
   const { pathname } = new URL(req.url)
   const withSession = [
     "/",
-    // "/login",
-    // "/signup",
+    "/bird",
     "/logout",
     "/guestbook",
   ]

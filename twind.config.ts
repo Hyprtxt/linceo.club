@@ -10,6 +10,11 @@ export default {
     a: apply`text-indigo text-underline visited:text-violet hover:text-blue`,
   },
   theme: {
+    extend: {
+      boxShadow: {
+        "red": "0 35px 60px -15px rgba(210,81,153, 1)",
+      },
+    },
     fontFamily: {
       "cherry-swash": ['"Cherry Swash"', "cursive"],
     },

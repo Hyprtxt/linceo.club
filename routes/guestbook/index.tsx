@@ -1,4 +1,4 @@
-import { Layout, RainbowLogo } from "@/routes/index.tsx"
+import { PageWrapper } from "@/routes/index.tsx"
 import { API_URL, TOKEN } from "@/utils/config.js"
 
 const PAGE_SIZE = 10
@@ -24,24 +24,49 @@ export const handler = {
         }),
       },
     )
-      .then(async (res) => {
-        console.log(res)
-        return await res.json()
-      })
+      .then(async (res) => await res.json())
     return ctx.render({ ...ctx.state, entries })
   },
 }
 
 export default function Page(props) {
   return (
-    <Layout>
-      <div class="p-4 mx-auto max-w-screen-md">
-        <RainbowLogo style="text-4xl sm:text-6xl md:text-8xl font-cherry-swash text-center" />
-        <div class="border-solid border-4 border-blue p-2">
-          <h2 class="text-yellow text-xl">The Guest Book</h2>
-        </div>
-      </div>
-      <pre class="text-white">{JSON.stringify(props, null, 2)}</pre>
-    </Layout>
+    <PageWrapper data={props.data}>
+      <GuestBookWrap>
+        {props.data.entries.data.map((entry) => {
+          return <GuestBookEntry entry={entry} />
+        })}
+      </GuestBookWrap>
+    </PageWrapper>
+  )
+}
+
+export const GuestBookWrap = ({ children }) => (
+  <div class="border-solid border-4 border-green p-2 mt-2">
+    <h2 class="text-3xl text-yellow">
+      The Guestbook
+    </h2>
+    {children}
+  </div>
+)
+
+const dateFormat = (string) => {
+  const date = new Date(string)
+  return new Date(date.getTime() - (date.getTimezoneOffset() * 60000))
+    .toISOString()
+    .split("T")[0]
+}
+
+export const GuestBookEntry = ({ entry }) => {
+  return (
+    <div class="border-solid border-4 border-yellow p-2 mt-2">
+      <span>
+        <p class="text-orange">{dateFormat(entry.attributes.createdAt)}</p>
+        <p class="text-green">{entry.attributes.content}</p>
+        <p class="text-violet">
+          - {entry.attributes.users_permissions_user.data.attributes.signature}
+        </p>
+      </span>
+    </div>
   )
 }
