@@ -119,8 +119,7 @@ export const Layout = ({ children, data, meta }) => {
         <meta property="og:image" content={metadata.openGraph.images[0].url} />
         <meta property="og:type" content={metadata.openGraph.type} />
         <meta property="og:locale" content={metadata.openGraph.locale} />
-        {
-          /* {DENO_ENV === "production"
+        {DENO_ENV === "production"
           ? (
             <script
               async
@@ -128,8 +127,7 @@ export const Layout = ({ children, data, meta }) => {
             >
             </script>
           )
-          : <></>} */
-        }
+          : <></>}
       </Head>
       <body class={tw`bg-dark`}>
         {children}
