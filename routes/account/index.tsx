@@ -35,16 +35,19 @@ export default function AccountPage({ data }) {
   return (
     <PageWrapper data={data} meta={metadata}>
       <AccountBookWrap>
-        <p class="text-yellow">
+        <p class="text-yellow mb-4">
           Thanks for joining us here!
         </p>
-        <form method="POST" class="border-4 border-green px-2 pb-2">
-          <p class="text-orange">
+        <form method="POST" class="border-4 border-green px-2 my-2">
+          <p class="text-orange my-2">
             Use this little form to set your Name/Signature on your guestbook
             entries.
           </p>
+          <p class="text-blue mb-2">
+            Leave this field blank and you wont show up in the guest list.
+          </p>
           <hr class="border-1 border-yellow" />
-          <p>
+          <p class="my-2">
             <label>
               Signature:&nbsp;
               <input
@@ -55,7 +58,7 @@ export default function AccountPage({ data }) {
               />
             </label>
           </p>
-          <p>
+          <p class="my-2">
             <input
               type="submit"
               value="update"
@@ -63,7 +66,7 @@ export default function AccountPage({ data }) {
             />
           </p>
         </form>
-        <p class="text-red">
+        <p class="text-red mt-2">
           Be nice or be banned.
         </p>
       </AccountBookWrap>
@@ -72,8 +75,8 @@ export default function AccountPage({ data }) {
 }
 
 export const AccountBookWrap = ({ children }) => (
-  <div class="border-solid border-4 border-indigo p-2 mt-2">
-    <h2 class="text-3xl text-violet">
+  <div class="border-solid border-4 border-indigo p-2 my-2">
+    <h2 class="text-3xl text-violet mb-2">
       Account Page
     </h2>
     {children}
