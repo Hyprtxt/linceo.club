@@ -53,6 +53,26 @@ Deno.test(
       },
     )
 
+    await t.step(
+      "The Privacy Policy page should work",
+      async () => {
+        const response = await page.goto(`${BASE_URL}/privacy`, {
+          waitUntil: "domcontentloaded",
+        })
+        assertEquals(response.status(), 200)
+      },
+    )
+
+    await t.step(
+      "The Terms & Conditions page should work",
+      async () => {
+        const response = await page.goto(`${BASE_URL}/terms`, {
+          waitUntil: "domcontentloaded",
+        })
+        assertEquals(response.status(), 200)
+      },
+    )
+
     await t.step("The error page should 404", async () => {
       const response = await page.goto(`${BASE_URL}/404`, {
         waitUntil: "networkidle2",

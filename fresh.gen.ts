@@ -17,7 +17,6 @@ import * as $10 from "./routes/logout.jsx"
 import * as $11 from "./routes/privacy.tsx"
 import * as $12 from "./routes/terms.tsx"
 import * as $13 from "./routes/uploads/[file].js"
-import * as $14 from "./routes/week1.tsx"
 import * as $$0 from "./islands/Counter.tsx"
 
 const manifest = {
@@ -36,7 +35,6 @@ const manifest = {
     "./routes/privacy.tsx": $11,
     "./routes/terms.tsx": $12,
     "./routes/uploads/[file].js": $13,
-    "./routes/week1.tsx": $14,
   },
   islands: {
     "./islands/Counter.tsx": $$0,

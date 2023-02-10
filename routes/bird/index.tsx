@@ -31,8 +31,11 @@ export const handler = {
 }
 
 export default function TweetPage(props) {
+  const metadata = {
+    title: "The Linceo Bird",
+  }
   return (
-    <PageWrapper data={props.data}>
+    <PageWrapper data={props.data} meta={metadata}>
       <Bird posts={props.data.posts} />
       {/* <pre class="text-white">{JSON.stringify(props, null, 2)}</pre> */}
     </PageWrapper>

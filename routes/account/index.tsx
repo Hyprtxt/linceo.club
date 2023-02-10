@@ -29,8 +29,11 @@ export const handler = {
 }
 
 export default function AccountPage({ data }) {
+  const metadata = {
+    title: "Account",
+  }
   return (
-    <PageWrapper data={data}>
+    <PageWrapper data={props.data} meta={metadata}>
       <AccountBookWrap>
         <p class="text-yellow">
           Thanks for joining us here!

@@ -66,8 +66,11 @@ export const handler = {
 }
 
 export default function Page({ data }) {
+  const metadata = {
+    title: "Guestbook",
+  }
   return (
-    <PageWrapper data={data}>
+    <PageWrapper data={data} meta={metadata}>
       <GuestListWrap>
         {data.users.map((item, index) => {
           return <pre>{item.signature}</pre>

@@ -72,7 +72,9 @@ export async function handler(req, ctx) {
   const withSession = [
     "/",
     "/bird",
+    "/terms",
     "/logout",
+    "/privacy",
     "/account",
     "/guestbook",
   ]

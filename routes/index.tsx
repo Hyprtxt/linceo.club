@@ -16,6 +16,26 @@ export const ROYGBIV = [
   "violet",
 ]
 
+export const METADATA = {
+  title: "Linceo Club",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  description: "A website for a very special boy.",
+  openGraph: {
+    url: "https://linceo.club",
+    siteName: "Linceo Club",
+    images: [{
+      url: "https://linceo.club/linceo-club-logo.png",
+      width: 1388,
+      height: 486,
+    }],
+    locale: "en-US",
+    type: "website",
+  },
+}
+
 export const handler = {
   GET: async (_req, ctx) => {
     const posts = await fetch(
@@ -31,11 +51,11 @@ export const handler = {
   },
 }
 
-export const PageWrapper = ({ children, data }) => {
+export const PageWrapper = ({ children, data, meta }) => {
   const NAV_CONTAINER_STYLE = `border-solid border-4 border-red p-2 mb-2`
   const NAV_BUTTON_STYLE = `border(solid 2) p-2 m-2 d-block rounded-3xl`
   return (
-    <Layout data={data}>
+    <Layout data={data} meta={meta}>
       <Head>
         <style>{CSS}</style>
       </Head>
@@ -48,7 +68,7 @@ export const PageWrapper = ({ children, data }) => {
           <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/guestbook">
             Guestbook
           </a>
-          {data.user
+          {data?.user
             ? (
               <>
                 <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/account">
@@ -75,11 +95,16 @@ export const PageWrapper = ({ children, data }) => {
   )
 }
 
-export const Layout = ({ children, data }) => {
+export const Layout = ({ children, data, meta }) => {
+  const metadata = Object.assign(METADATA, meta)
+  metadata.title = meta?.title
+    ? "%s | Linceo Club".replace(/%s/g, meta.title)
+    : METADATA.title
+  // console.log(metadata, template)
   return (
     <>
       <Head>
-        <title>Linceo Club</title>
+        <title>{metadata.title}</title>
         <link
           href="https://fonts.googleapis.com/css2?family=Cherry+Swash&display=swap"
           rel="stylesheet"
@@ -126,8 +151,11 @@ export const RainbowLogo = ({ style }) => (
 )
 
 export default function Home(props) {
+  const metadata = {
+    title: "Homepage",
+  }
   return (
-    <PageWrapper data={props.data}>
+    <PageWrapper data={props.data} meta={metadata}>
       <div class="border-solid border-4 border-blue p-2">
         <p class="text-yellow">Welcome to Linceo's Website</p>
         <p class="text-orange">
