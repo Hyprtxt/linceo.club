@@ -40,16 +40,21 @@ export const PageWrapper = ({ children, data }) => {
           </a>
           {data.user
             ? (
-              <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/logout">
-                Logout
-              </a>
+              <>
+                <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/account">
+                  Account
+                </a>
+                <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/logout">
+                  Logout
+                </a>
+              </>
             )
             : (
               <a
                 class={`cool-shadow ${NAV_BUTTON_STYLE}`}
                 href="/login/facebook"
               >
-                Authenicate
+                Authenticate
               </a>
             )}
         </div>
@@ -70,7 +75,8 @@ export const Layout = ({ children, data }) => {
           rel="stylesheet"
         >
         </link>
-        {DENO_ENV === "production"
+        {
+          /* {DENO_ENV === "production"
           ? (
             <script
               async
@@ -78,7 +84,8 @@ export const Layout = ({ children, data }) => {
             >
             </script>
           )
-          : <></>}
+          : <></>} */
+        }
       </Head>
       <body class={tw`bg-dark`}>
         {children}

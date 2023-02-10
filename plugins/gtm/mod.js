@@ -7,6 +7,8 @@ export default function gtm() {
       "tag-manager": new URL("./tag-manager.js", import.meta.url).href,
     },
     render(ctx) {
+      const res = ctx.render()
+      // console.log(res)
       const scripts = []
       const styles = []
       if (DENO_ENV === "production") {
@@ -15,7 +17,6 @@ export default function gtm() {
           state: { GTM_ID },
         })
       }
-      ctx.render()
       return {
         scripts,
         styles,

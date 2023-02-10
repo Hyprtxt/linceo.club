@@ -73,6 +73,7 @@ export async function handler(req, ctx) {
     "/",
     "/bird",
     "/logout",
+    "/account",
     "/guestbook",
   ]
   let resp
