@@ -154,7 +154,7 @@ export default function Home(props) {
 }
 
 export const BirdWrap = ({ children }) => (
-  <div class="border-solid border-4 border-blue p-2 mt-2">
+  <div class="border-solid border-4 border-yellow p-2 mt-2">
     <h2 class="text-3xl text-orange">
       The Linceo Bird
     </h2>
