@@ -14,14 +14,7 @@ export const handler = {
     return ctx.render({ ...ctx.state })
   },
   POST: async (req, ctx) => {
-    // console.log(req)
-    // console.log(formData.get("signature"), "sig", ctx.state.user.id)
-    // console.log(
-    //   `${API_URL}/users/${ctx.state.user.id}`,
-    //   `Bearer ${ctx.state.jwt}`,
-    // )
     const body = await req.formData()
-    // console.log(body)
     const update = await fetch(`${API_URL}/users/${ctx.state.user.id}`, {
       method: "PUT",
       headers: new Headers({
@@ -30,6 +23,7 @@ export const handler = {
       body,
     })
       .then(async (res) => await res.json())
+    console.log(body)
     ctx.state.user = update
     return ctx.render({ ...ctx.state })
   },
@@ -42,7 +36,6 @@ export default function AccountPage({ data }) {
         <p class="text-yellow">
           Thanks for joining us here!
         </p>
-
         <form method="POST" class="border-4 border-green px-2 pb-2">
           <p class="text-orange">
             Use this little form to set your Name/Signature on your guestbook

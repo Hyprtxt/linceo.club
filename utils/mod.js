@@ -1,4 +1,4 @@
-// util/mod.js
+// @/utils/mod.js
 
 export const redirect = (Location) =>
   new Response(null, {
