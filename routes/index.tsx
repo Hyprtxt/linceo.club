@@ -1,10 +1,20 @@
 import { Head } from "$fresh/runtime.ts"
 import { tw } from "twind"
-import { CSS, render } from "gfm"
+import { CSS } from "gfm"
 import { API_URL, DENO_ENV, GTM_ID, TOKEN } from "@/utils/config.js"
 // import Counter from "../islands/Counter.tsx";
+import { Bird } from "@/routes/bird/index.tsx"
 
-export const PAGE_SIZE = 5
+export const PAGE_SIZE = 7
+export const ROYGBIV = [
+  "red",
+  "orange",
+  "yellow",
+  "green",
+  "blue",
+  "indigo",
+  "violet",
+]
 
 export const handler = {
   GET: async (_req, ctx) => {
@@ -125,6 +135,12 @@ export default function Home(props) {
           that's my excuse for the Twitter yak shaving excercise; Also I get to
           do it in Deno. I call it <a href="/bird">The Linceo Bird</a> for now.
         </p>
+        <p class="text-red">
+          This site now also has a Guestbook! Use your Facebook account to
+          signup or login below and you will be able to set your signature and
+          leave a message in the guestbook.
+        </p>
+        {/* <p class="text-violet"></p> */}
         {props.data.user
           ? (
             <p class="text-blue">
@@ -150,61 +166,6 @@ export default function Home(props) {
 
       <Bird posts={props.data.posts} />
     </PageWrapper>
-  )
-}
-
-export const BirdWrap = ({ children }) => (
-  <div class="border-solid border-4 border-yellow p-2 mt-2">
-    <h2 class="text-3xl text-orange">
-      The Linceo Bird
-    </h2>
-    {children}
-  </div>
-)
-
-export const Bird = ({ posts }) => (
-  <BirdWrap>
-    {posts.data.map((post) => <BirdPost post={post} />)}
-    {/* <pre class="text-white">{JSON.stringify(posts.meta.pagination, null, 2)}</pre> */}
-    {posts.meta.pagination.page > 1
-      ? (
-        <a
-          href={`/bird?p=${posts.meta.pagination.page - 1}`}
-          class="text-underline"
-        >
-          &laquo; Previous Page
-        </a>
-      )
-      : <></>}
-    {posts.meta.pagination.page <
-        posts.meta.pagination.pageCount
-      ? (
-        <a
-          href={`/bird?p=${posts.meta.pagination.page + 1}`}
-          class="text-underline float-right"
-        >
-          Next Page &raquo;
-        </a>
-      )
-      : <></>}
-    <div style="clear:both" />
-  </BirdWrap>
-)
-
-export const BirdPost = ({ post }) => {
-  const content = render(post.attributes.content)
-  return (
-    <div class="border-solid border-4 border-red p-2 mt-2">
-      {/* <span class="text-yellow">{new Date(post.attributes.publishedAt).toString()}</span> */}
-      <a href={`/bird/${post.id}`} class="text-yellow">
-        {post.attributes.date}
-      </a>
-      <span
-        class="text-green"
-        dangerouslySetInnerHTML={{ __html: content }}
-      >
-      </span>
-    </div>
   )
 }
 

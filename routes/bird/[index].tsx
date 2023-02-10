@@ -1,5 +1,6 @@
 // import { HandlerContext } from "$fresh/server.ts";
-import { BirdPost, BirdWrap, PageWrapper } from "@/routes/index.tsx"
+import { PageWrapper } from "@/routes/index.tsx"
+import { BirdPost, BirdWrap } from "@/routes/bird/index.tsx"
 import { API_URL, TOKEN } from "@/utils/config.js"
 
 export const handler = {

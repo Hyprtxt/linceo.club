@@ -1,4 +1,4 @@
-import { PageWrapper } from "@/routes/index.tsx"
+import { PAGE_SIZE, PageWrapper, ROYGBIV } from "@/routes/index.tsx"
 import { API_URL, TOKEN } from "@/utils/config.js"
 import { redirect } from "@/utils/mod.js"
 
@@ -133,29 +133,18 @@ const GuestBookSignMeBox = ({ data }) => {
   )
 }
 
-export const GuestBookEntry = ({ entry, index }) => {
-  const roygbiv = [
-    "red",
-    "orange",
-    "yellow",
-    "green",
-    "blue",
-    "indigo",
-    "violet",
-  ]
-  return (
-    <div class={`border-solid border-4 border-${roygbiv[index]} p-2 mt-2`}>
-      <span>
-        <p class="text-orange">{dateFormat(entry.attributes.createdAt)}</p>
-        {entry.attributes.content.split("\n").map((item) => (
-          <p class="text-green">{item}</p>
-        ))}
-        <p class="text-violet">
-          - {entry.attributes.users_permissions_user.data
-            ? entry.attributes.users_permissions_user.data.attributes.signature
-            : "Anon"}
-        </p>
-      </span>
-    </div>
-  )
-}
+export const GuestBookEntry = ({ entry, index }) => (
+  <div class={`border-solid border-4 border-${ROYGBIV[index]} p-2 mt-2`}>
+    <span>
+      <p class="text-orange">{dateFormat(entry.attributes.createdAt)}</p>
+      {entry.attributes.content.split("\n").map((item) => (
+        <p class="text-green">{item}</p>
+      ))}
+      <p class="text-violet">
+        - {entry.attributes.users_permissions_user.data
+          ? entry.attributes.users_permissions_user.data.attributes.signature
+          : "Anon"}
+      </p>
+    </span>
+  </div>
+)
