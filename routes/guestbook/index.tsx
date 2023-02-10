@@ -119,7 +119,7 @@ const GuestBookForm = ({ data }) => (
 
 const GuestBookSignMeBox = ({ data }) => {
   return (
-    <div class="border-solid border-4 border-  p-2 mt-2">
+    <div class="border-solid border-4 border-indigo  p-2 mt-2">
       <h2 class="text-3xl text-yellow">
         Sign The Guestbook
       </h2>
