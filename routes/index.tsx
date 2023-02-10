@@ -31,7 +31,7 @@ export const METADATA = {
       width: 1388,
       height: 486,
     }],
-    locale: "en-US",
+    locale: "en_US",
     type: "website",
   },
 }
@@ -100,7 +100,7 @@ export const Layout = ({ children, data, meta }) => {
   metadata.title = meta?.title
     ? "%s | Linceo Club".replace(/%s/g, meta.title)
     : METADATA.title
-  // console.log(metadata, template)
+  // console.log(metadata)
   return (
     <>
       <Head>
@@ -110,6 +110,15 @@ export const Layout = ({ children, data, meta }) => {
           rel="stylesheet"
         >
         </link>
+        <meta
+          property="og:url"
+          content={metadata.openGraph.url + data.url.pathname}
+        />
+        <meta property="og:title" content={metadata.title} />
+        <meta property="og:description" content={metadata.description} />
+        <meta property="og:image" content={metadata.openGraph.images[0].url} />
+        <meta property="og:type" content={metadata.openGraph.type} />
+        <meta property="og:locale" content={metadata.openGraph.locale} />
         {
           /* {DENO_ENV === "production"
           ? (
