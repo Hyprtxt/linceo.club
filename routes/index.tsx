@@ -121,11 +121,20 @@ export const Layout = ({ children, data, meta }) => {
         <meta property="og:locale" content={metadata.openGraph.locale} />
         {DENO_ENV === "production"
           ? (
-            <script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=${GTM_ID}`}
-            >
-            </script>
+            <>
+              <script
+                async
+                src={`https://www.googletagmanager.com/gtag/js?id=${GTM_ID}`}
+              >
+              </script>
+              <script>
+                {`window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          
+            gtag('config', '${GTM_ID}');`}
+              </script>
+            </>
           )
           : <></>}
       </Head>

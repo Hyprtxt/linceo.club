@@ -13,9 +13,8 @@ import twindConfig from "@/twind.config.ts"
 import { PORT } from "@/utils/config.js"
 
 import css from "@/plugins/css.js"
-import gtm from "@/plugins/gtm/mod.js"
 
 await start(manifest, {
   port: PORT,
-  plugins: [twindPlugin(twindConfig), css(), gtm()],
+  plugins: [twindPlugin(twindConfig), css()],
 })
