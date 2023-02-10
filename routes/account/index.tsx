@@ -23,7 +23,6 @@ export const handler = {
       body,
     })
       .then(async (res) => await res.json())
-    console.log(body)
     ctx.state.user = update
     return ctx.render({ ...ctx.state })
   },

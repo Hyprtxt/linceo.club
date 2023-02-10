@@ -59,8 +59,8 @@ export default function Page({ data }) {
   return (
     <PageWrapper data={data}>
       <GuestBookWrap>
-        {data.entries.data.map((entry) => {
-          return <GuestBookEntry entry={entry} />
+        {data.entries.data.map((entry, index) => {
+          return <GuestBookEntry entry={entry} index={index} />
         })}
       </GuestBookWrap>
       <GuestBookSignMeBox data={data} />
@@ -133,12 +133,23 @@ const GuestBookSignMeBox = ({ data }) => {
   )
 }
 
-export const GuestBookEntry = ({ entry }) => {
+export const GuestBookEntry = ({ entry, index }) => {
+  const roygbiv = [
+    "red",
+    "orange",
+    "yellow",
+    "green",
+    "blue",
+    "indigo",
+    "violet",
+  ]
   return (
-    <div class="border-solid border-4 border-yellow p-2 mt-2">
+    <div class={`border-solid border-4 border-${roygbiv[index]} p-2 mt-2`}>
       <span>
         <p class="text-orange">{dateFormat(entry.attributes.createdAt)}</p>
-        <p class="text-green">{entry.attributes.content}</p>
+        {entry.attributes.content.split("\n").map((item) => (
+          <p class="text-green">{item}</p>
+        ))}
         <p class="text-violet">
           - {entry.attributes.users_permissions_user.data
             ? entry.attributes.users_permissions_user.data.attributes.signature
