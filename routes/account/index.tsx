@@ -33,7 +33,7 @@ export default function AccountPage({ data }) {
     title: "Account",
   }
   return (
-    <PageWrapper data={props.data} meta={metadata}>
+    <PageWrapper data={data} meta={metadata}>
       <AccountBookWrap>
         <p class="text-yellow">
           Thanks for joining us here!
