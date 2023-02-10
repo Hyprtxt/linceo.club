@@ -61,7 +61,7 @@ export default function AccountPage({ data }) {
           </p>
         </form>
         <p class="text-red">
-          Be nice or get banned.
+          Be nice or be banned.
         </p>
       </AccountBookWrap>
     </PageWrapper>

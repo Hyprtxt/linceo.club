@@ -129,7 +129,7 @@ export default function Home(props) {
   return (
     <PageWrapper data={props.data}>
       <div class="border-solid border-4 border-blue p-2">
-        <p class="text-yellow">Welcome to Linceo's Website!</p>
+        <p class="text-yellow">Welcome to Linceo's Website</p>
         <p class="text-orange">
           Linceo is too young to have a Twitter or Mastodon account. Well,
           that's my excuse for the Twitter yak shaving excercise; Also I get to
@@ -147,7 +147,7 @@ export default function Home(props) {
               Hello{" "}
               <span class="text-green">
                 {props.data.user.username.split(" ")[0]}
-              </span>! It's nice to see you here again.{" "}
+              </span>. It's nice to see you here again.{" "}
               <a href="/logout">
                 You may log out by clicking here.
               </a>
