@@ -133,7 +133,9 @@ export default function Home(props) {
         <p class="text-orange">
           Linceo is too young to have a Twitter or Mastodon account. Well,
           that's my excuse for the Twitter yak shaving excercise; Also I get to
-          do it in Deno. I call it <a href="/bird">The Linceo Bird</a> for now.
+          do it in{" "}
+          <a href="https://github.com/Hyprtxt/linceo.club">Deno/Fresh</a>. I
+          call it <a href="/bird">The Linceo Bird</a> for now.
         </p>
         <p class="text-red">
           This site now also has a Guestbook! Use your Facebook account to
