@@ -26,7 +26,17 @@ export const handler = {
       },
     )
       .then(async (res) => await res.json())
-    return ctx.render({ ...ctx.state, entries })
+    const users = await fetch(
+      `${API_URL}/users?sort=createdAt:desc&pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}`,
+      {
+        headers: new Headers({
+          Authorization: `Bearer ${TOKEN}`,
+        }),
+      },
+    )
+      .then(async (res) => await res.json())
+    // const users = await fetch()
+    return ctx.render({ ...ctx.state, entries, users })
   },
   POST: async (req, ctx) => {
     // const body = JSON.stringify(Object.fromEntries());
@@ -58,6 +68,11 @@ export const handler = {
 export default function Page({ data }) {
   return (
     <PageWrapper data={data}>
+      <GuestListWrap>
+        {data.users.map((item, index) => {
+          return <pre>{item.signature}</pre>
+        })}
+      </GuestListWrap>
       <GuestBookWrap>
         {data.entries.data.map((entry, index) => {
           return <GuestBookEntry entry={entry} index={index} />
@@ -67,6 +82,15 @@ export default function Page({ data }) {
     </PageWrapper>
   )
 }
+
+export const GuestListWrap = ({ children }) => (
+  <div class="border-solid border-4 border-violet p-2 mt-2">
+    <h2 class="text-3xl text-green">
+      The Guest List
+    </h2>
+    {children}
+  </div>
+)
 
 export const GuestBookWrap = ({ children }) => (
   <div class="border-solid border-4 border-green p-2 mt-2">
@@ -112,7 +136,7 @@ const GuestBookForm = ({ data }) => (
         value="post"
         class="bg-black border-1 border-white rounded px-2 cursor-pointer hover:bg-yellow hover:text-black active:bg-green active:text-black"
       />{" "}
-      as {data.user.signature}
+      as {data.user.signature} <a href="/account">(change signature here)</a>
     </p>
   </form>
 )
