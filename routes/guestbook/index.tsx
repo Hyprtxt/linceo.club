@@ -40,9 +40,7 @@ export const handler = {
   },
   POST: async (req, ctx) => {
     if (!ctx.state.jwt) {
-      return new Response(null, {
-        status: 401,
-      })
+      return redirect("/401")
     }
     // const body = JSON.stringify(Object.fromEntries());
     const data = await req.formData()

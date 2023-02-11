@@ -62,7 +62,7 @@ const Navigation = ({ data }) => (
     <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/guestbook">
       Guestbook
     </a>
-    {data?.user
+    {data?.jwt
       ? (
         <>
           <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/account">

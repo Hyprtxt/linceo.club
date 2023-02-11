@@ -19,8 +19,7 @@ export default function css() {
   }
 }
 .cool-shadow {
-  border-color: var(--green);
-  border-color: var(--red);
+  border-color: var(--orange);
   box-shadow: 4px 2px 0 var(--yellow);
   display: block;
 }
@@ -35,7 +34,6 @@ export default function css() {
   left: 4px;
 }
 `
-
       const styles = [{ cssText, id: "css" }]
       ctx.render()
       return {

@@ -1,12 +1,11 @@
 import { PageWrapper } from "@/routes/index.tsx"
 import { API_URL } from "@/utils/config.js"
+import { redirect } from "@/utils/mod.js"
 
 export const handler = {
   GET: async (_req, ctx) => {
     if (!ctx.state.jwt) {
-      return new Response(null, {
-        status: 401,
-      })
+      return redirect("/401")
     }
     const user = await fetch(`${API_URL}/users/me`, {
       headers: new Headers({
@@ -19,9 +18,7 @@ export const handler = {
   },
   POST: async (req, ctx) => {
     if (!ctx.state.jwt) {
-      return new Response(null, {
-        status: 401,
-      })
+      return redirect("/401")
     }
     const body = await req.formData()
     const update = await fetch(`${API_URL}/users/${ctx.state.user.id}`, {
