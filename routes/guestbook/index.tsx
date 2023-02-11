@@ -39,9 +39,13 @@ export const handler = {
     return ctx.render({ ...ctx.state, entries, users })
   },
   POST: async (req, ctx) => {
+    if (!ctx.state.jwt) {
+      return new Response(null, {
+        status: 401,
+      })
+    }
     // const body = JSON.stringify(Object.fromEntries());
     const data = await req.formData()
-
     const body = JSON.stringify({
       data: {
         content: data.get("content"),

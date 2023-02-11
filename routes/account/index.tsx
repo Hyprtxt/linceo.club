@@ -3,17 +3,26 @@ import { API_URL } from "@/utils/config.js"
 
 export const handler = {
   GET: async (_req, ctx) => {
+    if (!ctx.state.jwt) {
+      return new Response(null, {
+        status: 401,
+      })
+    }
     const user = await fetch(`${API_URL}/users/me`, {
       headers: new Headers({
         Authorization: `Bearer ${ctx.state.jwt}`,
       }),
     })
       .then(async (res) => await res.json())
-    // console.log(user, ctx.state.jwt, `${API_URL}/users/me`)
     ctx.state.user = user
     return ctx.render({ ...ctx.state })
   },
   POST: async (req, ctx) => {
+    if (!ctx.state.jwt) {
+      return new Response(null, {
+        status: 401,
+      })
+    }
     const body = await req.formData()
     const update = await fetch(`${API_URL}/users/${ctx.state.user.id}`, {
       method: "PUT",
