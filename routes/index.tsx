@@ -51,9 +51,40 @@ export const handler = {
   },
 }
 
+const NAV_CONTAINER_STYLE = `border-solid border-4 border-red p-2 mb-2`
+const NAV_BUTTON_STYLE = `border(solid 2) p-2 m-2 d-block rounded-3xl`
+
+const Navigation = ({ data }) => (
+  <div class={`navigation ${NAV_CONTAINER_STYLE}`}>
+    <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/bird">
+      The Linceo Bird
+    </a>
+    <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/guestbook">
+      Guestbook
+    </a>
+    {data?.user
+      ? (
+        <>
+          <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/account">
+            Account
+          </a>
+          <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/logout">
+            Logout
+          </a>
+        </>
+      )
+      : (
+        <a
+          class={`cool-shadow ${NAV_BUTTON_STYLE}`}
+          href="/login/facebook"
+        >
+          Authenticate
+        </a>
+      )}
+  </div>
+)
+
 export const PageWrapper = ({ children, data, meta }) => {
-  const NAV_CONTAINER_STYLE = `border-solid border-4 border-red p-2 mb-2`
-  const NAV_BUTTON_STYLE = `border(solid 2) p-2 m-2 d-block rounded-3xl`
   return (
     <Layout data={data} meta={meta}>
       <Head>
@@ -61,33 +92,7 @@ export const PageWrapper = ({ children, data, meta }) => {
       </Head>
       <div class="p-4 mx-auto max-w-screen-md">
         <RainbowLogo style="text-4xl sm:text-6xl md:text-8xl font-cherry-swash text-center" />
-        <div class={`navigation ${NAV_CONTAINER_STYLE}`}>
-          <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/bird">
-            The Linceo Bird
-          </a>
-          <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/guestbook">
-            Guestbook
-          </a>
-          {data?.user
-            ? (
-              <>
-                <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/account">
-                  Account
-                </a>
-                <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/logout">
-                  Logout
-                </a>
-              </>
-            )
-            : (
-              <a
-                class={`cool-shadow ${NAV_BUTTON_STYLE}`}
-                href="/login/facebook"
-              >
-                Authenticate
-              </a>
-            )}
-        </div>
+        <Navigation data={data} />
         {children}
         {/* <pre class="text-white">{JSON.stringify(props, null, 2)}</pre> */}
       </div>

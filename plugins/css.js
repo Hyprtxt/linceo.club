@@ -22,7 +22,6 @@ export default function css() {
   border-color: var(--green);
   border-color: var(--red);
   box-shadow: 4px 2px 0 var(--yellow);
-  margin-bottom: 15px;
   display: block;
 }
 .cool-shadow:hover {
