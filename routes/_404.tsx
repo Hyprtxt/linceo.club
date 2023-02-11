@@ -1,12 +1,17 @@
 import { PageWrapper } from "@/routes/index.tsx"
 
-export const handler = async (_req, ctx) => {
+export const handler = (req, ctx) => {
+  const url = new URL(req.url)
+  ctx.state.url = url
   return ctx.render({ ...ctx.state })
 }
 
-export default function Home(props) {
+export default function Page404({ data }) {
+  const metadata = {
+    title: "Error",
+  }
   return (
-    <PageWrapper data={props.data}>
+    <PageWrapper data={data} meta={metadata}>
       <div class="border-solid border-4 border-blue p-2">
         <h1 class="text-red text-4xl">
           404 <span class="text-orange text-2xl">Not Found</span>
