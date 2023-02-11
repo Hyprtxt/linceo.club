@@ -29,8 +29,11 @@ export const handler = {
       body,
     })
       .then(async (res) => await res.json())
-    ctx.state.user = update
-    return ctx.render({ ...ctx.state })
+    const state = Object.assign(ctx.state, { user: update })
+    const payload = JSON.stringify(state)
+    return await ctx.store.set(ctx.REDIS_KEY, payload).then(
+      () => ctx.render({ ...state }),
+    )
   },
 }
 
