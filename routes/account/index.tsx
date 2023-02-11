@@ -5,7 +5,7 @@ import { redirect } from "@/utils/mod.js"
 export const handler = {
   GET: async (_req, ctx) => {
     if (!ctx.state.jwt) {
-      return redirect("/401")
+      return redirect("/unauthorized")
     }
     const user = await fetch(`${API_URL}/users/me`, {
       headers: new Headers({
@@ -18,7 +18,7 @@ export const handler = {
   },
   POST: async (req, ctx) => {
     if (!ctx.state.jwt) {
-      return redirect("/401")
+      return redirect("/unauthorized")
     }
     const body = await req.formData()
     const update = await fetch(`${API_URL}/users/${ctx.state.user.id}`, {

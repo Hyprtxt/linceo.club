@@ -40,7 +40,7 @@ export const handler = {
   },
   POST: async (req, ctx) => {
     if (!ctx.state.jwt) {
-      return redirect("/401")
+      return redirect("/unauthorized")
     }
     // const body = JSON.stringify(Object.fromEntries());
     const data = await req.formData()
