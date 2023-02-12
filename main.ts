@@ -12,7 +12,7 @@ import twindConfig from "@/twind.config.ts"
 
 import { PORT } from "@/utils/config.js"
 
-import css from "@/plugins/css.js"
+import css from "@/plugins/css/mod.js"
 
 await start(manifest, {
   port: PORT,

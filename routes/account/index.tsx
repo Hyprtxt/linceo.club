@@ -31,9 +31,8 @@ export const handler = {
       .then(async (res) => await res.json())
     const state = Object.assign(ctx.state, { user: update })
     const payload = JSON.stringify(state)
-    return await ctx.store.set(ctx.REDIS_KEY, payload).then(
-      () => ctx.render({ ...state }),
-    )
+    return await ctx.store.set(ctx.REDIS_KEY, payload)
+      .then(() => ctx.render({ ...state }))
   },
 }
 
@@ -53,7 +52,7 @@ export default function AccountPage({ data }) {
             entries.
           </p>
           <p class="text-blue mb-2">
-            Leave this field blank and you wont show up in the guest list.
+            Leave this field blank and you will not show up in the guest list.
           </p>
           <hr class="border-1 border-yellow" />
           <p class="my-2">

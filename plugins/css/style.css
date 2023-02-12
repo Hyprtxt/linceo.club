@@ -1,9 +1,5 @@
-export default function css() {
-  return {
-    name: "css",
-    render(ctx) {
-      const scripts = []
-      const cssText = `:root {
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Swash&display=swap');
+:root {
   --red: rgb(210,81,153);
   --orange: rgb(249,108,98);
   --yellow: rgb(254,245,121);
@@ -32,14 +28,4 @@ export default function css() {
   position: relative;
   top: 2px;
   left: 4px;
-}
-`
-      const styles = [{ cssText, id: "css" }]
-      ctx.render()
-      return {
-        scripts,
-        styles,
-      }
-    },
-  }
 }
