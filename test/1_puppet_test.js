@@ -96,5 +96,15 @@ Deno.test(
         assertEquals(response.status(), 401)
       },
     )
+
+    await t.step(
+      "The gallery page should 401, when not logged in",
+      async () => {
+        const response = await page.goto(`${BASE_URL}/gallery`, {
+          waitUntil: "networkidle2",
+        })
+        assertEquals(response.status(), 401)
+      },
+    )
   }),
 )
