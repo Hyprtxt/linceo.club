@@ -65,6 +65,9 @@ const Navigation = ({ data }) => (
     {data?.jwt
       ? (
         <>
+          <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/gallery">
+            Gallery
+          </a>
           <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/account">
             Account
           </a>

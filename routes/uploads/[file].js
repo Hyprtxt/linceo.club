@@ -10,6 +10,7 @@ export const handler = {
       status: 302,
       headers: new Headers({
         Location: `https://api.hyprtxt.dev${img_path}`,
+        "Cache-Control": "max-age=3600",
       }),
     })
   },

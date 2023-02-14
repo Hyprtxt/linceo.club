@@ -74,6 +74,7 @@ export async function handler(req, ctx) {
     "/bird",
     "/terms",
     "/logout",
+    "/gallery",
     "/privacy",
     "/account",
     "/guestbook",
