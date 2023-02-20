@@ -33,14 +33,16 @@ export default function AccountPage({ data }) {
         </p>
         <div class="flex flex-wrap justify-between">
           {data.media.map((file) => {
-            return (
-              <>
-                <img
-                  class="flex-initial p-1"
-                  src={file.formats.thumbnail.url}
-                />
-              </>
-            )
+            if (file.formats) {
+              return (
+                <>
+                  <img
+                    class="flex-initial p-1"
+                    src={file.formats.thumbnail.url}
+                  />
+                </>
+              )
+            }
           })}
         </div>
         <p class="text-red mt-2">
