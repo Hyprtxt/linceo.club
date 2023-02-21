@@ -10,15 +10,16 @@ import * as $3 from "./routes/api/[provider]/auth.js"
 import * as $4 from "./routes/api/joke.ts"
 import * as $5 from "./routes/bird/[index].tsx"
 import * as $6 from "./routes/bird/index.tsx"
-import * as $7 from "./routes/gallery/index.tsx"
-import * as $8 from "./routes/guestbook/index.tsx"
-import * as $9 from "./routes/index.tsx"
-import * as $10 from "./routes/login/[provider].js"
-import * as $11 from "./routes/logout.jsx"
-import * as $12 from "./routes/privacy.tsx"
-import * as $13 from "./routes/terms.tsx"
-import * as $14 from "./routes/unauthorized.tsx"
-import * as $15 from "./routes/uploads/[file].js"
+import * as $7 from "./routes/gallery/ai-art.tsx"
+import * as $8 from "./routes/gallery/index.tsx"
+import * as $9 from "./routes/guestbook/index.tsx"
+import * as $10 from "./routes/index.tsx"
+import * as $11 from "./routes/login/[provider].js"
+import * as $12 from "./routes/logout.jsx"
+import * as $13 from "./routes/privacy.tsx"
+import * as $14 from "./routes/terms.tsx"
+import * as $15 from "./routes/unauthorized.tsx"
+import * as $16 from "./routes/uploads/[file].js"
 import * as $$0 from "./islands/Counter.tsx"
 
 const manifest = {
@@ -30,15 +31,16 @@ const manifest = {
     "./routes/api/joke.ts": $4,
     "./routes/bird/[index].tsx": $5,
     "./routes/bird/index.tsx": $6,
-    "./routes/gallery/index.tsx": $7,
-    "./routes/guestbook/index.tsx": $8,
-    "./routes/index.tsx": $9,
-    "./routes/login/[provider].js": $10,
-    "./routes/logout.jsx": $11,
-    "./routes/privacy.tsx": $12,
-    "./routes/terms.tsx": $13,
-    "./routes/unauthorized.tsx": $14,
-    "./routes/uploads/[file].js": $15,
+    "./routes/gallery/ai-art.tsx": $7,
+    "./routes/gallery/index.tsx": $8,
+    "./routes/guestbook/index.tsx": $9,
+    "./routes/index.tsx": $10,
+    "./routes/login/[provider].js": $11,
+    "./routes/logout.jsx": $12,
+    "./routes/privacy.tsx": $13,
+    "./routes/terms.tsx": $14,
+    "./routes/unauthorized.tsx": $15,
+    "./routes/uploads/[file].js": $16,
   },
   islands: {
     "./islands/Counter.tsx": $$0,

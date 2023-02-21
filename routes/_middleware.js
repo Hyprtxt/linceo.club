@@ -84,7 +84,7 @@ export async function handler(req, ctx) {
     withSession.includes(pathname) ||
     pathname.startsWith("/login/") ||
     pathname.startsWith("/api/") ||
-    pathname.startsWith("/guestbook/") ||
+    pathname.startsWith("/gallery/") ||
     pathname.startsWith("/bird/")
   ) {
     ctx.API_URL = API_URL
