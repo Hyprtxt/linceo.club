@@ -6,7 +6,7 @@ import { tw } from "twind"
 export const handler = {
   GET: async (_req, ctx) => {
     if (!ctx.state.jwt) {
-      return redirect("/unauthorized")
+      return redirect("/gallery/public")
     }
     const media = await fetch(`${API_URL}/upload/files`, {
       headers: new Headers({

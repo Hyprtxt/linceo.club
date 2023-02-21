@@ -12,14 +12,15 @@ import * as $5 from "./routes/bird/[index].tsx"
 import * as $6 from "./routes/bird/index.tsx"
 import * as $7 from "./routes/gallery/ai-art.tsx"
 import * as $8 from "./routes/gallery/index.tsx"
-import * as $9 from "./routes/guestbook/index.tsx"
-import * as $10 from "./routes/index.tsx"
-import * as $11 from "./routes/login/[provider].js"
-import * as $12 from "./routes/logout.jsx"
-import * as $13 from "./routes/privacy.tsx"
-import * as $14 from "./routes/terms.tsx"
-import * as $15 from "./routes/unauthorized.tsx"
-import * as $16 from "./routes/uploads/[file].js"
+import * as $9 from "./routes/gallery/public.tsx"
+import * as $10 from "./routes/guestbook/index.tsx"
+import * as $11 from "./routes/index.tsx"
+import * as $12 from "./routes/login/[provider].js"
+import * as $13 from "./routes/logout.jsx"
+import * as $14 from "./routes/privacy.tsx"
+import * as $15 from "./routes/terms.tsx"
+import * as $16 from "./routes/unauthorized.tsx"
+import * as $17 from "./routes/uploads/[file].js"
 import * as $$0 from "./islands/Counter.tsx"
 
 const manifest = {
@@ -33,14 +34,15 @@ const manifest = {
     "./routes/bird/index.tsx": $6,
     "./routes/gallery/ai-art.tsx": $7,
     "./routes/gallery/index.tsx": $8,
-    "./routes/guestbook/index.tsx": $9,
-    "./routes/index.tsx": $10,
-    "./routes/login/[provider].js": $11,
-    "./routes/logout.jsx": $12,
-    "./routes/privacy.tsx": $13,
-    "./routes/terms.tsx": $14,
-    "./routes/unauthorized.tsx": $15,
-    "./routes/uploads/[file].js": $16,
+    "./routes/gallery/public.tsx": $9,
+    "./routes/guestbook/index.tsx": $10,
+    "./routes/index.tsx": $11,
+    "./routes/login/[provider].js": $12,
+    "./routes/logout.jsx": $13,
+    "./routes/privacy.tsx": $14,
+    "./routes/terms.tsx": $15,
+    "./routes/unauthorized.tsx": $16,
+    "./routes/uploads/[file].js": $17,
   },
   islands: {
     "./islands/Counter.tsx": $$0,

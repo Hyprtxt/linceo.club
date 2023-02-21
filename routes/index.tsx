@@ -51,8 +51,9 @@ export const handler = {
   },
 }
 
-const NAV_CONTAINER_STYLE = `border-solid border-4 border-red p-2 mb-2`
-const NAV_BUTTON_STYLE = `border(solid 2) p-2 m-2 d-block rounded-3xl`
+const NAV_CONTAINER_STYLE =
+  `flex flex-wrap border-solid border-4 border-red p-2 mb-2`
+const NAV_BUTTON_STYLE = `border(solid 2) p-2 m-2 d-flex rounded-3xl`
 
 const Navigation = ({ data }) => (
   <div class={`navigation ${NAV_CONTAINER_STYLE}`}>
@@ -63,13 +64,16 @@ const Navigation = ({ data }) => (
       Guestbook
     </a>
     <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/gallery/ai-art">
-      AI Gallery
+      AI Art
+    </a>
+    <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/gallery/public">
+      Gallery
     </a>
     {data?.jwt
       ? (
         <>
           <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/gallery">
-            Gallery
+            Uploads
           </a>
           <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/account">
             Account
