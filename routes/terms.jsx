@@ -1,4 +1,4 @@
-import { PageWrapper } from "@/routes/index.tsx"
+import { PageWrapper } from "@/routes/index.jsx"
 
 export const handler = {
   GET: (_req, ctx) => {
@@ -13,7 +13,7 @@ export default function TermsPage({ data }) {
   return (
     <PageWrapper data={data} meta={metadata}>
       <div class="border-solid border-4 border-blue p-2">
-        <h2 class="text-yellow text-xl">Terms & Conditions</h2>
+        <h2 class="text-yellow text-xl">{metadata.title}</h2>
       </div>
     </PageWrapper>
   )

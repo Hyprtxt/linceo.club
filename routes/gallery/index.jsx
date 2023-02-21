@@ -1,4 +1,4 @@
-import { PageWrapper } from "@/routes/index.tsx"
+import { PageWrapper } from "@/routes/index.jsx"
 import { API_URL, TOKEN } from "@/utils/config.js"
 import { redirect } from "@/utils/mod.js"
 import { tw } from "twind"

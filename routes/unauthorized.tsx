@@ -1,4 +1,4 @@
-import { LoginOAuth, PageWrapper } from "@/routes/index.tsx"
+import { LoginOAuth, PageWrapper } from "@/routes/index.jsx"
 
 export const handler = {
   GET: async (req, ctx) => {

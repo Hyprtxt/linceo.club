@@ -1,4 +1,4 @@
-import { PageWrapper } from "@/routes/index.tsx"
+import { PageWrapper } from "@/routes/index.jsx"
 
 export const handler = (req, ctx) => {
   const url = new URL(req.url)

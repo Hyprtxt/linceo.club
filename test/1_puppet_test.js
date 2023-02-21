@@ -98,12 +98,32 @@ Deno.test(
     )
 
     await t.step(
-      "The gallery page should 401, when not logged in",
+      "The gallery page should redirect, when not logged in",
       async () => {
         const response = await page.goto(`${BASE_URL}/gallery`, {
           waitUntil: "networkidle2",
         })
-        assertEquals(response.status(), 401)
+        assertEquals(response.status(), 200)
+      },
+    )
+
+    await t.step(
+      "The ai gallery page should work",
+      async () => {
+        const response = await page.goto(`${BASE_URL}/gallery/ai-art`, {
+          waitUntil: "networkidle2",
+        })
+        assertEquals(response.status(), 200)
+      },
+    )
+
+    await t.step(
+      "The public gallery page should work",
+      async () => {
+        const response = await page.goto(`${BASE_URL}/gallery/public`, {
+          waitUntil: "networkidle2",
+        })
+        assertEquals(response.status(), 200)
       },
     )
   }),

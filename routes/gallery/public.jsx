@@ -1,14 +1,11 @@
-import { PageWrapper } from "@/routes/index.tsx"
+import { PageWrapper } from "@/routes/index.jsx"
 import { API_URL, TOKEN } from "@/utils/config.js"
 import { redirect } from "@/utils/mod.js"
 import { tw } from "twind"
 
 export const handler = {
   GET: async (_req, ctx) => {
-    // if (!ctx.state.jwt) {
-    //   return redirect("/unauthorized")
-    // }
-    const media = await fetch(`${API_URL}/art-gallery?populate=*`, {
+    const media = await fetch(`${API_URL}/public-gallery?populate=*`, {
       headers: new Headers({
         Authorization: `Bearer ${TOKEN}`,
       }),
@@ -21,7 +18,7 @@ export const handler = {
 export default function AccountPage({ data }) {
   const gallery = data.media.data.attributes.content.data
   const metadata = {
-    title: "AI Art Gallery",
+    title: "Public Gallery",
   }
   return (
     <PageWrapper data={data} meta={metadata}>
@@ -30,7 +27,10 @@ export default function AccountPage({ data }) {
           {metadata.title}
         </h2>
         <p class={tw`text-yellow mb-4`}>
-          Welcome to the AI Art gallery!
+          Welcome to the Public gallery!
+        </p>
+        <p class={tw`text-green mb-4`}>
+          Linceo was not happy to be having his photo taken that day.
         </p>
         <div class="flex flex-wrap justify-center">
           {gallery.map((file) => {

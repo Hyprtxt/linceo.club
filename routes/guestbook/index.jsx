@@ -1,4 +1,4 @@
-import { PAGE_SIZE, PageWrapper, ROYGBIV } from "@/routes/index.tsx"
+import { PAGE_SIZE, PageWrapper, ROYGBIV } from "@/routes/index.jsx"
 import { API_URL, TOKEN } from "@/utils/config.js"
 import { redirect } from "@/utils/mod.js"
 

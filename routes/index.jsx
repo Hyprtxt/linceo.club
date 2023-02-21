@@ -2,8 +2,7 @@ import { Head } from "$fresh/runtime.ts"
 import { tw } from "twind"
 import { CSS } from "gfm"
 import { API_URL, DENO_ENV, GTM_ID, TOKEN } from "@/utils/config.js"
-// import Counter from "../islands/Counter.tsx";
-import { Bird } from "@/routes/bird/index.tsx"
+import { Bird } from "@/routes/bird/index.jsx"
 
 export const PAGE_SIZE = 7
 export const ROYGBIV = [

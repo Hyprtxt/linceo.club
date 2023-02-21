@@ -1,4 +1,4 @@
-import { PageWrapper } from "@/routes/index.tsx"
+import { PageWrapper } from "@/routes/index.jsx"
 
 export const handler = {
   GET: (_req, ctx) => {

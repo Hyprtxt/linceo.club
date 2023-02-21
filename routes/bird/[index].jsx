@@ -1,6 +1,6 @@
 // import { HandlerContext } from "$fresh/server.ts";
-import { PageWrapper } from "@/routes/index.tsx"
-import { BirdPost, BirdWrap } from "@/routes/bird/index.tsx"
+import { PageWrapper } from "@/routes/index.jsx"
+import { BirdPost, BirdWrap } from "@/routes/bird/index.jsx"
 import { API_URL, TOKEN } from "@/utils/config.js"
 
 const randomInt = (min, max) => {

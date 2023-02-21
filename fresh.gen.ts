@@ -5,20 +5,20 @@
 import config from "./deno.json" assert { type: "json" }
 import * as $0 from "./routes/_404.tsx"
 import * as $1 from "./routes/_middleware.js"
-import * as $2 from "./routes/account/index.tsx"
+import * as $2 from "./routes/account/index.jsx"
 import * as $3 from "./routes/api/[provider]/auth.js"
 import * as $4 from "./routes/api/joke.ts"
-import * as $5 from "./routes/bird/[index].tsx"
-import * as $6 from "./routes/bird/index.tsx"
-import * as $7 from "./routes/gallery/ai-art.tsx"
-import * as $8 from "./routes/gallery/index.tsx"
-import * as $9 from "./routes/gallery/public.tsx"
-import * as $10 from "./routes/guestbook/index.tsx"
-import * as $11 from "./routes/index.tsx"
+import * as $5 from "./routes/bird/[index].jsx"
+import * as $6 from "./routes/bird/index.jsx"
+import * as $7 from "./routes/gallery/ai-art.jsx"
+import * as $8 from "./routes/gallery/index.jsx"
+import * as $9 from "./routes/gallery/public.jsx"
+import * as $10 from "./routes/guestbook/index.jsx"
+import * as $11 from "./routes/index.jsx"
 import * as $12 from "./routes/login/[provider].js"
 import * as $13 from "./routes/logout.jsx"
-import * as $14 from "./routes/privacy.tsx"
-import * as $15 from "./routes/terms.tsx"
+import * as $14 from "./routes/privacy.jsx"
+import * as $15 from "./routes/terms.jsx"
 import * as $16 from "./routes/unauthorized.tsx"
 import * as $17 from "./routes/uploads/[file].js"
 import * as $$0 from "./islands/Counter.tsx"
@@ -27,20 +27,20 @@ const manifest = {
   routes: {
     "./routes/_404.tsx": $0,
     "./routes/_middleware.js": $1,
-    "./routes/account/index.tsx": $2,
+    "./routes/account/index.jsx": $2,
     "./routes/api/[provider]/auth.js": $3,
     "./routes/api/joke.ts": $4,
-    "./routes/bird/[index].tsx": $5,
-    "./routes/bird/index.tsx": $6,
-    "./routes/gallery/ai-art.tsx": $7,
-    "./routes/gallery/index.tsx": $8,
-    "./routes/gallery/public.tsx": $9,
-    "./routes/guestbook/index.tsx": $10,
-    "./routes/index.tsx": $11,
+    "./routes/bird/[index].jsx": $5,
+    "./routes/bird/index.jsx": $6,
+    "./routes/gallery/ai-art.jsx": $7,
+    "./routes/gallery/index.jsx": $8,
+    "./routes/gallery/public.jsx": $9,
+    "./routes/guestbook/index.jsx": $10,
+    "./routes/index.jsx": $11,
     "./routes/login/[provider].js": $12,
     "./routes/logout.jsx": $13,
-    "./routes/privacy.tsx": $14,
-    "./routes/terms.tsx": $15,
+    "./routes/privacy.jsx": $14,
+    "./routes/terms.jsx": $15,
     "./routes/unauthorized.tsx": $16,
     "./routes/uploads/[file].js": $17,
   },
