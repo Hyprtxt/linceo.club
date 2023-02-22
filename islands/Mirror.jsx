@@ -25,6 +25,7 @@ export default function Mirror(props) {
       autoplay="true"
       playsInline="true"
       muted="true"
+      style="transform: rotateY(180deg);"
     >
     </video>
   )
