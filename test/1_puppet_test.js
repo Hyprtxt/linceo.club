@@ -126,5 +126,15 @@ Deno.test(
         assertEquals(response.status(), 200)
       },
     )
+
+    await t.step(
+      "The Mom's gallery page should work",
+      async () => {
+        const response = await page.goto(`${BASE_URL}/gallery/mom`, {
+          waitUntil: "networkidle2",
+        })
+        assertEquals(response.status(), 200)
+      },
+    )
   }),
 )

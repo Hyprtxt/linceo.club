@@ -12,15 +12,16 @@ import * as $5 from "./routes/bird/[index].jsx"
 import * as $6 from "./routes/bird/index.jsx"
 import * as $7 from "./routes/gallery/ai-art.jsx"
 import * as $8 from "./routes/gallery/index.jsx"
-import * as $9 from "./routes/gallery/public.jsx"
-import * as $10 from "./routes/guestbook/index.jsx"
-import * as $11 from "./routes/index.jsx"
-import * as $12 from "./routes/login/[provider].js"
-import * as $13 from "./routes/logout.jsx"
-import * as $14 from "./routes/privacy.jsx"
-import * as $15 from "./routes/terms.jsx"
-import * as $16 from "./routes/unauthorized.tsx"
-import * as $17 from "./routes/uploads/[file].js"
+import * as $9 from "./routes/gallery/mom.jsx"
+import * as $10 from "./routes/gallery/public.jsx"
+import * as $11 from "./routes/guestbook/index.jsx"
+import * as $12 from "./routes/index.jsx"
+import * as $13 from "./routes/login/[provider].js"
+import * as $14 from "./routes/logout.jsx"
+import * as $15 from "./routes/privacy.jsx"
+import * as $16 from "./routes/terms.jsx"
+import * as $17 from "./routes/unauthorized.tsx"
+import * as $18 from "./routes/uploads/[file].js"
 import * as $$0 from "./islands/Counter.tsx"
 
 const manifest = {
@@ -34,15 +35,16 @@ const manifest = {
     "./routes/bird/index.jsx": $6,
     "./routes/gallery/ai-art.jsx": $7,
     "./routes/gallery/index.jsx": $8,
-    "./routes/gallery/public.jsx": $9,
-    "./routes/guestbook/index.jsx": $10,
-    "./routes/index.jsx": $11,
-    "./routes/login/[provider].js": $12,
-    "./routes/logout.jsx": $13,
-    "./routes/privacy.jsx": $14,
-    "./routes/terms.jsx": $15,
-    "./routes/unauthorized.tsx": $16,
-    "./routes/uploads/[file].js": $17,
+    "./routes/gallery/mom.jsx": $9,
+    "./routes/gallery/public.jsx": $10,
+    "./routes/guestbook/index.jsx": $11,
+    "./routes/index.jsx": $12,
+    "./routes/login/[provider].js": $13,
+    "./routes/logout.jsx": $14,
+    "./routes/privacy.jsx": $15,
+    "./routes/terms.jsx": $16,
+    "./routes/unauthorized.tsx": $17,
+    "./routes/uploads/[file].js": $18,
   },
   islands: {
     "./islands/Counter.tsx": $$0,
