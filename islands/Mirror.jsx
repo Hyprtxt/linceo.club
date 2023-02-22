@@ -14,6 +14,7 @@ export default function Mirror(props) {
       })
         .then(function (stream) {
           video.current.srcObject = stream
+          video.play()
         })
         .catch(function (err) {
           console.log("Something went wrong!")
