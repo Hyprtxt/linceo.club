@@ -4,7 +4,14 @@ export default function Mirror(props) {
   const video = useRef(null)
   useEffect(() => {
     if (navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices.getUserMedia({ video: true })
+      navigator.mediaDevices.getUserMedia({
+        video: {
+          facingMode: "user",
+          width: 640,
+          height: 480,
+        },
+        audio: false,
+      })
         .then(function (stream) {
           video.current.srcObject = stream
         })
