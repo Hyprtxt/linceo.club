@@ -6,7 +6,7 @@ export default function Mirror(props) {
     if (navigator.mediaDevices.getUserMedia) {
       navigator.mediaDevices.getUserMedia({
         video: {
-          facingMode: "environment",
+          facingMode: "user",
         },
         audio: false,
       })
