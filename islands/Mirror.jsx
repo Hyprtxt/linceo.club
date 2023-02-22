@@ -6,15 +6,12 @@ export default function Mirror(props) {
     if (navigator.mediaDevices.getUserMedia) {
       navigator.mediaDevices.getUserMedia({
         video: {
-          facingMode: "user",
-          width: 640,
-          height: 480,
+          facingMode: "environment",
         },
         audio: false,
       })
         .then(function (stream) {
           video.current.srcObject = stream
-          video.play()
         })
         .catch(function (err) {
           console.log("Something went wrong!")
@@ -26,6 +23,8 @@ export default function Mirror(props) {
       class="w-full"
       ref={video}
       autoplay="true"
+      playsInline="true"
+      muted="true"
     >
     </video>
   )
