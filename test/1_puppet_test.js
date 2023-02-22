@@ -136,5 +136,25 @@ Deno.test(
         assertEquals(response.status(), 200)
       },
     )
+
+    await t.step(
+      "The mirror page should work",
+      async () => {
+        const response = await page.goto(`${BASE_URL}/mirror`, {
+          waitUntil: "networkidle2",
+        })
+        assertEquals(response.status(), 200)
+      },
+    )
+
+    await t.step(
+      "The parent page should not allow access",
+      async () => {
+        const response = await page.goto(`${BASE_URL}/parent`, {
+          waitUntil: "networkidle2",
+        })
+        assertEquals(response.status(), 401)
+      },
+    )
   }),
 )

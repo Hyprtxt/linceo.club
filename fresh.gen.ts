@@ -18,11 +18,13 @@ import * as $11 from "./routes/guestbook/index.jsx"
 import * as $12 from "./routes/index.jsx"
 import * as $13 from "./routes/login/[provider].js"
 import * as $14 from "./routes/logout.jsx"
-import * as $15 from "./routes/privacy.jsx"
-import * as $16 from "./routes/terms.jsx"
-import * as $17 from "./routes/unauthorized.tsx"
-import * as $18 from "./routes/uploads/[file].js"
-import * as $$0 from "./islands/Counter.tsx"
+import * as $15 from "./routes/mirror.jsx"
+import * as $16 from "./routes/parent/index.jsx"
+import * as $17 from "./routes/privacy.jsx"
+import * as $18 from "./routes/terms.jsx"
+import * as $19 from "./routes/unauthorized.tsx"
+import * as $20 from "./routes/uploads/[file].js"
+import * as $$0 from "./islands/Mirror.jsx"
 
 const manifest = {
   routes: {
@@ -41,13 +43,15 @@ const manifest = {
     "./routes/index.jsx": $12,
     "./routes/login/[provider].js": $13,
     "./routes/logout.jsx": $14,
-    "./routes/privacy.jsx": $15,
-    "./routes/terms.jsx": $16,
-    "./routes/unauthorized.tsx": $17,
-    "./routes/uploads/[file].js": $18,
+    "./routes/mirror.jsx": $15,
+    "./routes/parent/index.jsx": $16,
+    "./routes/privacy.jsx": $17,
+    "./routes/terms.jsx": $18,
+    "./routes/unauthorized.tsx": $19,
+    "./routes/uploads/[file].js": $20,
   },
   islands: {
-    "./islands/Counter.tsx": $$0,
+    "./islands/Mirror.jsx": $$0,
   },
   baseUrl: import.meta.url,
   config,
