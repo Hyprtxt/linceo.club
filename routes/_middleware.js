@@ -73,6 +73,7 @@ export async function handler(req, ctx) {
     "/",
     "/bird",
     "/terms",
+    "/parent",
     "/logout",
     "/gallery",
     "/privacy",
@@ -85,6 +86,7 @@ export async function handler(req, ctx) {
     pathname.startsWith("/login/") ||
     pathname.startsWith("/api/") ||
     pathname.startsWith("/gallery/") ||
+    pathname.startsWith("/parent/") ||
     pathname.startsWith("/bird/")
   ) {
     ctx.API_URL = API_URL
