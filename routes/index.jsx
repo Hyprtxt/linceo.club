@@ -119,11 +119,6 @@ export const Layout = ({ children, data, meta }) => {
     <>
       <Head>
         <title>{metadata.title}</title>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cherry+Swash&display=swap"
-          rel="stylesheet"
-        >
-        </link>
         <meta
           property="og:url"
           content={metadata.openGraph.url + data.url.pathname}
