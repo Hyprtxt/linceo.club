@@ -35,7 +35,11 @@ export const handler = {
     body.append("files.media", file)
     body.append(
       "data",
-      JSON.stringify({ caption: data.get("caption") }, null, 0),
+      JSON.stringify(
+        { caption: data.get("caption"), user: data.get("user") },
+        null,
+        0,
+      ),
     )
     // const snap =
     await fetch(`${API_URL}/snaps?populate=*`, {
