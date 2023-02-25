@@ -25,6 +25,7 @@ import * as $18 from "./routes/terms.jsx"
 import * as $19 from "./routes/unauthorized.tsx"
 import * as $20 from "./routes/uploads/[file].js"
 import * as $$0 from "./islands/Mirror.jsx"
+import * as $$1 from "./islands/SubmitButton.jsx"
 
 const manifest = {
   routes: {
@@ -52,6 +53,7 @@ const manifest = {
   },
   islands: {
     "./islands/Mirror.jsx": $$0,
+    "./islands/SubmitButton.jsx": $$1,
   },
   baseUrl: import.meta.url,
   config,

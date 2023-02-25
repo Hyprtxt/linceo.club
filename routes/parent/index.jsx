@@ -1,4 +1,5 @@
 import { PageWrapper } from "@/routes/index.jsx"
+import SubmitButton from "@/islands/SubmitButton.jsx"
 import { API_URL, TOKEN } from "@/utils/config.js"
 import { redirect } from "@/utils/mod.js"
 // import { createContext } from "https://esm.sh/v106/preact@10.11.0/src/index"
@@ -6,7 +7,6 @@ import { tw } from "twind"
 
 export const handler = {
   GET: (_req, ctx) => {
-    // console.log(ctx.state, "that")
     if (!ctx.state.jwt) {
       return redirect("/unauthorized")
     }
@@ -19,20 +19,20 @@ export const handler = {
     return ctx.render({ ...ctx.state })
   },
   POST: async (req, ctx) => {
+    if (!ctx.state.jwt) {
+      return redirect("/unauthorized")
+    }
     const data = await req.formData()
     const body = new FormData()
     const file = data.get("media")
-    // console.log(data)
-    // console.log(data.get("files.media"))
-    console.log(file, file.name, file.size)
+    // console.log(file, file.name, file.size)
     body.append("files.media", file)
     body.append(
       "data",
       JSON.stringify({ caption: data.get("caption") }, null, 0),
     )
-
-    console.log(body)
-    const snap = await fetch(`${API_URL}/snaps?populate=*`, {
+    // const snap =
+    await fetch(`${API_URL}/snaps?populate=*`, {
       method: "POST",
       body,
       headers: new Headers({
@@ -40,9 +40,9 @@ export const handler = {
       }),
     })
       .then(async (res) => await res.json())
-    console.log(snap, "snap")
-    return redirect("/parent")
-    // return ctx.render({ ...ctx.state })
+    // console.log(snap, "snap")
+    // return redirect("/parent")
+    return ctx.render({ ...ctx.state })
   },
 }
 
@@ -61,6 +61,11 @@ export default function ParentPage({ data }) {
         </p>
         <form method="POST" enctype="multipart/form-data">
           <input
+            type="hidden"
+            name="user"
+            value={data.user.id}
+          />
+          <input
             type="file"
             name="media"
             accept="image/*;capture=camera"
@@ -70,11 +75,7 @@ export default function ParentPage({ data }) {
             name="caption"
             class="bg-black border-1 border-white rounded my-2 px-2 w-full"
           />
-          <input
-            type="submit"
-            value="upload"
-            class="bg-black border-1 border-white rounded px-2 cursor-pointer hover:bg-yellow hover:text-black active:bg-green active:text-black"
-          />
+          <SubmitButton value="upload" />
         </form>
         {
           /* <p class="text-red mt-2">
