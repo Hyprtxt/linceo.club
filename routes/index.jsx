@@ -71,6 +71,13 @@ const Navigation = ({ data }) => (
     {data?.jwt
       ? (
         <>
+          {data?.user.parent
+            ? (
+              <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/parent">
+                Publish
+              </a>
+            )
+            : <></>}
           <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/gallery">
             Uploads
           </a>

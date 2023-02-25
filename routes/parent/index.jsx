@@ -10,6 +10,9 @@ export const handler = {
     if (!ctx.state.jwt) {
       return redirect("/unauthorized")
     }
+    if (!ctx.state.user.parent) {
+      return redirect("/unauthorized")
+    }
     // const media = await fetch(`${API_URL}/upload/files`, {
     //   headers: new Headers({
     //     Authorization: `Bearer ${TOKEN}`,
@@ -20,6 +23,9 @@ export const handler = {
   },
   POST: async (req, ctx) => {
     if (!ctx.state.jwt) {
+      return redirect("/unauthorized")
+    }
+    if (!ctx.state.user.parent) {
       return redirect("/unauthorized")
     }
     const data = await req.formData()
