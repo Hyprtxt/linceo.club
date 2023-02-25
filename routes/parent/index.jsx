@@ -21,11 +21,15 @@ export const handler = {
   POST: async (req, ctx) => {
     const data = await req.formData()
     const body = new FormData()
+    const file = data.get("media")
     // console.log(data)
     // console.log(data.get("files.media"))
-
-    body.set("files.media", data.get("media"))
-    body.set("data", JSON.stringify({ caption: data.get("caption") }, null, 0))
+    console.log(file, file.name, file.size)
+    body.append("files.media", file)
+    body.append(
+      "data",
+      JSON.stringify({ caption: data.get("caption") }, null, 0),
+    )
 
     console.log(body)
     const snap = await fetch(`${API_URL}/snaps?populate=*`, {
@@ -55,7 +59,7 @@ export default function ParentPage({ data }) {
         <p class={tw`text-yellow mb-4`}>
           Welcome to the upload test page
         </p>
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
           <input
             type="file"
             name="media"
