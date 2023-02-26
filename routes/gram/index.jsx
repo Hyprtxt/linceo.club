@@ -1,6 +1,7 @@
 // import { HandlerContext } from "$fresh/server.ts";
 import { PAGE_SIZE, PageWrapper, ROYGBIV } from "@/routes/index.jsx"
 import { API_URL, TOKEN } from "@/utils/config.js"
+import LocalDateTime from "@/islands/LocalDateTime.jsx"
 
 export const handler = {
   GET: async (req, ctx) => {
@@ -88,15 +89,12 @@ export const SnapPost = ({ post, index }) => {
         ROYGBIV[(index + 4) % 7]
       } p-2 mt-2`}
     >
-      {
-        // This needs to become an Island that renders the local date.
-
-
-          <a href={`/gram/${post.id}`}>
-            {post.attributes.createdAt}
-          </a>
-
-      }
+      <p class="text-indigo">
+        Posted:{" "}
+        <a href={`/gram/${post.id}`}>
+          <LocalDateTime date={post.attributes.createdAt} />
+        </a>
+      </p>
       {post.attributes.media.data[0].attributes.formats.large
         ? (
           <img
