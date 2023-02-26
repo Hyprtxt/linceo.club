@@ -72,6 +72,7 @@ export async function handler(req, ctx) {
   const withSession = [
     "/",
     "/bird",
+    "/gram",
     "/terms",
     "/parent",
     "/mirror",
@@ -88,7 +89,8 @@ export async function handler(req, ctx) {
     pathname.startsWith("/api/") ||
     pathname.startsWith("/gallery/") ||
     pathname.startsWith("/parent/") ||
-    pathname.startsWith("/bird/")
+    pathname.startsWith("/bird/") ||
+    pathname.startsWith("/gram/")
   ) {
     ctx.API_URL = API_URL
     ctx.BASE_URL = BASE_URL

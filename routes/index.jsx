@@ -59,6 +59,9 @@ const Navigation = ({ data }) => (
     <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/bird">
       The Linceo Bird
     </a>
+    <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/gram">
+      LinceoGram
+    </a>
     <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/guestbook">
       Guestbook
     </a>

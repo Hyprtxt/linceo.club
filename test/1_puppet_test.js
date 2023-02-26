@@ -156,5 +156,27 @@ Deno.test(
         assertEquals(response.status(), 401)
       },
     )
+    // Parent page should not allow logged in access
+    // Parent page only works for parent=true
+
+    await t.step(
+      "The LinceoGram page should work",
+      async () => {
+        const response = await page.goto(`${BASE_URL}/gram`, {
+          waitUntil: "networkidle2",
+        })
+        assertEquals(response.status(), 200)
+      },
+    )
+
+    await t.step(
+      "The Single LinceoGram page should work (Testing snap ID #46)",
+      async () => {
+        const response = await page.goto(`${BASE_URL}/gram/46`, {
+          waitUntil: "networkidle2",
+        })
+        assertEquals(response.status(), 200)
+      },
+    )
   }),
 )

@@ -14,16 +14,18 @@ import * as $7 from "./routes/gallery/ai-art.jsx"
 import * as $8 from "./routes/gallery/index.jsx"
 import * as $9 from "./routes/gallery/mom.jsx"
 import * as $10 from "./routes/gallery/public.jsx"
-import * as $11 from "./routes/guestbook/index.jsx"
-import * as $12 from "./routes/index.jsx"
-import * as $13 from "./routes/login/[provider].js"
-import * as $14 from "./routes/logout.jsx"
-import * as $15 from "./routes/mirror.jsx"
-import * as $16 from "./routes/parent/index.jsx"
-import * as $17 from "./routes/privacy.jsx"
-import * as $18 from "./routes/terms.jsx"
-import * as $19 from "./routes/unauthorized.tsx"
-import * as $20 from "./routes/uploads/[file].js"
+import * as $11 from "./routes/gram/[index].jsx"
+import * as $12 from "./routes/gram/index.jsx"
+import * as $13 from "./routes/guestbook/index.jsx"
+import * as $14 from "./routes/index.jsx"
+import * as $15 from "./routes/login/[provider].js"
+import * as $16 from "./routes/logout.jsx"
+import * as $17 from "./routes/mirror.jsx"
+import * as $18 from "./routes/parent/index.jsx"
+import * as $19 from "./routes/privacy.jsx"
+import * as $20 from "./routes/terms.jsx"
+import * as $21 from "./routes/unauthorized.tsx"
+import * as $22 from "./routes/uploads/[file].js"
 import * as $$0 from "./islands/Mirror.jsx"
 import * as $$1 from "./islands/SubmitButton.jsx"
 
@@ -40,16 +42,18 @@ const manifest = {
     "./routes/gallery/index.jsx": $8,
     "./routes/gallery/mom.jsx": $9,
     "./routes/gallery/public.jsx": $10,
-    "./routes/guestbook/index.jsx": $11,
-    "./routes/index.jsx": $12,
-    "./routes/login/[provider].js": $13,
-    "./routes/logout.jsx": $14,
-    "./routes/mirror.jsx": $15,
-    "./routes/parent/index.jsx": $16,
-    "./routes/privacy.jsx": $17,
-    "./routes/terms.jsx": $18,
-    "./routes/unauthorized.tsx": $19,
-    "./routes/uploads/[file].js": $20,
+    "./routes/gram/[index].jsx": $11,
+    "./routes/gram/index.jsx": $12,
+    "./routes/guestbook/index.jsx": $13,
+    "./routes/index.jsx": $14,
+    "./routes/login/[provider].js": $15,
+    "./routes/logout.jsx": $16,
+    "./routes/mirror.jsx": $17,
+    "./routes/parent/index.jsx": $18,
+    "./routes/privacy.jsx": $19,
+    "./routes/terms.jsx": $20,
+    "./routes/unauthorized.tsx": $21,
+    "./routes/uploads/[file].js": $22,
   },
   islands: {
     "./islands/Mirror.jsx": $$0,
