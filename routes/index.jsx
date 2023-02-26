@@ -56,11 +56,11 @@ const NAV_BUTTON_STYLE = `border(solid 2) p-2 m-2 d-flex rounded-3xl`
 
 const Navigation = ({ data }) => (
   <div class={`navigation ${NAV_CONTAINER_STYLE}`}>
-    <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/bird">
-      The Linceo Bird
-    </a>
     <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/gram">
       LinceoGram
+    </a>
+    <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/bird">
+      The Linceo Bird
     </a>
     <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/guestbook">
       Guestbook
@@ -205,10 +205,18 @@ export default function Home(props) {
           signup or login below and you will be able to set your signature and
           leave a message in the guestbook.
         </p>
-        {/* <p class="text-violet"></p> */}
+        <p class="text-violet">
+          Updated again! This time its{" "}
+          <a href="/gram">LinceoGram</a>. LinceoGrams can be directly uploaded
+          to the site by accounts where `parent === true`.
+        </p>
+        <p class="text-blue">
+          You can login below and set your signature to "" nothing at all. Then
+          you won't show up in the Guestbook.
+        </p>
         {props.data.user
           ? (
-            <p class="text-blue">
+            <p class="text-indigo">
               Hello{" "}
               <span class="text-green">
                 {props.data.user.username.split(" ")[0]}
