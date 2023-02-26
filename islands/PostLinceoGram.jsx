@@ -35,12 +35,14 @@ export default function PostLinceoGram(props) {
 
   return (
     <>
-      <button
-        onClick={doOpenCart}
-        class={tw`bg-black border-1 border-white rounded px-2 cursor-pointer hover:bg-orange hover:text-black active:bg-indigo active:text-black`}
-      >
-        Post a LinceoGram
-      </button>
+      <div class={tw`fixed bottom-3 left-3`}>
+        <button
+          onClick={doOpenCart}
+          class={tw`bg-black border-1 border-white rounded px-2 cursor-pointer hover:bg-orange hover:text-black active:bg-indigo active:text-black`}
+        >
+          Post a LinceoGram
+        </button>
+      </div>
       <dialog
         ref={popup}
         id="GramPost"
