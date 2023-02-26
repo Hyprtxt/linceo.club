@@ -3,6 +3,7 @@ import { tw } from "twind"
 import { CSS } from "gfm"
 import { API_URL, DENO_ENV, GTM_ID, TOKEN } from "@/utils/config.js"
 import { Bird } from "@/routes/bird/index.jsx"
+import PostLinceoGram from "@/islands/PostLinceoGram.jsx"
 
 export const PAGE_SIZE = 7
 export const ROYGBIV = [
@@ -159,6 +160,7 @@ export const Layout = ({ children, data, meta }) => {
       </Head>
       <body class={tw`bg-dark`}>
         {children}
+        {data.user?.parent ? <PostLinceoGram UserID={data.user.id} /> : <></>}
         {DENO_ENV === "development"
           ? <pre>{JSON.stringify(data, null, 2)}</pre>
           : ""}
