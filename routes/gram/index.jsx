@@ -36,7 +36,7 @@ export default function TweetPage(props) {
   return (
     <PageWrapper data={props.data} meta={metadata}>
       <Snap posts={props.data.snaps} />
-      <pre class="text-white">{JSON.stringify(props, null, 2)}</pre>
+      {/* <pre class="text-white">{JSON.stringify(props, null, 2)}</pre> */}
     </PageWrapper>
   )
 }
