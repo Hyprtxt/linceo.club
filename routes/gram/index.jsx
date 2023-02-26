@@ -92,7 +92,7 @@ export const SnapPost = ({ post, index }) => {
         // This needs to become an Island that renders the local date.
 
 
-          <a href={`/gram/${post.id}`} class="text-yellow">
+          <a href={`/gram/${post.id}`}>
             {post.attributes.createdAt}
           </a>
 
@@ -113,6 +113,12 @@ export const SnapPost = ({ post, index }) => {
       <span class="text-green">
         {post.attributes.caption}
       </span>
+      <p class="text-orange">
+        Posted By:{" "}
+        <span class="text-yellow">
+          {post.attributes.user.data.attributes.signature}
+        </span>
+      </p>
     </div>
   )
 }
