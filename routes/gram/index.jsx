@@ -93,7 +93,13 @@ export const SnapPost = ({ post, index }) => {
         Posted:{" "}
         <a href={`/gram/${post.id}`}>
           <LocalDateTime date={post.attributes.createdAt} />
-        </a>
+        </a>{" "}
+        <span class="text-orange">
+          By:{" "}
+          <span class="text-yellow">
+            {post.attributes.user.data.attributes.signature}
+          </span>
+        </span>
       </p>
       {post.attributes.media.data[0].attributes.formats.large
         ? (
@@ -111,12 +117,6 @@ export const SnapPost = ({ post, index }) => {
       <span class="text-green">
         {post.attributes.caption}
       </span>
-      <p class="text-orange">
-        Posted By:{" "}
-        <span class="text-yellow">
-          {post.attributes.user.data.attributes.signature}
-        </span>
-      </p>
     </div>
   )
 }
