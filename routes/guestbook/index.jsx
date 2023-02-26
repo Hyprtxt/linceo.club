@@ -163,7 +163,7 @@ const GuestBookSignMeBox = ({ data }) => {
 }
 
 export const GuestBookEntry = ({ entry, index }) => (
-  <div class={`border-solid border-4 border-${ROYGBIV[index]} p-2 mt-2`}>
+  <div class={`border-solid border-4 border-${ROYGBIV[index % 7]} p-2 mt-2`}>
     <span>
       <p class="text-orange">{dateFormat(entry.attributes.createdAt)}</p>
       {entry.attributes.content.split("\n").map((item) => (
