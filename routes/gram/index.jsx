@@ -2,6 +2,7 @@
 import { PAGE_SIZE, PageWrapper, ROYGBIV } from "@/routes/index.jsx"
 import { API_URL, TOKEN } from "@/utils/config.js"
 import LocalDateTime from "@/islands/LocalDateTime.jsx"
+import { tw } from "twind"
 
 export const handler = {
   GET: async (req, ctx) => {
@@ -82,7 +83,35 @@ export const Snap = ({ posts }) => (
   </SnapWrap>
 )
 
+const StrapiMedia = ({ post }) => {
+  const sizes = ["thumbnail", "small", "medium", "large"]
+  if (post.attributes.media.data.length === 0) {
+    return <></>
+  }
+  const sources = sizes.reduce(
+    (acc, current) => {
+      const thing = post.attributes.media.data[0].attributes.formats[current]
+      if (thing === undefined) {
+        return acc
+      }
+      acc.push(`${thing.url} ${thing.width}w`)
+      return acc
+    },
+    [],
+  )
+  return (
+    <img
+      src={post.attributes.media.data[0].attributes.formats.thumbnail.url}
+      srcset={sources.join(" ,")}
+      alt={post.attributes.alternativeText}
+    />
+  )
+}
+
 export const SnapPost = ({ post, index }) => {
+  // @todo
+  // Display post without an image (and no error)
+  // Display post with only a small image available
   return (
     <div
       class={`border-solid border-4 border-${
@@ -102,19 +131,7 @@ export const SnapPost = ({ post, index }) => {
           {post.attributes.user.data.attributes.signature}
         </span>
       </p>
-      {post.attributes.media.data[0].attributes.formats.large
-        ? (
-          <img
-            src={post.attributes.media.data[0].attributes.formats.large.url}
-            alt={post.attributes.alternativeText}
-          />
-        )
-        : (
-          <img
-            src={post.attributes.media.data[0].attributes.formats.medium.url}
-            alt={post.attributes.alternativeText}
-          />
-        )}
+      <StrapiMedia post={post} />
       <span class="text-green">
         {post.attributes.caption}
       </span>
