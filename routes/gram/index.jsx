@@ -85,7 +85,7 @@ export const Snap = ({ posts }) => (
 
 const StrapiMedia = ({ post }) => {
   const sizes = ["thumbnail", "small", "medium", "large"]
-  if (post.attributes.media.data.length === 0) {
+  if (!post.attributes.media.data) {
     return <></>
   }
   const sources = sizes.reduce(
