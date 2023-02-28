@@ -4,7 +4,7 @@ import { redirect } from "@/utils/mod.js"
 import { tw } from "twind"
 
 export const handler = {
-  GET: async (_req, ctx) => {
+  GET: async (req, ctx) => {
     if (!ctx.state.jwt) {
       return redirect("/gallery/public")
     }
@@ -15,6 +15,7 @@ export const handler = {
     })
       .then(async (res) => await res.json())
     if (media.error) {
+      console.error(media.error)
       return ctx.renderNotFound({ url: new URL(req.url) })
     }
     return ctx.render({ ...ctx.state, media })

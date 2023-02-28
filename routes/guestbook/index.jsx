@@ -26,6 +26,10 @@ export const handler = {
       },
     )
       .then(async (res) => await res.json())
+    if (entries.error) {
+      console.error(entries.error)
+      return ctx.renderNotFound({ url: new URL(req.url) })
+    }
     const users = await fetch(
       `${API_URL}/users?sort=createdAt:desc&pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}`,
       {
@@ -35,7 +39,8 @@ export const handler = {
       },
     )
       .then(async (res) => await res.json())
-    if (users.error || entries.error) {
+    if (users.error) {
+      console.error(users.error)
       return ctx.renderNotFound({ url: new URL(req.url) })
     }
     return ctx.render({ ...ctx.state, entries, users })

@@ -37,7 +37,7 @@ export const METADATA = {
 }
 
 export const handler = {
-  GET: async (_req, ctx) => {
+  GET: async (req, ctx) => {
     const posts = await fetch(
       `${API_URL}/posts?sort=date:desc&pagination[page]=1&pagination[pageSize]=${PAGE_SIZE}`,
       {
@@ -47,6 +47,10 @@ export const handler = {
       },
     )
       .then(async (res) => await res.json())
+    if (posts.error) {
+      console.error(posts.error)
+      return ctx.renderNotFound({ url: new URL(req.url) })
+    }
     return ctx.render({ ...ctx.state, posts })
   },
 }

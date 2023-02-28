@@ -21,6 +21,7 @@ export const handler = {
       )
         .then(async (res) => await res.json())
       if (posts.error) {
+        console.error(posts.error)
         return ctx.renderNotFound({ url: new URL(req.url) })
       }
       if (posts.data !== null) {

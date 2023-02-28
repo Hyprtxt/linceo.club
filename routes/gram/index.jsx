@@ -27,6 +27,7 @@ export const handler = {
     )
       .then(async (res) => await res.json())
     if (snaps.error) {
+      console.error(snaps.error)
       return ctx.renderNotFound({ url: new URL(req.url) })
     }
     return ctx.render({ ...ctx.state, snaps })
@@ -64,7 +65,7 @@ export const Snap = ({ posts }) => (
       ? (
         <a
           href={`/gram?p=${posts.meta.pagination.page - 1}`}
-          class="text-underline"
+          class={tw`text-underline`}
         >
           &laquo; Previous Page
         </a>

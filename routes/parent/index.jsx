@@ -13,12 +13,6 @@ export const handler = {
     if (!ctx.state.user.parent) {
       return redirect("/unauthorized")
     }
-    // const media = await fetch(`${API_URL}/upload/files`, {
-    //   headers: new Headers({
-    //     Authorization: `Bearer ${TOKEN}`,
-    //   }),
-    // })
-    //   .then(async (res) => await res.json())
     return ctx.render({ ...ctx.state })
   },
   POST: async (req, ctx) => {
@@ -41,8 +35,7 @@ export const handler = {
         0,
       ),
     )
-    // const snap =
-    await fetch(`${API_URL}/snaps?populate=*`, {
+    const snap = await fetch(`${API_URL}/snaps?populate=*`, {
       method: "POST",
       body,
       headers: new Headers({
@@ -50,8 +43,10 @@ export const handler = {
       }),
     })
       .then(async (res) => await res.json())
-    // console.log(snap, "snap")
-    // return ctx.render({ ...ctx.state })
+    if (snap.error) {
+      console.error(snap.error)
+      return ctx.renderNotFound({ url: new URL(req.url) })
+    }
     return redirect("/gram")
   },
 }
