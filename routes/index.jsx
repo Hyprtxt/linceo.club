@@ -203,8 +203,8 @@ export default function Home(props) {
         <p class="text-yellow">Welcome to Linceo's Website 😃</p>
         <p class="text-orange">
           <a href="/bird">The Linceo Bird</a>{" "}
-          kinda turned into a Blog. For the latest updates, check out{" "}
-          <a href="/gram">LinceoGram</a>.
+          is going to turn into more of a Blog, I think. If you're looking for a
+          feed of realtime updates, check out <a href="/gram">LinceoGram</a>.
         </p>
         <p class="text-red">
           This site has a Guestbook! Use your Facebook account to signup or
@@ -212,9 +212,10 @@ export default function Home(props) {
           signature and leave a message in the guestbook.
         </p>
         <p class="text-violet">
-          LinceoGrams can be directly uploaded to the site by Linceo's parents
-          Facebook accounts. Maybe Grandparents, Cousins and other family; If
-          they decide to join someday.
+          <a href="/gram">LinceoGrams</a>{" "}
+          can be directly uploaded to the site by Linceo's parents. Maybe
+          Grandparents, Cousins and other family too``; If they decide to join
+          someday.
         </p>
         <p class="text-blue">
           You can use your Facebook account to login below. If you don't want to
