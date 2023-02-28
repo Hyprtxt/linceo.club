@@ -112,7 +112,7 @@ export const PageWrapper = ({ children, data, meta, home }) => {
                 />
                 <p class={tw`text-center text-xs mt-3`}>
                   drawing by chibi amulet, website by{" "}
-                  <a href="https://hyprxt.dev">hyprtxt</a>
+                  <a href="https://hyprtxt.dev">hyprtxt</a>
                 </p>
               </div>
             </div>
