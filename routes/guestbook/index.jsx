@@ -1,6 +1,7 @@
 import { PAGE_SIZE, PageWrapper, ROYGBIV } from "@/routes/index.jsx"
 import { API_URL, TOKEN } from "@/utils/config.js"
 import { redirect } from "@/utils/mod.js"
+import GuestBookForm from "@/components/GuestBookForm.jsx"
 
 const PAGE_SIZE = 100
 
@@ -74,7 +75,7 @@ export const handler = {
   },
 }
 
-export default function Page({ data }) {
+export default function GuestbookPage({ data }) {
   const metadata = {
     title: "Guestbook",
   }
@@ -113,45 +114,6 @@ export const GuestBookWrap = ({ children }) => (
   </div>
 )
 
-const dateFormat = (string) => {
-  const date = new Date(string)
-  return new Date(date.getTime() - (date.getTimezoneOffset() * 60000))
-    .toISOString()
-    .split("T")[0]
-}
-
-const GuestBookForm = ({ data }) => {
-  const { id, signature } = data.user
-  return (
-    <form method="POST" class="border-4 border-green px-2 pb-2">
-      <p class="text-orange">
-        Leave a message for Linceo in the Guestbook.
-      </p>
-      <hr class="border-1 border-yellow" />
-      <p>
-        <textarea
-          rows={3}
-          name="content"
-          class="bg-black border-1 border-white rounded my-2 px-2 w-full"
-        />
-      </p>
-      <input
-        type="hidden"
-        name="users_permissions_user"
-        value={id}
-      />
-      <p>
-        <input
-          type="submit"
-          value="post"
-          class="bg-black border-1 border-white rounded px-2 cursor-pointer hover:bg-yellow hover:text-black active:bg-green active:text-black"
-        />{" "}
-        as {signature} <a href="/account">(change signature here)</a>
-      </p>
-    </form>
-  )
-}
-
 const GuestBookSignMeBox = ({ data }) => {
   return (
     <div class="border-solid border-4 border-indigo  p-2 mt-2">
@@ -171,7 +133,13 @@ const GuestBookSignMeBox = ({ data }) => {
 export const GuestBookEntry = ({ entry, index }) => (
   <div class={`border-solid border-4 border-${ROYGBIV[index % 7]} p-2 mt-2`}>
     <span>
-      <p class="text-orange">{dateFormat(entry.attributes.createdAt)}</p>
+      <p class="text-orange">
+        {new Date(entry.attributes.createdAt).toLocaleDateString("en-us", {
+          year: "numeric",
+          month: "numeric",
+          day: "numeric",
+        })}
+      </p>
       {entry.attributes.content.split("\n").map((item) => (
         <p class="text-green">{item}</p>
       ))}
