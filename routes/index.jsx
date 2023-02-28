@@ -3,6 +3,7 @@ import { tw } from "twind"
 import { CSS } from "gfm"
 import { DENO_ENV, GTM_ID } from "@/utils/config.js"
 import PostLinceoGram from "@/islands/PostLinceoGram.jsx"
+import LoginOAuth from "@/components/LoginOAuth.jsx"
 
 export const PAGE_SIZE = 7
 export const ROYGBIV = [
@@ -94,7 +95,7 @@ const Navigation = ({ data }) => (
   </div>
 )
 
-export const PageWrapper = ({ children, data, meta, home }) => {
+export const PageWrapper = ({ children, data, meta, home = false }) => {
   return (
     <Layout data={data} meta={meta}>
       <Head>
@@ -201,25 +202,24 @@ export default function Home(props) {
       <div class="border-solid border-4 border-blue p-2">
         <p class="text-yellow">Welcome to Linceo's Website</p>
         <p class="text-orange">
-          Linceo is too young to have a Twitter or Mastodon account. Well,
-          that's my excuse for the Twitter yak shaving excercise; Also I get to
-          do it in{" "}
-          <a href="https://github.com/Hyprtxt/linceo.club">Deno/Fresh</a>. I
-          call it <a href="/bird">The Linceo Bird</a> for now.
+          Linceo is too young to have a Twitter or Mastodon account. Also,{" "}
+          <a href="/bird">The Linceo Bird</a> kinda turned into a Blog!.
         </p>
         <p class="text-red">
-          This site now also has a Guestbook! Use your Facebook account to
-          signup or login below and you will be able to set your signature and
-          leave a message in the guestbook.
+          This site has a Guestbook! Use your Facebook account to signup or
+          login (use the button below) and you will be able to set your
+          signature and leave a message in the guestbook.
         </p>
         <p class="text-violet">
           Updated again! This time its{" "}
           <a href="/gram">LinceoGram</a>. LinceoGrams can be directly uploaded
-          to the site by accounts where `parent === true`.
+          to the site by Linceo's parent's FaceBook accounts. Maybe Grandparents
+          if they join someday.
         </p>
         <p class="text-blue">
-          You can login below and set your signature to "" nothing at all. Then
-          you won't show up in the Guestbook.
+          You can use your Facebook account to login below. IF you want to, you
+          can set your signature to "" nothing at all. Then you won't show up in
+          the Guestbook.
         </p>
         {props.data.user
           ? (
@@ -234,40 +234,7 @@ export default function Home(props) {
             </p>
           )
           : <LoginOAuth provider="facebook">Login with Facebook</LoginOAuth>}
-
-        {/* <p class="text-orange">Join with Facebook to leave comments on pages!</p> */}
-        {
-          /* <h2 class="text-red text-xl">2023</h2>
-          <ul class="text-blue">
-            <li><a class="text-underline hover:text-yellow" href="/week1">Week 1</a></li>
-          </ul> */
-        }
       </div>
     </PageWrapper>
   )
 }
-
-export const LoginOAuth = ({ provider, children }) => (
-  <a
-    href={`/login/${provider}`}
-    id={`login-${provider}`}
-    class="group relative w-full flex text-blue justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-yellow hover:bg-orange focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 mt-3"
-  >
-    <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-      <svg
-        class="h-5 w-5 text-black group-hover:text-black"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 20 20"
-        fill="currentColor"
-        aria-hidden="true"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-          clip-rule="evenodd"
-        />
-      </svg>
-    </span>
-    {children}
-  </a>
-)

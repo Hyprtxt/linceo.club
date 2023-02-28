@@ -24,7 +24,7 @@ import * as $17 from "./routes/mirror.jsx"
 import * as $18 from "./routes/parent/index.jsx"
 import * as $19 from "./routes/privacy.jsx"
 import * as $20 from "./routes/terms.jsx"
-import * as $21 from "./routes/unauthorized.tsx"
+import * as $21 from "./routes/unauthorized.jsx"
 import * as $22 from "./routes/uploads/[file].js"
 import * as $$0 from "./islands/LocalDateTime.jsx"
 import * as $$1 from "./islands/Mirror.jsx"
@@ -54,7 +54,7 @@ const manifest = {
     "./routes/parent/index.jsx": $18,
     "./routes/privacy.jsx": $19,
     "./routes/terms.jsx": $20,
-    "./routes/unauthorized.tsx": $21,
+    "./routes/unauthorized.jsx": $21,
     "./routes/uploads/[file].js": $22,
   },
   islands: {
