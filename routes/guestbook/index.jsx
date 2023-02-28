@@ -35,7 +35,9 @@ export const handler = {
       },
     )
       .then(async (res) => await res.json())
-    // const users = await fetch()
+    if (users.error || entries.error) {
+      return ctx.renderNotFound({ url: new URL(req.url) })
+    }
     return ctx.render({ ...ctx.state, entries, users })
   },
   POST: async (req, ctx) => {

@@ -8,7 +8,7 @@ const randomInt = (min, max) => {
 }
 
 export const handler = {
-  GET: async (_req, ctx) => {
+  GET: async (req, ctx) => {
     const idx = parseInt(ctx.params.index)
     if (idx) {
       const posts = await fetch(
@@ -20,12 +20,14 @@ export const handler = {
         },
       )
         .then(async (res) => await res.json())
-      // .then((data) => data)
+      if (posts.error) {
+        return ctx.renderNotFound({ url: new URL(req.url) })
+      }
       if (posts.data !== null) {
         return ctx.render({ ...ctx.state, posts })
       }
     }
-    return ctx.renderNotFound()
+    return ctx.renderNotFound({ url: new URL(req.url) })
   },
 }
 

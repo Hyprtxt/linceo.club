@@ -26,7 +26,9 @@ export const handler = {
       },
     )
       .then(async (res) => await res.json())
-      .then((data) => data)
+    if (snaps.error) {
+      return ctx.renderNotFound({ url: new URL(req.url) })
+    }
     return ctx.render({ ...ctx.state, snaps })
   },
 }

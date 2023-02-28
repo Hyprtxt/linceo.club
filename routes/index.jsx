@@ -56,20 +56,20 @@ const NAV_CONTAINER_STYLE =
 const NAV_BUTTON_STYLE = `border(solid 2) p-2 m-2 d-flex rounded-3xl`
 
 const Navigation = ({ data }) => (
-  <div class={`navigation ${NAV_CONTAINER_STYLE}`}>
-    <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/gram">
+  <div class={tw`navigation ${NAV_CONTAINER_STYLE}`}>
+    <a class={tw`cool-shadow ${NAV_BUTTON_STYLE}`} href="/gram">
       LinceoGram
     </a>
-    <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/bird">
+    <a class={tw`cool-shadow ${NAV_BUTTON_STYLE}`} href="/bird">
       The Linceo Bird
     </a>
-    <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/guestbook">
+    <a class={tw`cool-shadow ${NAV_BUTTON_STYLE}`} href="/guestbook">
       Guestbook
     </a>
-    <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/gallery/ai-art">
+    <a class={tw`cool-shadow ${NAV_BUTTON_STYLE}`} href="/gallery/ai-art">
       AI Art
     </a>
-    <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/gallery/mom">
+    <a class={tw`cool-shadow ${NAV_BUTTON_STYLE}`} href="/gallery/mom">
       Gallery
     </a>
     {data?.jwt
@@ -77,25 +77,25 @@ const Navigation = ({ data }) => (
         <>
           {data?.user.parent
             ? (
-              <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/parent">
+              <a class={tw`cool-shadow ${NAV_BUTTON_STYLE}`} href="/parent">
                 Publish
               </a>
             )
             : <></>}
-          <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/gallery">
+          <a class={tw`cool-shadow ${NAV_BUTTON_STYLE}`} href="/gallery">
             Uploads
           </a>
-          <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/account">
+          <a class={tw`cool-shadow ${NAV_BUTTON_STYLE}`} href="/account">
             Account
           </a>
-          <a class={`cool-shadow ${NAV_BUTTON_STYLE}`} href="/logout">
+          <a class={tw`cool-shadow ${NAV_BUTTON_STYLE}`} href="/logout">
             Logout
           </a>
         </>
       )
       : (
         <a
-          class={`cool-shadow ${NAV_BUTTON_STYLE}`}
+          class={tw`cool-shadow ${NAV_BUTTON_STYLE}`}
           href="/login/facebook"
         >
           Authenticate

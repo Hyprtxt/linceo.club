@@ -14,6 +14,9 @@ export const handler = {
       }),
     })
       .then(async (res) => await res.json())
+    if (media.error) {
+      return ctx.renderNotFound({ url: new URL(req.url) })
+    }
     return ctx.render({ ...ctx.state, media })
   },
 }

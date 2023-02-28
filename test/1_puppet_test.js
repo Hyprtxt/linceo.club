@@ -44,6 +44,26 @@ Deno.test(
     )
 
     await t.step(
+      "Not found Linceo Bird should 404 (Testing bird ID #3)",
+      async () => {
+        const response = await page.goto(`${BASE_URL}/bird/3`, {
+          waitUntil: "networkidle2",
+        })
+        assertEquals(response.status(), 404)
+      },
+    )
+
+    await t.step(
+      "Not integer Linceo Bird path should 404 (Testing bird ID #2)",
+      async () => {
+        const response = await page.goto(`${BASE_URL}/bird/notinteger`, {
+          waitUntil: "networkidle2",
+        })
+        assertEquals(response.status(), 404)
+      },
+    )
+
+    await t.step(
       "The Guestbook page should work",
       async () => {
         const response = await page.goto(`${BASE_URL}/guestbook`, {
@@ -176,6 +196,26 @@ Deno.test(
           waitUntil: "networkidle2",
         })
         assertEquals(response.status(), 200)
+      },
+    )
+
+    await t.step(
+      "Not found LinceoGram should 404 (Testing snap ID #2)",
+      async () => {
+        const response = await page.goto(`${BASE_URL}/gram/2`, {
+          waitUntil: "networkidle2",
+        })
+        assertEquals(response.status(), 404)
+      },
+    )
+
+    await t.step(
+      "Not integer LinceoGram path should 404 (Testing snap ID #2)",
+      async () => {
+        const response = await page.goto(`${BASE_URL}/gram/notinteger`, {
+          waitUntil: "networkidle2",
+        })
+        assertEquals(response.status(), 404)
       },
     )
   }),
