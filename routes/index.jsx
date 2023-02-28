@@ -1,8 +1,7 @@
-import { Head } from "$fresh/runtime.ts"
+import { asset, Head } from "$fresh/runtime.ts"
 import { tw } from "twind"
 import { CSS } from "gfm"
-import { API_URL, DENO_ENV, GTM_ID, TOKEN } from "@/utils/config.js"
-import { Bird } from "@/routes/bird/index.jsx"
+import { DENO_ENV, GTM_ID } from "@/utils/config.js"
 import PostLinceoGram from "@/islands/PostLinceoGram.jsx"
 
 export const PAGE_SIZE = 7
@@ -37,21 +36,8 @@ export const METADATA = {
 }
 
 export const handler = {
-  GET: async (req, ctx) => {
-    const posts = await fetch(
-      `${API_URL}/posts?sort=date:desc&pagination[page]=1&pagination[pageSize]=${PAGE_SIZE}`,
-      {
-        headers: new Headers({
-          Authorization: `Bearer ${TOKEN}`,
-        }),
-      },
-    )
-      .then(async (res) => await res.json())
-    if (posts.error) {
-      console.error(posts.error)
-      return ctx.renderNotFound({ url: new URL(req.url) })
-    }
-    return ctx.render({ ...ctx.state, posts })
+  GET: (_req, ctx) => {
+    return ctx.render({ ...ctx.state })
   },
 }
 
@@ -108,7 +94,7 @@ const Navigation = ({ data }) => (
   </div>
 )
 
-export const PageWrapper = ({ children, data, meta }) => {
+export const PageWrapper = ({ children, data, meta, home }) => {
   return (
     <Layout data={data} meta={meta}>
       <Head>
@@ -116,9 +102,24 @@ export const PageWrapper = ({ children, data, meta }) => {
       </Head>
       <div class="p-4 mx-auto max-w-screen-md">
         <RainbowLogo style="text-4xl sm:text-6xl md:text-8xl font-cherry-swash text-center" />
+        {home
+          ? (
+            <div class={tw`flex justify-center my-10`}>
+              <div>
+                <img
+                  src={asset("./linceo-family-by-chibi-amulet.png")}
+                  alt="Linceo's Family"
+                />
+                <p class={tw`text-center text-xs mt-3`}>
+                  drawing by chibi amulet, website by{" "}
+                  <a href="https://hyprxt.dev">hyprtxt</a>
+                </p>
+              </div>
+            </div>
+          )
+          : <></>}
         <Navigation data={data} />
         {children}
-        {/* <pre class="text-white">{JSON.stringify(props, null, 2)}</pre> */}
       </div>
     </Layout>
   )
@@ -196,7 +197,7 @@ export default function Home(props) {
     title: "Homepage",
   }
   return (
-    <PageWrapper data={props.data} meta={metadata}>
+    <PageWrapper data={props.data} meta={metadata} home={true}>
       <div class="border-solid border-4 border-blue p-2">
         <p class="text-yellow">Welcome to Linceo's Website</p>
         <p class="text-orange">
@@ -242,8 +243,6 @@ export default function Home(props) {
           </ul> */
         }
       </div>
-
-      <Bird posts={props.data.posts} />
     </PageWrapper>
   )
 }
