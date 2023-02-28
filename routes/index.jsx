@@ -200,10 +200,11 @@ export default function Home(props) {
   return (
     <PageWrapper data={props.data} meta={metadata} home={true}>
       <div class="border-solid border-4 border-blue p-2">
-        <p class="text-yellow">Welcome to Linceo's Website</p>
+        <p class="text-yellow">Welcome to Linceo's Website 😃</p>
         <p class="text-orange">
-          Linceo is too young to have a Twitter or Mastodon account. Also,{" "}
-          <a href="/bird">The Linceo Bird</a> kinda turned into a Blog!.
+          <a href="/bird">The Linceo Bird</a>{" "}
+          kinda turned into a Blog. For the latest updates, check out{" "}
+          <a href="/gram">LinceoGram</a>.
         </p>
         <p class="text-red">
           This site has a Guestbook! Use your Facebook account to signup or
@@ -211,15 +212,14 @@ export default function Home(props) {
           signature and leave a message in the guestbook.
         </p>
         <p class="text-violet">
-          Updated again! This time its{" "}
-          <a href="/gram">LinceoGram</a>. LinceoGrams can be directly uploaded
-          to the site by Linceo's parent's FaceBook accounts. Maybe Grandparents
-          if they join someday.
+          LinceoGrams can be directly uploaded to the site by Linceo's parents
+          Facebook accounts. Maybe Grandparents, Cousins and other family; If
+          they decide to join someday.
         </p>
         <p class="text-blue">
-          You can use your Facebook account to login below. IF you want to, you
-          can set your signature to "" nothing at all. Then you won't show up in
-          the Guestbook.
+          You can use your Facebook account to login below. If you don't want to
+          show up in the Guestbook, you can set your signature to "" nothing at
+          all.
         </p>
         {props.data.user
           ? (
