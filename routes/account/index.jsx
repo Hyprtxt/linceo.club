@@ -74,6 +74,10 @@ export default function AccountPage({ data }) {
             />
           </p>
         </form>
+        <p class="text-indigo mt-2">
+          If you want to leave a message, go to the{" "}
+          <a href="/guestbook">Guestbook Page</a>.
+        </p>
         <p class="text-red mt-2">
           Be nice or be banned.
         </p>
