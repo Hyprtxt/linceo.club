@@ -49,7 +49,7 @@ export default function AccountPage({ data }) {
         <form method="POST" class="border-4 border-green px-2 my-2">
           <p class="text-orange my-2">
             Use this little form to set your Name/Signature on your guestbook
-            entries.
+            and LinceoGram entries.
           </p>
           <p class="text-blue mb-2">
             Leave this field blank and you will not show up in the guest list.

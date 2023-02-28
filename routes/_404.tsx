@@ -23,7 +23,7 @@ export default function Page404({ data }) {
         <p class="text-orange">How about a Linceo Drawing?</p>
         <div class={tw`flex justify-center`}>
           <img
-            src={asset(`./error${Math.floor(Math.random() * 2) + 1}.png`)}
+            src={asset(`/error${Math.floor(Math.random() * 2) + 1}.png`)}
             alt="It's Linceo"
           />
         </div>

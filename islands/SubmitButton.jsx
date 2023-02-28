@@ -7,6 +7,11 @@ export default function SubmitButton(props) {
     <input
       onClick={() => {
         setWorking("Working…")
+        setTimeout(() => {
+          // This fakes resetting if the formvalidation triggers.
+          setWorking(value)
+          // Fix this by integrating proper form validation
+        }, 5000)
       }}
       type="submit"
       value={working}
