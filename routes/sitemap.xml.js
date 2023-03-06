@@ -9,8 +9,8 @@ export const handler = {
       BASE_URL,
       manifest,
     )
-    // Includes /api routes
-    // Doesn't include dynamic routes
+    sitemap.remove("/api/[provider]/auth")
+    sitemap.remove("/api/joke")
     return sitemap.render()
   },
 }
