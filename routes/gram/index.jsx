@@ -3,6 +3,8 @@ import { PAGE_SIZE, PageWrapper, ROYGBIV } from "@/routes/index.jsx"
 import { API_URL, TOKEN } from "@/utils/config.js"
 import LocalDateTime from "@/islands/LocalDateTime.jsx"
 import { tw } from "twind"
+import { css } from "twind/css"
+import IconChevronDown from "$icons/chevron-down.tsx"
 
 export const handler = {
   GET: async (req, ctx) => {
@@ -27,7 +29,7 @@ export const handler = {
       },
     )
       .then(async (res) => await res.json())
-    console.log(snaps)
+    // console.log(snaps)
     // if (snaps.error) {
     //   console.error(snaps.error)
     //   return ctx.renderNotFound({ url: new URL(req.url) })
@@ -113,7 +115,55 @@ const StrapiMedia = ({ post }) => {
   )
 }
 
+const LinkButton = (props) => (
+  <a
+    {...props}
+    class={`inline-block cursor-pointer px-3 py-2 bg-white rounded hover:bg-gray-100 ${
+      props.class ?? ""
+    }`}
+  />
+)
+
+const AddReactionButton = ({ snap_id = 40 }) => {
+  const dropdown = css({
+    "&:hover .dropdown-menu": {
+      display: "block",
+    },
+  })
+  const emotes = ["a🍦", "b❤️", "c😊", "d😭", "e👍"]
+  return (
+    <div class={tw`dropdown inline-block relative ${dropdown}`}>
+      <button class="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
+        <span class="mr-1">React</span>
+        <IconChevronDown class="w-5 h-5" />
+      </button>
+      <ul class="dropdown-menu absolute hidden text-gray-700 pt-1 right-0">
+        {emotes.map((emote, idx) => {
+          return (
+            <li class="">
+              <a
+                class={`${idx === 0 ? "rounded-t" : ""} ${
+                  idx === emotes.length - 1 ? "rounded-b" : ""
+                } bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap no-underline text-xl`}
+                href={`/gram/${snap_id}/${emote[0]}`}
+              >
+                {emote.slice(1)}
+              </a>
+            </li>
+          )
+        })}
+      </ul>
+    </div>
+  )
+}
+
 export const SnapPost = ({ post, index }) => {
+  const {
+    createdAt,
+    user,
+    caption,
+    reactions,
+  } = post.attributes
   // @todo
   // Display post without an image (and no error)
   // Display post with only a small image available
@@ -126,27 +176,55 @@ export const SnapPost = ({ post, index }) => {
       <p class="text-indigo">
         Posted:{" "}
         <a href={`/gram/${post.id}`}>
-          <LocalDateTime date={post.attributes.createdAt} />
+          <LocalDateTime date={createdAt} />
         </a>
         {" "}
       </p>
       <p class="text-orange">
         By:{" "}
         <span class="text-yellow">
-          {post.attributes.user.data.attributes.signature}
+          {user.data.attributes.signature}
         </span>
       </p>
       <StrapiMedia post={post} />
       <span class="text-green">
-        {post.attributes.caption}
+        {caption}
       </span>
-      <div>
-        Reactions:
-        {post.attributes.reactions.data.map((reaction) => {
-          // console.log(reaction)
-          console.log(reaction.attributes.user.data.attributes.signature)
-          return <>{reaction.attributes.emote.slice(1)}</>
-        })}
+
+      <div class="flex justify-between mt-2">
+        {reactions?.data
+          ? (
+            <div class="flex">
+              Reactions:
+              {reactions.data.map((reaction) => {
+                // console.log(reaction)
+                const { user, emote } = reaction.attributes
+                return (
+                  <ReactionCSS
+                    tooltip={user.data?.attributes?.signature ?? "?"}
+                  >
+                    {emote.slice(1)}
+                  </ReactionCSS>
+                )
+              })}
+            </div>
+          )
+          : <></>}
+        <AddReactionButton snap_id={post.id} />
+      </div>
+    </div>
+  )
+}
+
+const ReactionCSS = ({ children, tooltip }) => {
+  return (
+    <div class="relative flex flex-col items-center group text-2xl">
+      {children}
+      <div class="absolute bottom-0 flex flex-col items-center hidden mb-6 group-hover:flex">
+        <span class="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg">
+          {tooltip}
+        </span>
+        <div class="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
       </div>
     </div>
   )

@@ -36,6 +36,7 @@ export default {
       dark: "rgb(15,15,15)",
       white: colors.white,
       black: colors.black,
+      gray: colors.gray,
     },
   },
 } as Options

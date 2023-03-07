@@ -6,6 +6,7 @@
     "$icons/": "https://deno.land/x/tabler_icons_tsx@0.0.2/tsx/",
     "fresh_seo": "https://deno.land/x/fresh_seo@0.2.1/mod.ts",
     "fresh_marionette": "https://deno.land/x/fresh_marionette@v1.1.0/mod.js",
+    "@popperjs/": "https://unpkg.com/@popperjs/core@2.11.4/dist/esm/",
     "preact": "https://esm.sh/preact@10.11.0",
     "preact/": "https://esm.sh/preact@10.11.0/",
     "preact-render-to-string": "https://esm.sh/*preact-render-to-string@5.2.4",
