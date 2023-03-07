@@ -190,8 +190,8 @@ export const SnapPost = ({ post, index }) => {
       <span class="text-green">
         {caption}
       </span>
-
-      <div class="flex justify-between mt-2">
+      {
+        /* <div class="flex justify-between mt-2">
         {reactions?.data
           ? (
             <div class="flex">
@@ -211,7 +211,8 @@ export const SnapPost = ({ post, index }) => {
           )
           : <></>}
         <AddReactionButton snap_id={post.id} />
-      </div>
+      </div> */
+      }
     </div>
   )
 }
