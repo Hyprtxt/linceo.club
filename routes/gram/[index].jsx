@@ -12,7 +12,7 @@ export const handler = {
     const idx = parseInt(ctx.params.index)
     if (idx) {
       const posts = await fetch(
-        `${API_URL}/snaps/${idx}?populate=*`,
+        `${API_URL}/snaps/${idx}?&populate[reactions][populate][0]=user&populate[user]=*&populate[media]=*`,
         {
           headers: new Headers({
             Authorization: `Bearer ${TOKEN}`,

@@ -18,7 +18,8 @@ export const handler = {
     const page = getPage()
     // console.log(page);
     const snaps = await fetch(
-      `${API_URL}/snaps?sort=id:desc&pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}&populate=*`,
+      // `${API_URL}/snaps?sort=id:desc&pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}&populate=*`,
+      `${API_URL}/snaps?sort=id:desc&pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}&populate[reactions][populate][0]=user&populate[user]=*&populate[media]=*`,
       {
         headers: new Headers({
           Authorization: `Bearer ${TOKEN}`,
@@ -26,10 +27,11 @@ export const handler = {
       },
     )
       .then(async (res) => await res.json())
-    if (snaps.error) {
-      console.error(snaps.error)
-      return ctx.renderNotFound({ url: new URL(req.url) })
-    }
+    console.log(snaps)
+    // if (snaps.error) {
+    //   console.error(snaps.error)
+    //   return ctx.renderNotFound({ url: new URL(req.url) })
+    // }
     return ctx.render({ ...ctx.state, snaps })
   },
 }
@@ -138,6 +140,14 @@ export const SnapPost = ({ post, index }) => {
       <span class="text-green">
         {post.attributes.caption}
       </span>
+      <div>
+        Reactions:
+        {post.attributes.reactions.data.map((reaction) => {
+          // console.log(reaction)
+          console.log(reaction.attributes.user.data.attributes.signature)
+          return <>{reaction.attributes.emote.slice(1)}</>
+        })}
+      </div>
     </div>
   )
 }
