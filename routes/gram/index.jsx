@@ -41,13 +41,13 @@ export const handler = {
   },
 }
 
-export default function TweetPage(props) {
+export default function LinceoGramPage(props) {
   const metadata = {
     title: "LinceoGram",
   }
   return (
     <PageWrapper data={props.data} meta={metadata}>
-      <Snap posts={props.data.snaps} />
+      <LinceoGram posts={props.data.snaps} current_user={props.data.user} />
       {/* <pre class="text-white">{JSON.stringify(props, null, 2)}</pre> */}
     </PageWrapper>
   )
@@ -64,9 +64,11 @@ export const SnapWrap = ({ children }) => (
   </div>
 )
 
-export const Snap = ({ posts }) => (
+export const LinceoGram = ({ posts, current_user }) => (
   <SnapWrap>
-    {posts.data.map((post, index) => <SnapPost post={post} index={index} />)}
+    {posts.data.map((post, index) => (
+      <SnapPost post={post} index={index} current_user={current_user} />
+    ))}
     {/* <pre class="text-white">{JSON.stringify(posts.meta.pagination, null, 2)}</pre> */}
     {posts.meta.pagination.page > 1
       ? (
@@ -148,7 +150,9 @@ const AddReactionButton = ({ snap_id = 40 }) => {
   )
 }
 
-export const SnapPost = ({ post, index }) => {
+export const SnapPost = (props) => {
+  const { post, index, current_user } = props
+  // console.log(current_user, "YES")
   const {
     createdAt,
     user,
@@ -185,12 +189,12 @@ export const SnapPost = ({ post, index }) => {
         {reactions?.data
           ? (
             <div class="flex">
-              Reactions:
+              {reactions.length ? "Reactions:" : ""}
               <ReactionsList reactions={reactions} />
             </div>
           )
           : <></>}
-        <AddReactionButton snap_id={post.id} />
+        {current_user?.id ? <AddReactionButton snap_id={post.id} /> : <></>}
       </div>
     </div>
   )

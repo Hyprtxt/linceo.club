@@ -14,7 +14,7 @@ export const handler = {
         emote,
       },
     }
-    const query = await fetch(`${API_URL}/reactions`, {
+    const query = await fetch(`${API_URL}/reactions?populate=*`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: new Headers({

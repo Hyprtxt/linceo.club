@@ -39,7 +39,11 @@ export default function GramPage(props) {
   return (
     <PageWrapper data={props.data} meta={metadata}>
       <SnapWrap>
-        <SnapPost post={props.data.posts.data} index={randomInt(1, 7)} />
+        <SnapPost
+          post={props.data.posts.data}
+          index={randomInt(1, 7)}
+          current_user={props.data.user}
+        />
       </SnapWrap>
       {/* <pre class="text-white">{JSON.stringify(props, null, 2)}</pre> */}
     </PageWrapper>
