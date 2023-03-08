@@ -7,7 +7,6 @@ const EmoteLink = ({ emote, idx, snap_id }) => (
         idx === EMOTES.length - 1 ? "rounded-b" : ""
       } bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap no-underline text-xl cursor-pointer`}
       onClick={async (e) => {
-        console.log("THINGS")
         const thing = await fetch(`/gram/${snap_id}/${emote[0]}`)
           .then(async (res) => await res.json())
         console.log(thing)
