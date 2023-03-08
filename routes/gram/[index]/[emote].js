@@ -4,7 +4,17 @@ import { API_URL } from "@/utils/config.js"
 export const handler = {
   GET: async (_req, ctx) => {
     // console.log(ctx.params?.emote, "emote")
-    const emoteIndex = { "a": 0, "b": 1, "c": 2, "d": 3, "e": 4 }
+    const emoteIndex = {
+      "a": 0,
+      "b": 1,
+      "c": 2,
+      "d": 3,
+      "e": 4,
+      "f": 5,
+      "g": 6,
+      "h": 7,
+      "i": 8,
+    }
     const emote = EMOTES[emoteIndex[ctx.params?.emote]]
     // console.log(emote, ctx.state.user.id, ctx.params.index)
     const data = {
