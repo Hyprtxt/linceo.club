@@ -1,12 +1,9 @@
 // import { HandlerContext } from "$fresh/server.ts";
 import { PAGE_SIZE, PageWrapper, ROYGBIV } from "@/routes/index.jsx"
 import { API_URL, TOKEN } from "@/utils/config.js"
-import { EMOTES } from "@/utils/mod.js"
 import LocalDateTime from "@/islands/LocalDateTime.jsx"
 import { tw } from "twind"
-import { css } from "twind/css"
-import IconChevronDown from "$icons/chevron-down.tsx"
-import EmoteLink from "@/islands/EmoteLink.jsx"
+import Reactions from "@/islands/Reactions.jsx"
 
 export const handler = {
   GET: async (req, ctx) => {
@@ -53,7 +50,7 @@ export default function LinceoGramPage(props) {
   )
 }
 
-export const SnapWrap = ({ children }) => (
+export const GramWrap = ({ children }) => (
   <div class="border-solid border-4 border-yellow p-2 mt-2">
     <a href="/gram" class="no-underline">
       <h2 class="text-3xl text-orange">
@@ -65,9 +62,9 @@ export const SnapWrap = ({ children }) => (
 )
 
 export const LinceoGram = ({ posts, current_user }) => (
-  <SnapWrap>
+  <GramWrap>
     {posts.data.map((post, index) => (
-      <SnapPost post={post} index={index} current_user={current_user} />
+      <GramPost post={post} index={index} current_user={current_user} />
     ))}
     {/* <pre class="text-white">{JSON.stringify(posts.meta.pagination, null, 2)}</pre> */}
     {posts.meta.pagination.page > 1
@@ -92,7 +89,7 @@ export const LinceoGram = ({ posts, current_user }) => (
       )
       : <></>}
     <div style="clear:both" />
-  </SnapWrap>
+  </GramWrap>
 )
 
 const StrapiMedia = ({ post }) => {
@@ -129,28 +126,7 @@ const LinkButton = (props) => (
   />
 )
 
-const AddReactionButton = ({ snap_id = 40 }) => {
-  const dropdown = css({
-    "&:hover .dropdown-menu": {
-      display: "block",
-    },
-  })
-  return (
-    <div class={tw`dropdown inline-block relative ${dropdown}`}>
-      <button class="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
-        <span class="mr-1">React</span>
-        <IconChevronDown class="w-5 h-5" />
-      </button>
-      <ul class="dropdown-menu absolute hidden text-gray-700 pt-1 right-0">
-        {EMOTES.map((emote, idx) => {
-          return <EmoteLink emote={emote} index={idx} snap_id={snap_id} />
-        })}
-      </ul>
-    </div>
-  )
-}
-
-export const SnapPost = (props) => {
+export const GramPost = (props) => {
   const { post, index, current_user } = props
   // console.log(current_user, "YES")
   const {
@@ -162,6 +138,8 @@ export const SnapPost = (props) => {
   // @todo
   // Display post without an image (and no error)
   // Display post with only a small image available
+
+  // console.log(reactions, "this one")
   return (
     <div
       class={`border-solid border-4 border-${
@@ -186,43 +164,11 @@ export const SnapPost = (props) => {
         {caption}
       </span>
       <div class="flex justify-between mt-2">
-        {reactions?.data
-          ? (
-            <div class="flex">
-              {reactions.length ? "Reactions:" : ""}
-              <ReactionsList reactions={reactions} />
-            </div>
-          )
-          : <></>}
-        {current_user?.id ? <AddReactionButton snap_id={post.id} /> : <></>}
-      </div>
-    </div>
-  )
-}
-
-const ReactionsList = ({ reactions }) => {
-  return reactions.data.map((reaction) => {
-    // console.log(reaction)
-    const { user, emote } = reaction.attributes
-    return (
-      <ReactionCSS
-        tooltip={user.data?.attributes?.signature ?? "?"}
-      >
-        {emote.slice(1)}
-      </ReactionCSS>
-    )
-  })
-}
-
-const ReactionCSS = ({ children, tooltip }) => {
-  return (
-    <div class="relative flex flex-col items-center group text-2xl">
-      {children}
-      <div class="absolute bottom-0 flex flex-col items-center hidden mb-6 group-hover:flex">
-        <span class="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg">
-          {tooltip}
-        </span>
-        <div class="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
+        <Reactions
+          reactions={reactions}
+          current_user={current_user}
+          gram_id={post.id}
+        />
       </div>
     </div>
   )
