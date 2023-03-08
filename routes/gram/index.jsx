@@ -31,6 +31,7 @@ export const handler = {
       },
     )
       .then(async (res) => await res.json())
+
     // console.log(snaps)
     // if (snaps.error) {
     //   console.error(snaps.error)
@@ -132,7 +133,6 @@ const AddReactionButton = ({ snap_id = 40 }) => {
       display: "block",
     },
   })
-
   return (
     <div class={tw`dropdown inline-block relative ${dropdown}`}>
       <button class="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
@@ -186,17 +186,7 @@ export const SnapPost = ({ post, index }) => {
           ? (
             <div class="flex">
               Reactions:
-              {reactions.data.map((reaction) => {
-                // console.log(reaction)
-                const { user, emote } = reaction.attributes
-                return (
-                  <ReactionCSS
-                    tooltip={user.data?.attributes?.signature ?? "?"}
-                  >
-                    {emote.slice(1)}
-                  </ReactionCSS>
-                )
-              })}
+              <ReactionsList reactions={reactions} />
             </div>
           )
           : <></>}
@@ -204,6 +194,20 @@ export const SnapPost = ({ post, index }) => {
       </div>
     </div>
   )
+}
+
+const ReactionsList = ({ reactions }) => {
+  return reactions.data.map((reaction) => {
+    // console.log(reaction)
+    const { user, emote } = reaction.attributes
+    return (
+      <ReactionCSS
+        tooltip={user.data?.attributes?.signature ?? "?"}
+      >
+        {emote.slice(1)}
+      </ReactionCSS>
+    )
+  })
 }
 
 const ReactionCSS = ({ children, tooltip }) => {
