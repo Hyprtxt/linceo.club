@@ -21,6 +21,16 @@ export const handler = {
     //     return ctx.render({ ...ctx.state, posts })
     //   }
     // }
-    return ctx.renderNotFound({ url: new URL(req.url) })
+    return new Response(
+      JSON.stringify({
+        stuff: false,
+      }),
+      {
+        headers: new Headers({
+          "Content-Type": "application/json",
+        }),
+      },
+    )
+    // return ctx.renderNotFound({ url: new URL(req.url) })
   },
 }

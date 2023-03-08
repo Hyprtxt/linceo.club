@@ -1,10 +1,12 @@
 // import { HandlerContext } from "$fresh/server.ts";
 import { PAGE_SIZE, PageWrapper, ROYGBIV } from "@/routes/index.jsx"
 import { API_URL, TOKEN } from "@/utils/config.js"
+import { EMOTES } from "@/utils/mod.js"
 import LocalDateTime from "@/islands/LocalDateTime.jsx"
 import { tw } from "twind"
 import { css } from "twind/css"
 import IconChevronDown from "$icons/chevron-down.tsx"
+import EmoteLink from "@/islands/EmoteLink.jsx"
 
 export const handler = {
   GET: async (req, ctx) => {
@@ -130,7 +132,7 @@ const AddReactionButton = ({ snap_id = 40 }) => {
       display: "block",
     },
   })
-  const emotes = ["a🍦", "b❤️", "c😊", "d😭", "e👍"]
+
   return (
     <div class={tw`dropdown inline-block relative ${dropdown}`}>
       <button class="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
@@ -138,19 +140,8 @@ const AddReactionButton = ({ snap_id = 40 }) => {
         <IconChevronDown class="w-5 h-5" />
       </button>
       <ul class="dropdown-menu absolute hidden text-gray-700 pt-1 right-0">
-        {emotes.map((emote, idx) => {
-          return (
-            <li class="">
-              <a
-                class={`${idx === 0 ? "rounded-t" : ""} ${
-                  idx === emotes.length - 1 ? "rounded-b" : ""
-                } bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap no-underline text-xl`}
-                href={`/gram/${snap_id}/${emote[0]}`}
-              >
-                {emote.slice(1)}
-              </a>
-            </li>
-          )
+        {EMOTES.map((emote, idx) => {
+          return <EmoteLink emote={emote} index={idx} snap_id={snap_id} />
         })}
       </ul>
     </div>
@@ -190,8 +181,7 @@ export const SnapPost = ({ post, index }) => {
       <span class="text-green">
         {caption}
       </span>
-      {
-        /* <div class="flex justify-between mt-2">
+      <div class="flex justify-between mt-2">
         {reactions?.data
           ? (
             <div class="flex">
@@ -211,8 +201,7 @@ export const SnapPost = ({ post, index }) => {
           )
           : <></>}
         <AddReactionButton snap_id={post.id} />
-      </div> */
-      }
+      </div>
     </div>
   )
 }

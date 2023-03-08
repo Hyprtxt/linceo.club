@@ -7,3 +7,5 @@ export const redirect = (Location) =>
       Location,
     }),
   })
+
+export const EMOTES = ["a🍦", "b❤️", "c😊", "d😭", "e👍"]

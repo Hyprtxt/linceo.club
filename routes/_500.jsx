@@ -16,7 +16,7 @@ export default function Page500({ error }) {
         <h1 class="text-red text-4xl">
           500 <span class="text-orange text-2xl">Server Error</span>
         </h1>
-        {DENO_ENV !== "production" ? <pre>{message}</pre> : <></>}
+        {DENO_ENV === "development" ? <pre>{message}</pre> : <></>}
         <p>There is something wrong at the server. Please try again later.</p>
       </div>
     </body>
