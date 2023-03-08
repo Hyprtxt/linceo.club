@@ -38,6 +38,7 @@ const setupNewSession = async (req, ctx) => {
     name: COOKIE_NAME,
     value: ctx.state[COOKIE_NAME],
     path: "/",
+    maxAge: 7 * 24 * 60 * 60,
   })
   return resp
 }

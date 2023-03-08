@@ -8,4 +8,4 @@ export const redirect = (Location) =>
     }),
   })
 
-export const EMOTES = ["a🍦", "b❤️", "c😊", "d😭", "e👍"]
+export const EMOTES = ["a🍦", "b❤️", "c😊", "d😭", "e👍", "f🚀"]

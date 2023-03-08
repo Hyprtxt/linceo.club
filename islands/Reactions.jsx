@@ -49,7 +49,7 @@ const Reactions = ({ reactions, current_user, gram_id }) => {
       {reactions?.data
         ? (
           <div class="flex">
-            {reactions.length ? "Reactions:" : ""}
+            {signal.value.length ? "Reactions:" : ""}
             {signal.value.map((item) => {
               const { emote, signature, mine, id } = item
               return (
