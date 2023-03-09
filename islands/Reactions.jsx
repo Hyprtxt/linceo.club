@@ -1,6 +1,7 @@
 import { EMOTES } from "@/utils/mod.js"
 import { css } from "twind/css"
 import IconChevronDown from "$icons/chevron-down.tsx"
+import IconX from "$icons/x.tsx"
 import { tw } from "twind"
 import { useSignal } from "@preact/signals"
 
@@ -16,9 +17,10 @@ const Reactions = ({ reactions, current_user, gram_id }) => {
   // console.log(data, "this reaction")
   const signal = useSignal(data)
 
-  const doClick = async (e) => {
+  const removeEmote = async (_e, emote_id) => {
     // Delete the Emote
-    const reaction_id = parseInt(e.target.dataset.id)
+    const reaction_id = parseInt(emote_id)
+    console.log(reaction_id)
     const query = await fetch(`/api/reaction/${reaction_id}`, {
       method: "DELETE",
     }).then(async (res) => await res.json())
@@ -56,8 +58,13 @@ const Reactions = ({ reactions, current_user, gram_id }) => {
                 <ReactionTooltip
                   tooltip={mine
                     ? (
-                      <button class="text-red" data-id={id} onClick={doClick}>
-                        X
+                      <button
+                        class="text-red"
+                        onClick={(e) => {
+                          removeEmote(e, id)
+                        }}
+                      >
+                        <IconX class="w-4 h-4" />
                       </button>
                     )
                     : signature}
