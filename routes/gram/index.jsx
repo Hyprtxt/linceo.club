@@ -94,7 +94,12 @@ export const LinceoGram = ({ posts, current_user }) => (
 
 const StrapiMedia = ({ post }) => {
   const sizes = ["thumbnail", "small", "medium", "large"]
+  console.log(post.attributes.media, "SDLKFJD")
   if (!post.attributes.media.data) {
+    return <></>
+  }
+  // console.log(post.attributes.media.data[0], "THIS")
+  if (post.attributes.media.data[0].attributes.mime == "video/quicktime") {
     return <></>
   }
   const sources = sizes.reduce(
