@@ -23,7 +23,7 @@ const Reactions = ({ reactions, current_user, gram_id }) => {
       method: "DELETE",
     }).then(async (res) => await res.json())
     if (query.error) {
-      alert(query)
+      console.error(query)
     }
     signal.value = signal.value.filter((item) => {
       return item.id !== reaction_id
