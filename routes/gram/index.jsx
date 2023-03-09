@@ -117,14 +117,14 @@ const StrapiMedia = ({ post }) => {
   )
 }
 
-const LinkButton = (props) => (
-  <a
-    {...props}
-    class={`inline-block cursor-pointer px-3 py-2 bg-white rounded hover:bg-gray-100 ${
-      props.class ?? ""
-    }`}
-  />
-)
+// const LinkButton = (props) => (
+//   <a
+//     {...props}
+//     class={`inline-block cursor-pointer px-3 py-2 bg-white rounded hover:bg-gray-100 ${
+//       props.class ?? ""
+//     }`}
+//   />
+// )
 
 export const GramPost = (props) => {
   const { post, index, current_user } = props
@@ -163,13 +163,11 @@ export const GramPost = (props) => {
       <span class="text-green">
         {caption}
       </span>
-      <div class="flex justify-between mt-2">
-        <Reactions
-          reactions={reactions}
-          current_user={current_user}
-          gram_id={post.id}
-        />
-      </div>
+      <Reactions
+        reactions={reactions}
+        current_user={current_user}
+        gram_id={post.id}
+      />
     </div>
   )
 }

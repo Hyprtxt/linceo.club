@@ -45,10 +45,10 @@ const Reactions = ({ reactions, current_user, gram_id }) => {
   }
 
   return (
-    <>
+    <div class="flex justify-between mt-2">
       {reactions?.data
         ? (
-          <div class="flex">
+          <div class="flex justify-start w-full flex-wrap">
             {signal.value.length ? "Reactions:" : ""}
             {signal.value.map((item) => {
               const { emote, signature, mine, id } = item
@@ -70,7 +70,7 @@ const Reactions = ({ reactions, current_user, gram_id }) => {
         )
         : <></>}
       {current_user?.id ? <AddReactionButton addEmote={addEmote} /> : <></>}
-    </>
+    </div>
   )
 }
 

@@ -10,7 +10,7 @@ export const handler = {
       manifest,
     )
     sitemap.remove("/api/[provider]/auth")
-    sitemap.remove("/api/joke")
+    // sitemap.remove("/api/joke")
     return sitemap.render()
   },
 }
