@@ -100,8 +100,12 @@ const StrapiMedia = ({ post }) => {
   }
   // console.log(post.attributes.media.data[0], "THIS")
   if (post.attributes.media.data[0].attributes.mime == "video/quicktime") {
-    return <></>
+    const { mime, url } = post.attributes.media.data[0].attributes
+    return <video controls src={url} type={mime} />
   }
+  // if (post.attributes.media.data[0].attributes.formats === null) {
+  //   return <></>
+  // }
   const sources = sizes.reduce(
     (acc, current) => {
       const thing = post.attributes.media.data[0].attributes.formats[current]
