@@ -30,12 +30,11 @@ import * as $23 from "./routes/sitemap.xml.js"
 import * as $24 from "./routes/terms.jsx"
 import * as $25 from "./routes/unauthorized.jsx"
 import * as $26 from "./routes/uploads/[file].js"
-import * as $$0 from "./islands/ForeverScrollLoader.jsx"
-import * as $$1 from "./islands/LocalDateTime.jsx"
-import * as $$2 from "./islands/Mirror.jsx"
-import * as $$3 from "./islands/PostLinceoGram.jsx"
-import * as $$4 from "./islands/Reactions.jsx"
-import * as $$5 from "./islands/SubmitButton.jsx"
+import * as $$0 from "./islands/LocalDateTime.jsx"
+import * as $$1 from "./islands/Mirror.jsx"
+import * as $$2 from "./islands/PostLinceoGram.jsx"
+import * as $$3 from "./islands/Reactions.jsx"
+import * as $$4 from "./islands/SubmitButton.jsx"
 
 const manifest = {
   routes: {
@@ -68,12 +67,11 @@ const manifest = {
     "./routes/uploads/[file].js": $26,
   },
   islands: {
-    "./islands/ForeverScrollLoader.jsx": $$0,
-    "./islands/LocalDateTime.jsx": $$1,
-    "./islands/Mirror.jsx": $$2,
-    "./islands/PostLinceoGram.jsx": $$3,
-    "./islands/Reactions.jsx": $$4,
-    "./islands/SubmitButton.jsx": $$5,
+    "./islands/LocalDateTime.jsx": $$0,
+    "./islands/Mirror.jsx": $$1,
+    "./islands/PostLinceoGram.jsx": $$2,
+    "./islands/Reactions.jsx": $$3,
+    "./islands/SubmitButton.jsx": $$4,
   },
   baseUrl: import.meta.url,
   config,
