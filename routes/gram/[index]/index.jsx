@@ -1,7 +1,8 @@
 // import { HandlerContext } from "$fresh/server.ts";
 import { PageWrapper } from "@/routes/index.jsx"
-import { GramPost, GramWrap } from "@/routes/gram/index.jsx"
+import { GramWrap } from "@/routes/gram/index.jsx"
 import { API_URL, TOKEN } from "@/utils/config.js"
+import LinceoGramPost from "@/components/LinceoGramPost.jsx"
 
 const randomInt = (min, max) => {
   return Math.floor(min + Math.random() * (max - min + 1))
@@ -39,7 +40,7 @@ export default function GramPage(props) {
   return (
     <PageWrapper data={props.data} meta={metadata}>
       <GramWrap>
-        <GramPost
+        <LinceoGramPost
           post={props.data.posts.data}
           index={randomInt(1, 7)}
           current_user={props.data.user}

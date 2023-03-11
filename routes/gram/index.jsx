@@ -1,9 +1,8 @@
 // import { HandlerContext } from "$fresh/server.ts";
-import { PAGE_SIZE, PageWrapper, ROYGBIV } from "@/routes/index.jsx"
+import { PAGE_SIZE, PageWrapper } from "@/routes/index.jsx"
 import { API_URL, TOKEN } from "@/utils/config.js"
-import LocalDateTime from "@/islands/LocalDateTime.jsx"
 import { tw } from "twind"
-import Reactions from "@/islands/Reactions.jsx"
+import LinceoGramPost from "@/components/LinceoGramPost.jsx"
 
 export const handler = {
   GET: async (req, ctx) => {
@@ -64,7 +63,7 @@ export const GramWrap = ({ children }) => (
 export const LinceoGram = ({ posts, current_user }) => (
   <GramWrap>
     {posts.data.map((post, index) => (
-      <GramPost post={post} index={index} current_user={current_user} />
+      <LinceoGramPost post={post} index={index} current_user={current_user} />
     ))}
     {/* <pre class="text-white">{JSON.stringify(posts.meta.pagination, null, 2)}</pre> */}
     {posts.meta.pagination.page > 1
@@ -91,92 +90,3 @@ export const LinceoGram = ({ posts, current_user }) => (
     <div style="clear:both" />
   </GramWrap>
 )
-
-const StrapiMedia = ({ post }) => {
-  const sizes = ["thumbnail", "small", "medium", "large"]
-  console.log(post.attributes.media, "SDLKFJD")
-  if (!post.attributes.media.data) {
-    return <></>
-  }
-  // console.log(post.attributes.media.data[0], "THIS")
-  if (post.attributes.media.data[0].attributes.mime == "video/quicktime") {
-    const { mime, url } = post.attributes.media.data[0].attributes
-    return <video controls src={url} type={mime} />
-  }
-  // if (post.attributes.media.data[0].attributes.formats === null) {
-  //   return <></>
-  // }
-  const sources = sizes.reduce(
-    (acc, current) => {
-      const thing = post.attributes.media.data[0].attributes.formats[current]
-      if (thing === undefined) {
-        return acc
-      }
-      acc.push(`${thing.url} ${thing.width}w`)
-      return acc
-    },
-    [],
-  )
-  return (
-    <img
-      src={post.attributes.media.data[0].attributes.formats.thumbnail.url}
-      srcset={sources.join(" ,")}
-      alt={post.attributes.alternativeText}
-    />
-  )
-}
-
-// const LinkButton = (props) => (
-//   <a
-//     {...props}
-//     class={`inline-block cursor-pointer px-3 py-2 bg-white rounded hover:bg-gray-100 ${
-//       props.class ?? ""
-//     }`}
-//   />
-// )
-
-export const GramPost = (props) => {
-  const { post, index, current_user } = props
-  // console.log(current_user, "YES")
-  const {
-    createdAt,
-    user,
-    caption,
-    reactions,
-  } = post.attributes
-  // @todo
-  // Display post without an image (and no error)
-  // Display post with only a small image available
-
-  // console.log(reactions, "this one")
-  return (
-    <div
-      class={`border-solid border-4 border-${
-        ROYGBIV[(index + 4) % 7]
-      } p-2 mt-2`}
-    >
-      <p class="text-indigo">
-        Posted:{" "}
-        <a href={`/gram/${post.id}`}>
-          <LocalDateTime date={createdAt} />
-        </a>
-        {" "}
-      </p>
-      <p class="text-orange">
-        By:{" "}
-        <span class="text-yellow">
-          {user.data.attributes.signature}
-        </span>
-      </p>
-      <StrapiMedia post={post} />
-      <span class="text-green">
-        {caption}
-      </span>
-      <Reactions
-        reactions={reactions}
-        current_user={current_user}
-        gram_id={post.id}
-      />
-    </div>
-  )
-}
