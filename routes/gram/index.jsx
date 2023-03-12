@@ -109,7 +109,10 @@ export const LinceoGram = ({ posts, current_user }) => (
       <LinceoGramPost post={post} index={index} current_user={current_user} />
     ))}
     {/* <pre class="text-white">{JSON.stringify(posts.meta.pagination, null, 2)}</pre> */}
-    <ForeverScrollLoader />
+    <ForeverScrollLoader
+      page={posts.meta.pagination.page}
+      pageCount={posts.meta.pagination.pageCount}
+    />
     <Pagination data={posts.meta.pagination} />
   </GramWrap>
 )
