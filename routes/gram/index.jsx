@@ -4,6 +4,7 @@ import { API_URL, TOKEN } from "@/utils/config.js"
 import { tw } from "twind"
 import LinceoGramPost from "@/components/LinceoGramPost.jsx"
 import { stringify } from "qs"
+import ForeverScrollLoader from "@/islands/ForeverScrollLoader.jsx"
 
 export const handler = {
   GET: async (req, ctx) => {
@@ -108,6 +109,7 @@ export const LinceoGram = ({ posts, current_user }) => (
       <LinceoGramPost post={post} index={index} current_user={current_user} />
     ))}
     {/* <pre class="text-white">{JSON.stringify(posts.meta.pagination, null, 2)}</pre> */}
+    <ForeverScrollLoader />
     <Pagination data={posts.meta.pagination} />
   </GramWrap>
 )

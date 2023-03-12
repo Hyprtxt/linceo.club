@@ -28,7 +28,7 @@ export const LinceoGramPost = (props) => {
   // console.log(reactions, "this one")
   return (
     <div
-      class={`border-solid border-4 border-${
+      class={`gram_post border-solid border-4 border-${
         ROYGBIV[(index + 4) % 7]
       } p-2 mt-2`}
     >
