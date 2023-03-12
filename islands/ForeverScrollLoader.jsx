@@ -7,9 +7,10 @@ const ForeverScrollLoader = ({ data }) => {
   const page = useSignal(data.page)
   const watcher = useRef(null)
   const content = useRef(null)
+  const observer = useRef(null)
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries, _opts) => {
+    observer.current = new IntersectionObserver((entries, _opts) => {
       entries.forEach(async (entry) => {
         if (entry.isIntersecting) {
           page.value++
@@ -25,12 +26,14 @@ const ForeverScrollLoader = ({ data }) => {
         }
       })
     })
+  }, [content])
 
-    observer.observe(watcher.current)
+  useEffect(() => {
+    observer.current.observe(watcher.current)
     return () => {
-      observer.disconnect()
+      observer.current.disconnect()
     }
-  }, [watcher, content])
+  }, [watcher])
 
   return (
     <>
