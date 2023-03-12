@@ -23,15 +23,15 @@ const ForeverScrollLoader = ({ data }) => {
           const grams = doc.querySelectorAll(".gram_post")
           for (const element of grams) content.current.appendChild(element)
         }
-        return entry.target.classList.toggle("visible", entry.isIntersecting)
       })
-    }, {
-      root: null,
-      threshold: .5,
     })
 
     observer.observe(watcher.current)
-  }, [])
+    return () => {
+      observer.disconnect()
+    }
+  }, [watcher])
+
   return (
     <>
       <div ref={content}></div>

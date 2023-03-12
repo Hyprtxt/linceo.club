@@ -75,13 +75,11 @@ export const GramWrap = ({ children }) => (
 )
 
 export const LinceoGram = ({ posts, current_user }) => {
-  console.log(current_user)
   return (
     <GramWrap>
       {posts.data.map((post, index) => (
         <LinceoGramPost post={post} index={index} current_user={current_user} />
       ))}
-      {/* <pre class="text-white">{JSON.stringify(posts.meta.pagination, null, 2)}</pre> */}
       {!current_user
         ? <ForeverScrollLoader data={posts.meta.pagination} />
         : <></>}

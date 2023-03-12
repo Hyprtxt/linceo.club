@@ -2,6 +2,7 @@ import { PAGE_SIZE, PageWrapper, ROYGBIV } from "@/routes/index.jsx"
 import { API_URL, TOKEN } from "@/utils/config.js"
 import { redirect } from "@/utils/mod.js"
 import GuestBookForm from "@/components/GuestBookForm.jsx"
+import { stringify } from "qs"
 
 const PAGE_SIZE = 100
 
@@ -17,9 +18,16 @@ export const handler = {
       }
     }
     const page = getPage()
-    // console.log(page);
+    const query = stringify({
+      sort: "createdAt:desc",
+      pagination: {
+        page,
+        pageSize: PAGE_SIZE,
+      },
+      populate: "users_permissions_user",
+    })
     const entries = await fetch(
-      `${API_URL}/entries?sort=createdAt:desc&pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}&populate=users_permissions_user`,
+      `${API_URL}/entries?${query}`,
       {
         headers: new Headers({
           Authorization: `Bearer ${TOKEN}`,
@@ -31,8 +39,15 @@ export const handler = {
       console.error(entries.error)
       return ctx.renderNotFound({ url: new URL(req.url) })
     }
+    const users_query = stringify({
+      sort: "createdAt:desc",
+      pagination: {
+        page,
+        pageSize: PAGE_SIZE,
+      },
+    })
     const users = await fetch(
-      `${API_URL}/users?sort=createdAt:desc&pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}`,
+      `${API_URL}/users?${users_query}`,
       {
         headers: new Headers({
           Authorization: `Bearer ${TOKEN}`,
