@@ -30,7 +30,7 @@ const ForeverScrollLoader = ({ data }) => {
     return () => {
       observer.disconnect()
     }
-  }, [watcher])
+  }, [watcher, content])
 
   return (
     <>
