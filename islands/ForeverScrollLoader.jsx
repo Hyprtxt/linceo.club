@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "preact/hooks"
 import { useSignal } from "@preact/signals"
+import { show_pagination } from "@/islands/Pagination.jsx"
 
-const ForeverScrollLoader = (props) => {
-  const { pageCount } = props
-  const page = useSignal(props.page)
+const ForeverScrollLoader = ({ data }) => {
+  const { pageCount } = data
+  const page = useSignal(data.page)
   const watcher = useRef(null)
   const content = useRef(null)
 
@@ -11,16 +12,12 @@ const ForeverScrollLoader = (props) => {
     const observer = new IntersectionObserver((entries, _opts) => {
       entries.forEach(async (entry) => {
         if (entry.isIntersecting) {
-          page.value = page.value + 1
-          console.log("Visible, time to load more content", page.value)
-          if (page.value > pageCount) {
-            console.log("BIGOLDONE")
-            return
-          }
-          const posts = await fetch(`/gram?p=${page.value}`).then(async (res) =>
-            await res.text()
-          )
-          //
+          page.value++
+          // console.log("Visible, time to load more content", page.value)
+          if (page.value > pageCount) return
+          if (show_pagination.value) show_pagination.value = false
+          const posts = await fetch(`/gram?p=${page.value}`)
+            .then(async (res) => await res.text())
           const parser = new DOMParser()
           const doc = parser.parseFromString(posts, "text/html")
           const grams = doc.querySelectorAll(".gram_post")

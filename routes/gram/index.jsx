@@ -1,10 +1,11 @@
 // import { HandlerContext } from "$fresh/server.ts";
 import { PAGE_SIZE, PageWrapper } from "@/routes/index.jsx"
 import { API_URL, TOKEN } from "@/utils/config.js"
-import { tw } from "twind"
+// import { tw } from "twind"
 import LinceoGramPost from "@/components/LinceoGramPost.jsx"
 import { stringify } from "qs"
 import ForeverScrollLoader from "@/islands/ForeverScrollLoader.jsx"
+import Pagination from "@/islands/Pagination.jsx"
 
 export const handler = {
   GET: async (req, ctx) => {
@@ -73,46 +74,13 @@ export const GramWrap = ({ children }) => (
   </div>
 )
 
-const Pagination = ({ data }) => {
-  const { page, pageCount } = data
-  return (
-    <>
-      {page > 1
-        ? (
-          <a
-            href={`/gram?p=${page - 1}`}
-            class={tw`text-underline`}
-          >
-            &laquo; Previous Page
-          </a>
-        )
-        : <></>}
-      {page <
-          pageCount
-        ? (
-          <a
-            href={`/gram?p=${page + 1}`}
-            class="text-underline float-right"
-          >
-            Next Page &raquo;
-          </a>
-        )
-        : <></>}
-      <div style="clear:both" />
-    </>
-  )
-}
-
 export const LinceoGram = ({ posts, current_user }) => (
   <GramWrap>
     {posts.data.map((post, index) => (
       <LinceoGramPost post={post} index={index} current_user={current_user} />
     ))}
     {/* <pre class="text-white">{JSON.stringify(posts.meta.pagination, null, 2)}</pre> */}
-    <ForeverScrollLoader
-      page={posts.meta.pagination.page}
-      pageCount={posts.meta.pagination.pageCount}
-    />
+    <ForeverScrollLoader data={posts.meta.pagination} />
     <Pagination data={posts.meta.pagination} />
   </GramWrap>
 )
