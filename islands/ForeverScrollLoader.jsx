@@ -2,20 +2,13 @@ import { useEffect, useRef } from "preact/hooks"
 
 const ForeverScrollLoader = () => {
   const watcher = useRef(null)
+  const content = useRef(null)
 
   useEffect(() => {
-    // define an observer instance
-    const observer = new IntersectionObserver(onIntersection, {
-      root: null,
-      threshold: .5,
-    })
-
-    // callback is called on intersection change
-    function onIntersection(entries, opts) {
+    const observer = new IntersectionObserver((entries, _opts) => {
       entries.forEach(async (entry) => {
-        // console.log("VISIBLELELE?", entry.isIntersecting)
         if (entry.isIntersecting) {
-          console.log("TIME TO FOREVERSCROLL LOAD")
+          console.log("Visible, time to load more content?")
           const posts = await fetch(`/gram?p=2`).then(async (res) =>
             await res.text()
           )
@@ -23,20 +16,20 @@ const ForeverScrollLoader = () => {
           const parser = new DOMParser()
           const doc = parser.parseFromString(posts, "text/html")
           const grams = doc.querySelectorAll(".gram_post")
-          for (const element of grams) watcher.current.appendChild(element)
+          for (const element of grams) content.current.appendChild(element)
         }
         return entry.target.classList.toggle("visible", entry.isIntersecting)
       })
-    }
+    }, {
+      root: null,
+      threshold: .5,
+    })
 
-    // Use the observer to observe an element
-    console.log(watcher.current, watcher)
-    setTimeout(() => {
-      observer.observe(watcher.current)
-    }, 2000)
+    observer.observe(watcher.current)
   }, [])
   return (
     <>
+      <div ref={content}></div>
       <div ref={watcher}></div>
     </>
   )
