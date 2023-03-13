@@ -136,6 +136,7 @@ export const Layout = ({ children, data, meta }) => {
     <>
       <Head>
         <title>{metadata.title}</title>
+        {/* // Open Graph URL should be the cannonical. */}
         <meta
           property="og:url"
           content={metadata.openGraph.url + data.url.pathname}

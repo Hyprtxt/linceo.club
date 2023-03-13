@@ -81,6 +81,7 @@ export async function handler(req, ctx) {
     "/gallery",
     "/privacy",
     "/account",
+    "/battery",
     "/guestbook",
   ]
   let resp
