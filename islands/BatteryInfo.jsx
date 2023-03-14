@@ -2,12 +2,7 @@ import { useEffect, useRef } from "preact/hooks"
 import { useSignal } from "@preact/signals"
 
 const BatteryInfo = (_props) => {
-  // const batteryData = useSignal({
-  //   charging: false,
-  //   level: 0,
-  //   chargingTime: 0,
-  //   dischargingTime: 0,
-  // })
+  const active = useSignal(false)
   const charging = useSignal(false)
   const level = useSignal(0)
   const chargingTime = useSignal(0)
@@ -15,6 +10,7 @@ const BatteryInfo = (_props) => {
 
   useEffect(() => {
     if (navigator.getBattery) {
+      active.value = true
       navigator.getBattery().then((battery) => {
         function updateAllBatteryInfo() {
           updateChargeInfo()
@@ -45,7 +41,7 @@ const BatteryInfo = (_props) => {
         })
         function updateChargingInfo() {
           console.log(`Battery charging time: ${battery.chargingTime} seconds`)
-          chargingTime.level = battery.chargingTime
+          chargingTime.value = battery.chargingTime
         }
 
         battery.addEventListener("dischargingtimechange", () => {
@@ -55,16 +51,32 @@ const BatteryInfo = (_props) => {
           console.log(
             `Battery discharging time: ${battery.dischargingTime} seconds`,
           )
-          dischargingTime.level = battery.dischargingTime
+          dischargingTime.value = battery.dischargingTime
         }
       })
     }
   }, [])
-  return <>
-    <p>Battery Charging: {charging.value ? "Yes" : "No"}</p>
-    <p>Battery Level: {level.value * 100}%</p>
-  </>
-  // <pre>{JSON.stringify(charging.value, null, 2)}</pre>
+  return (
+    <>
+      {active.value === true
+        ? (
+          <>
+            <p>Battery Charging: {charging.value ? "Yes" : "No"}</p>
+            <p>Battery Level: {level.value * 100}%</p>
+            <p>Charging Time: {chargingTime.value} seconds</p>
+            <p>Discharging Time: {dischargingTime.value} seconds</p>
+          </>
+        )
+        : (
+          <>
+            <p>Battery API not available 🥲</p>
+            <p></p>
+            <p></p>
+            <p></p>
+          </>
+        )}
+    </>
+  )
 }
 
 export default BatteryInfo
