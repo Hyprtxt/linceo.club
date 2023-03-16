@@ -5,6 +5,8 @@ import * as colors from "twind/colors"
 export default {
   selfURL: import.meta.url,
   preflight: {
+    "@import":
+      `url('https://fonts.googleapis.com/css2?family=Cherry+Swash&display=swap')`,
     body: apply`bg-gray-900 text-white`,
     // h1: apply`text(gray-800 uppercase)`, // Grouping syntax
     a: apply`text-indigo text-underline visited:text-violet hover:text-blue`,
