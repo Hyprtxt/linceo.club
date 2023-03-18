@@ -19,7 +19,7 @@ export const handler = {
       }
     }
     const query = stringify({
-      sort: "id:desc",
+      sort: "createdAt:desc",
       pagination: {
         page: getPage(),
         pageSize: PAGE_SIZE,
@@ -74,16 +74,15 @@ export const GramWrap = ({ children }) => (
   </div>
 )
 
-// {!current_user
-//   ? <ForeverScrollLoader data={posts.meta.pagination} />
-//   : <></>}
-
 export const LinceoGram = ({ posts, current_user }) => {
   return (
     <GramWrap>
       {posts.data.map((post, index) => (
         <LinceoGramPost post={post} index={index} current_user={current_user} />
       ))}
+      {!current_user
+        ? <ForeverScrollLoader data={posts.meta.pagination} />
+        : <></>}
       <Pagination data={posts.meta.pagination} />
     </GramWrap>
   )
