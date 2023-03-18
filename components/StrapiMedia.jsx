@@ -1,5 +1,5 @@
 const StrapiMedia = ({ post }) => {
-  const SIZES = ["thumbnail", "small", "medium", "large"]
+  // const SIZES = ["thumbnail", "small", "medium", "large"]
   const KEY = "media"
   if (!post.attributes[KEY].data) {
     return <></>
@@ -12,17 +12,17 @@ const StrapiMedia = ({ post }) => {
   // if (post.attributes[KEY].data[0].attributes.formats === null) {
   //   return <></>
   // }
-  const sources = SIZES.reduce(
-    (acc, current) => {
-      const thing = post.attributes[KEY].data[0].attributes.formats[current]
-      if (thing === undefined) {
-        return acc
-      }
-      acc.push(`${thing.url} ${thing.width}w`)
-      return acc
-    },
-    [],
-  )
+  // const sources = SIZES.reduce(
+  //   (acc, current) => {
+  //     const thing = post.attributes[KEY].data[0].attributes.formats[current]
+  //     if (thing === undefined) {
+  //       return acc
+  //     }
+  //     acc.push(`${thing.url} ${thing.width}w`)
+  //     return acc
+  //   },
+  //   [],
+  // )
   return (
     <img
       src={post.attributes[KEY].data[0].attributes.formats.medium.url}
