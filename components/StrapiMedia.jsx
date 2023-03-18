@@ -7,7 +7,7 @@ const StrapiMedia = ({ post }) => {
   // console.log(post.attributes[KEY].data[0], "THIS")
   if (post.attributes[KEY].data[0].attributes.mime == "video/quicktime") {
     const { mime, url } = post.attributes[KEY].data[0].attributes
-    return <video controls src={url} type={mime} />
+    return <video controls src={url} type={mime} class="w-full" />
   }
   // if (post.attributes[KEY].data[0].attributes.formats === null) {
   //   return <></>
@@ -25,9 +25,11 @@ const StrapiMedia = ({ post }) => {
   )
   return (
     <img
-      src={post.attributes[KEY].data[0].attributes.formats.thumbnail.url}
-      srcset={sources.join(" ,")}
+      src={post.attributes[KEY].data[0].attributes.formats.medium.url}
+      // srcset breaks safari when elements are loaded dynamically
+      // srcset={sources.join(" ,")}
       alt={post.attributes.alternativeText}
+      style={"margin: 0 auto"}
     />
   )
 }
