@@ -147,7 +147,7 @@ export const Layout = ({ children, data, meta }) => {
         <meta property="og:image" content={metadata.openGraph.images[0].url} />
         <meta property="og:type" content={metadata.openGraph.type} />
         <meta property="og:locale" content={metadata.openGraph.locale} />
-        <meta property="og:app_id" content={metadata.openGraph.app_id} />
+        <meta property="fb:app_id" content={metadata.openGraph.app_id} />
         {DENO_ENV === "production"
           ? (
             <>
