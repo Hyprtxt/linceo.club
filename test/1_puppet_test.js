@@ -1,4 +1,5 @@
 import { assertEquals } from "$std/testing/asserts.ts"
+import { Status } from "$std/http/http_status.ts"
 import { freshPuppetTestWrapper } from "fresh_marionette"
 import { BASE_URL, DENO_ENV } from "@/utils/config.js"
 
@@ -13,35 +14,35 @@ Deno.test(
       const response = await page.goto(`${BASE_URL}`, {
         waitUntil: "networkidle2",
       })
-      assertEquals(response.status(), 200)
+      assertEquals(response.status(), Status.OK)
     })
 
     await t.step("The sitemap should work", async () => {
       const response = await page.goto(`${BASE_URL}/sitemap.xml`, {
         waitUntil: "networkidle2",
       })
-      assertEquals(response.status(), 200)
+      assertEquals(response.status(), Status.OK)
     })
 
     await t.step("The Linceo Bird page should work", async () => {
       const response = await page.goto(`${BASE_URL}/bird`, {
         waitUntil: "networkidle2",
       })
-      assertEquals(response.status(), 200)
+      assertEquals(response.status(), Status.OK)
     })
 
     await t.step("Pagination link 1 should work", async () => {
       const response = await page.goto(`${BASE_URL}/bird?p=1`, {
         waitUntil: "networkidle2",
       })
-      assertEquals(response.status(), 200)
+      assertEquals(response.status(), Status.OK)
     })
 
     await t.step("Pagination link 2 should work", async () => {
       const response = await page.goto(`${BASE_URL}/bird?p=2`, {
         waitUntil: "domcontentloaded",
       })
-      assertEquals(response.status(), 200)
+      assertEquals(response.status(), Status.OK)
     })
 
     await t.step(
@@ -50,7 +51,7 @@ Deno.test(
         const response = await page.goto(`${BASE_URL}/bird/14`, {
           waitUntil: "domcontentloaded",
         })
-        assertEquals(response.status(), 200)
+        assertEquals(response.status(), Status.OK)
       },
     )
 
@@ -60,7 +61,7 @@ Deno.test(
         const response = await page.goto(`${BASE_URL}/bird/3`, {
           waitUntil: "networkidle2",
         })
-        assertEquals(response.status(), 404)
+        assertEquals(response.status(), Status.NotFound)
       },
     )
 
@@ -70,7 +71,7 @@ Deno.test(
         const response = await page.goto(`${BASE_URL}/bird/notinteger`, {
           waitUntil: "networkidle2",
         })
-        assertEquals(response.status(), 404)
+        assertEquals(response.status(), Status.NotFound)
       },
     )
 
@@ -80,7 +81,7 @@ Deno.test(
         const response = await page.goto(`${BASE_URL}/guestbook`, {
           waitUntil: "domcontentloaded",
         })
-        assertEquals(response.status(), 200)
+        assertEquals(response.status(), Status.OK)
       },
     )
 
@@ -90,7 +91,7 @@ Deno.test(
         const response = await page.goto(`${BASE_URL}/privacy`, {
           waitUntil: "domcontentloaded",
         })
-        assertEquals(response.status(), 200)
+        assertEquals(response.status(), Status.OK)
       },
     )
 
@@ -100,7 +101,7 @@ Deno.test(
         const response = await page.goto(`${BASE_URL}/terms`, {
           waitUntil: "domcontentloaded",
         })
-        assertEquals(response.status(), 200)
+        assertEquals(response.status(), Status.OK)
       },
     )
 
@@ -108,14 +109,14 @@ Deno.test(
       const response = await page.goto(`${BASE_URL}/404`, {
         waitUntil: "networkidle2",
       })
-      assertEquals(response.status(), 404)
+      assertEquals(response.status(), Status.NotFound)
     })
 
     await t.step("The unauthorized page should 401", async () => {
       const response = await page.goto(`${BASE_URL}/unauthorized`, {
         waitUntil: "networkidle2",
       })
-      assertEquals(response.status(), 401)
+      assertEquals(response.status(), Status.Unauthorized)
     })
 
     await t.step(
@@ -124,7 +125,7 @@ Deno.test(
         const response = await page.goto(`${BASE_URL}/account`, {
           waitUntil: "networkidle2",
         })
-        assertEquals(response.status(), 401)
+        assertEquals(response.status(), Status.Unauthorized)
       },
     )
 
@@ -134,7 +135,7 @@ Deno.test(
         const response = await page.goto(`${BASE_URL}/gallery`, {
           waitUntil: "networkidle2",
         })
-        assertEquals(response.status(), 200)
+        assertEquals(response.status(), Status.OK)
       },
     )
 
@@ -144,7 +145,7 @@ Deno.test(
         const response = await page.goto(`${BASE_URL}/gallery/ai-art`, {
           waitUntil: "networkidle2",
         })
-        assertEquals(response.status(), 200)
+        assertEquals(response.status(), Status.OK)
       },
     )
 
@@ -154,7 +155,7 @@ Deno.test(
         const response = await page.goto(`${BASE_URL}/gallery/public`, {
           waitUntil: "networkidle2",
         })
-        assertEquals(response.status(), 200)
+        assertEquals(response.status(), Status.OK)
       },
     )
 
@@ -164,7 +165,7 @@ Deno.test(
         const response = await page.goto(`${BASE_URL}/gallery/mom`, {
           waitUntil: "networkidle2",
         })
-        assertEquals(response.status(), 200)
+        assertEquals(response.status(), Status.OK)
       },
     )
 
@@ -174,7 +175,17 @@ Deno.test(
         const response = await page.goto(`${BASE_URL}/mirror`, {
           waitUntil: "networkidle2",
         })
-        assertEquals(response.status(), 200)
+        assertEquals(response.status(), Status.OK)
+      },
+    )
+
+    await t.step(
+      "The battery status API page should work",
+      async () => {
+        const response = await page.goto(`${BASE_URL}/battery`, {
+          waitUntil: "networkidle2",
+        })
+        assertEquals(response.status(), Status.OK)
       },
     )
 
@@ -184,7 +195,7 @@ Deno.test(
         const response = await page.goto(`${BASE_URL}/parent`, {
           waitUntil: "networkidle2",
         })
-        assertEquals(response.status(), 401)
+        assertEquals(response.status(), Status.Unauthorized)
       },
     )
     // Parent page should not allow logged in access
@@ -196,7 +207,7 @@ Deno.test(
         const response = await page.goto(`${BASE_URL}/gram`, {
           waitUntil: "networkidle2",
         })
-        assertEquals(response.status(), 200)
+        assertEquals(response.status(), Status.OK)
       },
     )
 
@@ -206,7 +217,7 @@ Deno.test(
         const response = await page.goto(`${BASE_URL}/gram/46`, {
           waitUntil: "networkidle2",
         })
-        assertEquals(response.status(), 200)
+        assertEquals(response.status(), Status.OK)
       },
     )
 
@@ -216,7 +227,7 @@ Deno.test(
         const response = await page.goto(`${BASE_URL}/gram/2`, {
           waitUntil: "networkidle2",
         })
-        assertEquals(response.status(), 404)
+        assertEquals(response.status(), Status.NotFound)
       },
     )
 
@@ -226,7 +237,7 @@ Deno.test(
         const response = await page.goto(`${BASE_URL}/gram/notinteger`, {
           waitUntil: "networkidle2",
         })
-        assertEquals(response.status(), 404)
+        assertEquals(response.status(), Status.NotFound)
       },
     )
   }),
