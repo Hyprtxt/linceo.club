@@ -32,7 +32,7 @@ jobs:
         # uses: denoland/setup-deno@v1
         uses: denoland/setup-deno@v1
         with:
-          deno-version: v1.32.1
+          deno-version: v1.32.3
           
       - name: Verify formatting
         run: deno fmt --check
