@@ -18,7 +18,15 @@ export default {
       },
     },
     fontFamily: {
-      "cherry-swash": ['"Cherry Swash"', "cursive"],
+      "cherry-swash": [
+        '"Cherry Swash"',
+        "Rockwell",
+        '"Rockwell Nova"',
+        '"Roboto Slab"',
+        '"DejaVu Serif"',
+        '"Sitka Small"',
+        "serif",
+      ],
     },
     screens: {
       sm: "480px",
