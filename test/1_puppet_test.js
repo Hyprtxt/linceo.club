@@ -240,5 +240,16 @@ Deno.test(
         assertEquals(response.status(), Status.NotFound)
       },
     )
+
+    await t.step(
+      "LinceoGram number of pages n+1 should render a 404",
+      async () => {
+        // Fix this test, breaks around 700 linceo gram posts
+        const response = await page.goto(`${BASE_URL}/gram?p=100`, {
+          waitUntil: "networkidle2",
+        })
+        assertEquals(response.status(), Status.NotFound)
+      },
+    )
   }),
 )

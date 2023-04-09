@@ -42,7 +42,10 @@ export const handler = {
     )
       .then(async (res) => await res.json())
 
-    // console.log(snaps)
+    // console.log(snaps, !snaps.data.length)
+    if (!snaps.data.length) {
+      return ctx.renderNotFound({ url: new URL(req.url) })
+    }
     if (snaps.error) {
       console.error(snaps.error)
       return ctx.renderNotFound({ url: new URL(req.url) })
