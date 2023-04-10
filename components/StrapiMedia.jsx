@@ -23,15 +23,26 @@ const StrapiMedia = ({ post }) => {
   //   },
   //   [],
   // )
-  return (
-    <img
-      src={post.attributes[KEY].data[0].attributes.formats.medium.url}
-      // srcset breaks safari when elements are loaded dynamically
-      // srcset={sources.join(" ,")}
-      alt={post.attributes.alternativeText}
-      style={"margin: 0 auto"}
-    />
-  )
+  if (post.attributes[KEY].data[0].attributes.formats?.medium?.url) {
+    return (
+      <img
+        src={post.attributes[KEY].data[0].attributes.formats?.medium?.url}
+        // srcset breaks safari when elements are loaded dynamically
+        // srcset={sources.join(" ,")}
+        alt={post.attributes.alternativeText}
+        style={"margin: 0 auto"}
+      />
+    )
+  } else {
+    // Allow tiny images
+    return (
+      <img
+        src={post.attributes[KEY].data[0].attributes?.url}
+        alt={post.attributes.alternativeText}
+        style={"margin: 0 auto"}
+      />
+    )
+  }
 }
 
 export default StrapiMedia
