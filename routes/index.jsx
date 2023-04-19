@@ -203,7 +203,7 @@ export default function Home(props) {
   return (
     <PageWrapper data={props.data} meta={metadata} home={true}>
       <div class="border-solid border-4 border-blue p-2">
-        <p class="text-yellow">Welcome to Linceo's Website 😃</p>
+        <p class="text-yellow">Welcome to Linceo's second Website 😃</p>
         <p class="text-orange">
           <a href="/bird">The Linceo Bird</a>{" "}
           is going to turn into more of a Blog, I think. If you're looking for a
