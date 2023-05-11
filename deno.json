@@ -10,9 +10,7 @@
     "jsxImportSource": "preact"
   },
   "fmt": {
-    "options": {
-      "semiColons": false
-    }
+    "semiColons": false
   },
   "lock": false
 }
