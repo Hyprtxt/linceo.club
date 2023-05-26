@@ -4,6 +4,7 @@ import { CSS } from "gfm"
 import { DENO_ENV, GTM_ID } from "@/utils/config.js"
 import PostLinceoGram from "@/islands/PostLinceoGram.jsx"
 import LoginOAuth from "@/components/LoginOAuth.jsx"
+import Confetti from "@/islands/Confetti.jsx"
 
 export const PAGE_SIZE = 7
 export const ROYGBIV = [
@@ -127,6 +128,14 @@ export const PageWrapper = ({ children, data, meta, home = false }) => {
   )
 }
 
+const isBirthday = () => {
+  const date = new Date()
+  if (date.getMonth() === 10 && date.getDate() === 2) {
+    return true
+  }
+  return false
+}
+
 export const Layout = ({ children, data, meta }) => {
   const metadata = Object.assign(METADATA, meta)
   metadata.title = meta?.title
@@ -168,6 +177,7 @@ export const Layout = ({ children, data, meta }) => {
           : <></>}
       </Head>
       <body class={tw`bg-dark`}>
+        {isBirthday() ? <Confetti /> : <></>}
         {children}
         {data.user?.parent ? <PostLinceoGram UserID={data.user.id} /> : <></>}
         {DENO_ENV === "development"
