@@ -4,6 +4,7 @@ import { CSS } from "gfm"
 import { DENO_ENV, GTM_ID } from "@/utils/config.js"
 import PostLinceoGram from "@/islands/PostLinceoGram.jsx"
 import LoginOAuth from "@/components/LoginOAuth.jsx"
+import Fireworks from "@/islands/Fireworks.jsx"
 import Confetti from "@/islands/Confetti.jsx"
 
 export const PAGE_SIZE = 7
@@ -177,7 +178,7 @@ export const Layout = ({ children, data, meta }) => {
           : <></>}
       </Head>
       <body class={tw`bg-dark`}>
-        {isBirthday() ? <Confetti /> : <></>}
+        {isBirthday() ? <Fireworks /> : <></>}
         {children}
         {data.user?.parent ? <PostLinceoGram UserID={data.user.id} /> : <></>}
         {DENO_ENV === "development"
