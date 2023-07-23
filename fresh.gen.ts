@@ -2,7 +2,6 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import config from "./deno.json" assert { type: "json" }
 import * as $0 from "./routes/_404.jsx"
 import * as $1 from "./routes/_500.jsx"
 import * as $2 from "./routes/_middleware.js"
@@ -86,7 +85,6 @@ const manifest = {
     "./islands/SubmitButton.jsx": $$9,
   },
   baseUrl: import.meta.url,
-  config,
 }
 
 export default manifest

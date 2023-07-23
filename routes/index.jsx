@@ -24,7 +24,7 @@ export const METADATA = {
     index: true,
     follow: true,
   },
-  description: "A website for a very special boy.",
+  description: "Instagram for one, plus whole bunch of other stuff.",
   openGraph: {
     url: "https://linceo.club",
     siteName: "Linceo Club",
@@ -150,7 +150,8 @@ export const Layout = ({ children, data, meta }) => {
         {/* // Open Graph URL should be the cannonical. */}
         <meta
           property="og:url"
-          content={metadata.openGraph.url + data.url.pathname}
+          content={metadata.openGraph.url}
+          // data.url.pathname
         />
         <meta property="og:title" content={metadata.title} />
         <meta property="og:description" content={metadata.description} />
