@@ -14,6 +14,7 @@ export default function PrivacyPage({ data }) {
     <PageWrapper data={data} meta={metadata}>
       <div class="border-solid border-4 border-blue p-2">
         <h2 class="text-yellow text-xl">Privacy Policy</h2>
+        <p>Use at your own risk.</p>
       </div>
     </PageWrapper>
   )

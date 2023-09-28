@@ -182,9 +182,11 @@ export const Layout = ({ children, data, meta }) => {
         {isBirthday() ? <Fireworks /> : <></>}
         {children}
         {data.user?.parent ? <PostLinceoGram UserID={data.user.id} /> : <></>}
-        {DENO_ENV === "development"
+        {
+          /* {DENO_ENV === "development"
           ? <pre>{JSON.stringify(data, null, 2)}</pre>
-          : ""}
+          : ""} */
+        }
       </body>
     </>
   )
